@@ -7,7 +7,7 @@
 cmake_minimum_required (VERSION 2.6)
 
 
-project(GitPrompt)
+project(xAnalyzer)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -25,11 +25,14 @@ include_directories("${LIBXML2_INCLUDE_DIR}")
 
 #-------------------------------------------------------------------------------
 # sources
-set(SOURCES "Main.cpp" "GitPromptApp.cpp" "GitClient.cpp")
-
+set(SOURCES
+    Main.cpp
+    xAnalyzerApp.cpp
+    CppCheck.cpp
+    ClangTidy.cpp)
 #-------------------------------------------------------------------------------
 # target
-add_executable(GitPrompt ${SOURCES})
+add_executable(xAnalyzer ${SOURCES})
 
 #-------------------------------------------------------------------------------
 # flags

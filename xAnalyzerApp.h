@@ -7,31 +7,23 @@
 #include <xLib/xLib.h>
 #include "Config.h"
 //-------------------------------------------------------------------------------------------------
-xNAMESPACE_BEGIN(git_prompt)
+xNAMESPACE_BEGIN(xa)
 
-class GitPromptApp :
+class xAnalyzerApp :
 	public Application
 {
 public:
-			 GitPromptApp(std::ctstring_t &appGuid, std::ctstring_t &locale);
-			~GitPromptApp() = default;
+			 xAnalyzerApp(std::ctstring_t &appGuid, std::ctstring_t &locale);
+			~xAnalyzerApp() = default;
 
-	xNO_COPY_ASSIGN(GitPromptApp)
+	xNO_COPY_ASSIGN(xAnalyzerApp)
 
 	ExitCode onRun() override;
 
 private:
-	struct Config
-	{
-		bool_t         isHostName      {false};
-		std::tstring_t myHostName      {xT("skynowa-pc")};
-		bool_t         isVolumeUsedPct {true};	///< force using VolumeUsedPct
-	};
-
-	Config _config;
 };
 
-xNAMESPACE_END(git_prompt)
+xNAMESPACE_END(xa)
 //-------------------------------------------------------------------------------------------------
 /**
  * TODO:

@@ -24,10 +24,6 @@ public:
 
 private:
 
-
-xPLATFORM_IMPL:
-    void_t _construct_impl();
-    void_t _destruct_impl();
 };
 
 xNAMESPACE_END2(xl, xa)

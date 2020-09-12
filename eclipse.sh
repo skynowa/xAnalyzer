@@ -9,8 +9,8 @@
 # export CC="gcc"
 # export CXX="g++"
 
-DIR="../GitPrompt"
-DIR_BUILD="../GitPrompt_eclipse"
+DIR="../xAnalyzer"
+DIR_BUILD="../xAnalyzer_eclipse"
 
 
 # build
