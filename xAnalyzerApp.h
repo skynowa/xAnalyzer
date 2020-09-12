@@ -21,21 +21,13 @@ public:
 	ExitCode onRun() override;
 
 private:
+
 };
 
 xNAMESPACE_END(xa)
 //-------------------------------------------------------------------------------------------------
 /**
  * TODO:
- * - repo icon: xT("🙃");
- *
- * DONE:
- * - repo URL name
- * - Local branches number
- * - Stashes number
- *
- * UNTODO:
- * - screens num (Must be connected to a terminal.)
  *
  */
 //-------------------------------------------------------------------------------------------------

@@ -7,10 +7,12 @@
 #pragma once
 
 #include <xLib/Core/Core.h>
+#include "IAnalyzer.h"
 //-------------------------------------------------------------------------------------------------
 xNAMESPACE_BEGIN2(xl, xa)
 
-class CppCheck
+class CppCheck :
+    public IAnalyzer
     /// CppCheck
 {
 public:

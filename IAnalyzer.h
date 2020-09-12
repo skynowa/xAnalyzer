@@ -1,31 +1,26 @@
 /**
- * \file  ClangTidy.h
- * \brief ClangTidy
+ * \file  CppCheck.h
+ * \brief CppCheck
  */
 
 
 #pragma once
 
 #include <xLib/Core/Core.h>
-#include "IAnalyzer.h"
 //-------------------------------------------------------------------------------------------------
 xNAMESPACE_BEGIN2(xl, xa)
 
-class ClangTidy :
-    public IAnalyzer
-    /// ClangTidy
+class IAnalyzer
+    ///
 {
 public:
 ///@name ctors, dtor
 ///@{
-             ClangTidy();
-    virtual ~ClangTidy();
+             IAnalyzer() = default;
+    virtual ~IAnalyzer() = default;
 
-    xNO_COPY_ASSIGN(ClangTidy)
+    xNO_COPY_ASSIGN(IAnalyzer)
 ///@}
-
-private:
-
 };
 
 xNAMESPACE_END2(xl, xa)
