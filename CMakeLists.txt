@@ -28,8 +28,8 @@ include_directories("${LIBXML2_INCLUDE_DIR}")
 set(SOURCES
     Main.cpp
     xAnalyzerApp.cpp
-    CppCheck.cpp
-    ClangTidy.cpp)
+    Analyzers/CppCheck.cpp
+    Analyzers/ClangTidy.cpp)
 #-------------------------------------------------------------------------------
 # target
 add_executable(xAnalyzer ${SOURCES})
