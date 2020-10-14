@@ -20,8 +20,6 @@ def main(argv):
 	try:
 		analyzer = Analyzer(options.TYPE_ACTIVE)
 		analyzer._file_to_check = arguments_parser.parse_args().file_to_check
-
-		analyzer.traceOptions()
 		analyzer.run()
 	except KeyboardInterrupt:
 		print("Stopping...")
@@ -37,6 +35,7 @@ def main(argv):
 
 	try {
 		xa::AnalyzerApp app(::appName, xT(""));
+		app.traceOptions();
 		exitStatus = app.run();
 	}
 	catch (const Exception &a_e) {

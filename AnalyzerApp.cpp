@@ -71,6 +71,21 @@ AnalyzerApp::AnalyzerApp(
 	includeDirs(&_include_dirs);
 }
 //-------------------------------------------------------------------------------------------------
+void_t
+AnalyzerApp::traceOptions() const
+{
+	trace("");
+	traceOk("Options:");
+	trace("TYPE_ACTIVE: " + _name);
+	trace("COMPILER_ID: " + _complier_name);
+	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
+	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
+	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
+	trace("CPP_STD:     " + ::CPP_STD);
+	trace("CPP_MASK:    " + String::join(::CPP_MASK, ", "));
+	trace("");
+}
+//-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
@@ -357,21 +372,6 @@ def isError(self, a_out, a_stderr_str):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::traceOptions() const
-{
-	trace("");
-	traceOk("Options:");
-	trace("TYPE_ACTIVE: " + _name);
-	trace("COMPILER_ID: " + _complier_name);
-	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
-	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
-	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
-	trace("CPP_STD:     " + ::CPP_STD);
-	trace("CPP_MASK:    " + String::join(::CPP_MASK, ", "));
-	trace("");
-}
-//-------------------------------------------------------------------------------------------------
-void_t
 AnalyzerApp::traceColor(
 	Console::Foreground  a_color,
 	std::ctstring_t     &a_msg
@@ -390,6 +390,8 @@ AnalyzerApp::trace(
 	std::ctstring_t &a_msg
 ) const
 {
+	Cout() << "sdfgsdrfgsdr";
+
 	_console.writeLine(a_msg);
 }
 //-------------------------------------------------------------------------------------------------

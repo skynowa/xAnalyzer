@@ -10,7 +10,7 @@ using namespace xl;
 
 #include <xLib/xLib.h>
 //-------------------------------------------------------------------------------------------------
-std::ctstring_t appName = xT("xAnalyzer");
+const std::ctstring_t appName = xT("xAnalyzer");
 //-------------------------------------------------------------------------------------------------
 /**
  * Analyzer types
