@@ -48,7 +48,7 @@ private:
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
 		///< Check if errors detected
 
-	void_t   traceOptions() const;
+	void_t traceOptions() const;
 		///< trace options (configs)
 	void_t traceColor(Console::Foreground color, std::ctstring_t &msg) const;
 		///< trace using color

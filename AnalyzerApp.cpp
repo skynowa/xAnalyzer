@@ -19,17 +19,6 @@ AnalyzerApp::AnalyzerApp(
 ) :
 	Application(a_appGuid, a_locale)
 {
-	{
-		std::vec_tstring_t appArgs;
-		args(true, &appArgs);
-		Cout() << xTRACE_VAR(appArgs);
-
-		std::vector<CmdOptionsUsage> usage;
-
-		CmdOptions options;
-		options.parse(appArgs, usage);
-	}
-
 	_console.setEscapeValues(false);
 
 	// current OS
