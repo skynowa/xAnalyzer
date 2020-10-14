@@ -285,7 +285,40 @@ def getCompilerIncludeDirs(self):
 
 	return result
 #else
+	xCHECK_DO(out_dirPathes == nullptr, return);
 
+	out_dirPathes->clear();
+
+	std::cvec_tstring_t params
+	{
+		"-v",
+		"/dev/null"
+	};
+
+	std::tstring_t stdOut;
+	std::tstring_t stdError;
+
+	Process::execute("clang-tidy", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+
+	std::tstring_t str_left  = "#include <...> search starts here:";
+	std::tstring_t str_right = "End of search list.";
+
+	std::csize_t pos_left  = stdOut.find(str_left);
+	std::csize_t pos_right = stdOut.find(str_right, pos_left);
+	xTEST_LESS(pos_left, pos_right);
+
+	/// stdOut = stdOut[pos_left + str_left.size() : pos_right];
+
+	std::vec_tstring_t includes;
+	String::split(stdOut, "???", &includes);
+
+	for (const auto &it_include : includes) {
+		out_dirPathes->push_back("-I" + it_include);
+	}
+
+	if (_os_name == SystemInfo::OsType::FreeBSD) {
+		out_dirPathes->push_back("-isystem/usr/include/c++/v1");
+	}
 #endif
 }
 //-------------------------------------------------------------------------------------------------
