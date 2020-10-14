@@ -25,15 +25,15 @@ AnalyzerApp::AnalyzerApp(
 	_os_name = SystemInfo().os();
 
 	// analyzer type
-	_type = ::TypeActive::ACTIVE;
+	_type = ::TypeActive::Active;
 
 	// analyzer name
 	std::map<::TypeActive, std::tstring_t> names
 	{
-		{::TypeActive::CPPCHECK,        "[Cppcheck]"},
-		{::TypeActive::CLANG_TIDY,      "[Clang-Tidy]"},
-		{::TypeActive::CLANG_TIDY_DIFF, "[Clang-Tidy-Diff]"},
-		{::TypeActive::CLANG_TIDY_FILE, "[Clang-Tidy-File]"}
+		{::TypeActive::CppCheck,      "[Cppcheck]"},
+		{::TypeActive::ClangTidy,     "[Clang-Tidy]"},
+		{::TypeActive::ClangTidyDiff, "[Clang-Tidy-Diff]"},
+		{::TypeActive::ClangTidyFile, "[Clang-Tidy-File]"}
 	};
 
 	_name = names[_type];
@@ -59,7 +59,7 @@ AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
 	if (_git_modified_files.empty() &&
-		_type != ::TypeActive::CLANG_TIDY_FILE)
+		_type != ::TypeActive::ClangTidyFile)
 	{
 		traceOk("No changes. OK");
 		return ExitCode::Success;
@@ -92,26 +92,26 @@ AnalyzerApp::onRun() /* override */
 		}
 		else {
 			switch (_type) {
-			case ::TypeActive::CPPCHECK:
+			case ::TypeActive::CppCheck:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::CppCheck);
 					analyzer->run();
 				}
 				break;
-			case ::TypeActive::CLANG_TIDY:
+			case ::TypeActive::ClangTidy:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
 					analyzer->run();
 				}
 				break;
-			case ::TypeActive::CLANG_TIDY_DIFF:
+			case ::TypeActive::ClangTidyDiff:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
 					/// self.runClangTidyDiff();
 					analyzer->run();
 				}
 				break;
-			case ::TypeActive::CLANG_TIDY_FILE:
+			case ::TypeActive::ClangTidyFile:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
 					/// self.runClangTidyFile();
@@ -189,10 +189,10 @@ AnalyzerApp::complierInfo(
 
 	std::ctstring_t &version_str = String::trimSpace(stdOut);
 	if (version_str.find("clang version") != std::tstring_t::npos) {
-		*out_complier_id   = ::CompilerId::CLANG;
+		*out_complier_id   = ::CompilerId::Clang;
 		*out_complier_name = "clang";
 	} else {
-		*out_complier_id   = ::CompilerId::GCC;
+		*out_complier_id   = ::CompilerId::Gcc;
 		*out_complier_name = "gcc";
 	}
 }
@@ -206,7 +206,7 @@ AnalyzerApp::includeDirs(
 
 	out_dirPathes->clear();
 
-	if (::TypeActive::ACTIVE == ::TypeActive::CPPCHECK &&
+	if (::TypeActive::Active == ::TypeActive::CppCheck &&
 		::QUICK_CHECK)
 	{
 		*out_dirPathes = {};
