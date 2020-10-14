@@ -30,6 +30,8 @@ AnalyzerApp::AnalyzerApp(
 		options.parse(appArgs, usage);
 	}
 
+	_console.setEscapeValues(false);
+
 	// current OS
 	_os_name = SystemInfo().os();
 
@@ -402,7 +404,7 @@ AnalyzerApp::traceOk(
 	str = _console.setAttributesText(Console::Foreground::Yellow , Console::Background::Default,
 		static_cast<int_t>(Console::Attribute::Bold), _name);
 	str += _console.setAttributesText(Console::Foreground::Green , Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), a_msg);
+		static_cast<int_t>(Console::Attribute::Bold), " " + a_msg);
 
 	_console.writeLine(str);
 }
