@@ -23,7 +23,7 @@ AnalyzerFactory::create(
 		return it->second;
 	}
 
-	std::unique_ptr<Type> analyzer;
+	std::unique_ptr<IAnalyzer> analyzer;
 
 	switch (a_type) {
 	case Type::CppCheck:
