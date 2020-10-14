@@ -28,14 +28,14 @@ void_t
 ClangTidy::run() /* override */
 {
 	// TODO: complier_id - impl
-	const auto complierId = ::CompilerId::COMPILER_ID_UNKNOWN;
+	const auto complierId = ::CompilerId::UNKNOWN;
 
 	std::ctstring_t line_filter = ""; // n/a
 
 	std::map<::CompilerId, std::tstring_t> args_stdlib
 	{
-		{::CompilerId::COMPILER_ID_CLANG, "-stdlib=libstdc++"},
-		{::CompilerId::COMPILER_ID_GCC,   ""}
+		{::CompilerId::CLANG, "-stdlib=libstdc++"},
+		{::CompilerId::GCC,   ""}
 	};
 
 	std::ctstring_t force_cpp = "-x " + ::CPP_LANG;

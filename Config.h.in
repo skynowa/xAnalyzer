@@ -17,11 +17,11 @@ const std::ctstring_t appName = xT("@PROJECT_NAME@");
  */
 enum class TypeActive
 {
-	TYPE_CPPCHECK        = 1,
-	TYPE_CLANG_TIDY      = 2,
-	TYPE_CLANG_TIDY_DIFF = 3,
-	TYPE_CLANG_TIDY_FILE = 4,
-	TYPE_ACTIVE          = TYPE_CPPCHECK
+	CPPCHECK        = 1,
+	CLANG_TIDY      = 2,
+	CLANG_TIDY_DIFF = 3,
+	CLANG_TIDY_FILE = 4,
+	ACTIVE          = CPPCHECK
 };
 xUSING_CONST(TypeActive);
 
@@ -71,9 +71,9 @@ std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";
  */
 enum class CompilerId
 {
-	COMPILER_ID_UNKNOWN = 0,
-	COMPILER_ID_CLANG   = 1,
-	COMPILER_ID_GCC     = 2
+	UNKNOWN = 0,
+	CLANG   = 1,
+	GCC     = 2
 };
 xUSING_CONST(CompilerId);
 
