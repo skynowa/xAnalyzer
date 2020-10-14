@@ -152,9 +152,9 @@ AnalyzerApp::onRun() /* override */
 			traceError("***** Detect errors. Commit stopped ***** " + time_stop_sec_str);
 
 			return ExitCode::Failure;
-		} else {
-			traceError("***** Detect errors. Commited ***** " + time_stop_sec_str);
 		}
+
+		traceError("***** Detect errors. Commited ***** " + time_stop_sec_str);
 	} else {
 		traceOk("No warnings. OK " + time_stop_sec_str);
 	}
