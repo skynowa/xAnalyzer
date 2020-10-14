@@ -41,7 +41,7 @@ cbool_t QUICK_CHECK = true;
  *
  * SKIP_CHECK = os.environ.get("ANALYZER_SKIP_CHECK")
  */
-cbool_t SKIP_CHECK = true;
+cbool_t SKIP_CHECK = false;
 
 /**
  * Disallow committing when errors/warnings occur
