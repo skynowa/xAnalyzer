@@ -345,7 +345,7 @@ def traceColor(self, a_color, a_msg):
 
 	print(a_color + self._name + self.COLOR_NORMAL + " " + a_msg)
 #else
-
+	trace(a_msg);
 #endif
 }
 //-------------------------------------------------------------------------------------------------
@@ -372,7 +372,7 @@ def traceOk(self, a_msg):
 	print(self.COLOR_YELLOW + self._name + self.COLOR_NORMAL + " " +
 		self.COLOR_GREEN + a_msg + self.COLOR_NORMAL)
 #else
-
+	trace(a_msg);
 #endif
 }
 //-------------------------------------------------------------------------------------------------
@@ -390,7 +390,7 @@ def traceError(self, a_msg):
 
 	print(self.COLOR_RED + self._name + " " + a_msg + self.COLOR_NORMAL)
 #else
-
+	trace(a_msg);
 #endif
 }
 //-------------------------------------------------------------------------------------------------
