@@ -7,7 +7,8 @@
 #include <xLib/xLib.h>
 #include "Config.h"
 //-------------------------------------------------------------------------------------------------
-xNAMESPACE_BEGIN(xa)
+namespace xa
+{
 
 class xAnalyzerApp :
 	public Application
@@ -41,7 +42,7 @@ private:
 	void_t traceError(std::ctstring_t &msg) const;
 };
 
-xNAMESPACE_END(xa)
+} // namespace xa
 //-------------------------------------------------------------------------------------------------
 /**
  * TODO:

@@ -9,7 +9,8 @@
 #include <xLib/Core/Core.h>
 #include "IAnalyzer.h"
 //-------------------------------------------------------------------------------------------------
-xNAMESPACE_BEGIN2(xl, xa)
+namespace xa
+{
 
 class ClangTidy :
     public IAnalyzer
@@ -24,9 +25,11 @@ public:
     xNO_COPY_ASSIGN(ClangTidy)
 ///@}
 
+	void_t run() override;
+
 private:
 
 };
 
-xNAMESPACE_END2(xl, xa)
+} // namespace xa
 //-------------------------------------------------------------------------------------------------

@@ -7,9 +7,11 @@
 #pragma once
 
 using namespace xl;
+using namespace xl::core;
 using namespace xl::debug;
 using namespace xl::fs;
 using namespace xl::sync;
+using namespace xl::package;
 //-------------------------------------------------------------------------------------------------
 const std::ctstring_t appName = xT("xAnalyzer");
 //-------------------------------------------------------------------------------------------------

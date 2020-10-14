@@ -6,9 +6,10 @@
 
 #pragma once
 
-#include <xLib/Core/Core.h>
+#include "../Config.h"
 //-------------------------------------------------------------------------------------------------
-xNAMESPACE_BEGIN2(xl, xa)
+namespace xa
+{
 
 class IAnalyzer
     ///
@@ -21,7 +22,9 @@ public:
 
     xNO_COPY_ASSIGN(IAnalyzer)
 ///@}
+
+    virtual void_t run() = 0;
 };
 
-xNAMESPACE_END2(xl, xa)
+} // namespace xa
 //-------------------------------------------------------------------------------------------------
