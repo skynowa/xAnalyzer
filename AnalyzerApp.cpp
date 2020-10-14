@@ -142,11 +142,17 @@ def run(self):
 	else:
 		self.traceOk("No warnings. OK " + time_stop_sec_str)
 #else
-	auto &cppCheck  = AnalyzerFactory::create(AnalyzerFactory::Type::CppCheck);
-	auto &clangTidy = AnalyzerFactory::create(AnalyzerFactory::Type::ClangTidy);
+	const std::vector<AnalyzerFactory::Type> analyzerTypes
+	{
+		AnalyzerFactory::Type::CppCheck,
+		AnalyzerFactory::Type::ClangTidy
+	};
 
-	xUNUSED(cppCheck);
-	xUNUSED(clangTidy);
+	for (const auto &it_analyzerType : analyzerTypes) {
+		auto &analyzer = AnalyzerFactory::create(it_analyzerType);
+		analyzer->run();
+
+	} // for (analyzerTypes)
 
 	return ExitCode::Success;
 #endif
