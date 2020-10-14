@@ -213,7 +213,6 @@ AnalyzerApp::includeDirs(
 	{
 		*out_dirPathes = {};
 	} else {
-		// System includes (cpp -v)
 		if (true) {
 			std::vec_tstring_t dirPathes;
 			compilerIncludeDirs(&dirPathes);
@@ -271,6 +270,7 @@ AnalyzerApp::compilerIncludeDirs(
 
 	out_dirPathes->clear();
 
+	// System includes (cpp -v)
 	std::cvec_tstring_t params
 	{
 		"-v",
@@ -280,7 +280,7 @@ AnalyzerApp::compilerIncludeDirs(
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("clang-tidy", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("cpp", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 
 	std::tstring_t str_left  = "#include <...> search starts here:";
 	std::tstring_t str_right = "End of search list.";
