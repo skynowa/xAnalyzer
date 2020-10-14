@@ -27,6 +27,11 @@ public:
 private:
 	GitClient _git;
 
+	SystemInfo::OsType  _os_name {};
+	TypeActive          _type {};
+	std::tstring_t      _name;
+	std::vec_tstring_t  _git_modified_files;
+
 	void_t getComplierInfo() const;
 	void_t getIncludeDirs() const;
 	void_t getCompilerIncludeDirs() const;

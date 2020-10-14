@@ -90,10 +90,10 @@ def __init__(self, a_type):
 	}
 
 	// current OS
-	SystemInfo::cOsType _os_name = SystemInfo().os();
+	_os_name = SystemInfo().os();
 
-	// TODO: analyzer type - from ctor
-	cTypeActive a_type = ::TypeActive::TYPE_ACTIVE;
+	// analyzer type
+	_type = ::TypeActive::TYPE_ACTIVE;
 
 	// analyzer name
 	std::map<::TypeActive, std::tstring_t> names
@@ -104,17 +104,16 @@ def __init__(self, a_type):
 		{::TypeActive::TYPE_CLANG_TIDY_FILE, "[Clang-Tidy-File]"}
 	};
 
-	std::ctstring_t _name = names[a_type];
+	_name = names[_type];
 	if (_name == "") {
-		traceError("Bad type: " + Enum::str(a_type));
+		traceError("Bad type: " + Enum::str(_type));
 		Process::currentExit(1);
 	}
 
 	// GIT modified files
-	std::vec_tstring_t _git_modified_files;
 	_git.modifiedFiles(::CPP_MASK, &_git_modified_files);
 	if (_git_modified_files.empty() &&
-		a_type != ::TypeActive::TYPE_CLANG_TIDY_FILE)
+		_type != ::TypeActive::TYPE_CLANG_TIDY_FILE)
 	{
 		traceOk("No changes. OK");
 		Process::currentExit(1);
