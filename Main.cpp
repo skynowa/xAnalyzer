@@ -31,6 +31,10 @@ def main(argv):
 	xUNUSED(a_argNum);
 	xUNUSED(a_args);
 
+	if (::SKIP_CHECK) {
+		return Application::ExitCode::Success;
+	}
+
 	auto exitStatus {Application::ExitCode::Failure};
 
 	try {
