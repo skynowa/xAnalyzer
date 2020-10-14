@@ -47,15 +47,12 @@ add_executable(xAnalyzer ${SOURCES})
 if     (MSVC)
     set(FLAGS "/W3")
 elseif (MINGW)
-    set(LIBS ws2_32 psapi uuid ole32 mpr)
     set(FLAGS "-Wall -pipe")
 elseif (CMAKE_COMPILER_IS_CLANGXX)
-    set(LIBS pthread rt m z)
     set(FLAGS "-pipe -Wall -Wno-deprecated -Wextra -Wconversion -Wshadow -Wno-unused-parameter "
         "-Wno-unused-variable -Wno-unknown-pragmas -Wno-return-type-c-linkage -Werror "
         "-fcolor-diagnostics -Qunused-arguments -U__STRICT_ANSI__ -D__STDC_FORMAT_MACROS")
 elseif (CMAKE_COMPILER_IS_GNUCXX)
-    set(LIBS pthread rt m z)
     set(FLAGS "-pipe -Wall -Wno-deprecated -Wextra -Wconversion -Wshadow -Wno-unused-parameter "
         "-Wno-unused-variable -Wno-unknown-pragmas -Wno-return-type-c-linkage -Werror "
         "-U__STRICT_ANSI__ -D__STDC_FORMAT_MACROS")
@@ -72,22 +69,8 @@ set_target_properties(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    ${LIBS} ${CMAKE_THREAD_LIBS} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} ${YAML_CPP_LIBRARIES}
-    /usr/lib/x86_64-linux-gnu/libssl.so
-    /usr/lib/x86_64-linux-gnu/libcrypto.so
-    /usr/lib/x86_64-linux-gnu/libmysqlclient.so
-    /usr/lib/x86_64-linux-gnu/libssh2.so
-    /usr/lib/x86_64-linux-gnu/libcurl.so
-    /usr/lib/x86_64-linux-gnu/libxml2.so
-    /usr/lib/x86_64-linux-gnu/libxcb.so
-    /usr/lib/x86_64-linux-gnu/libX11-xcb.so
-    -lpthread
-    dl
-    pthread
-    rt
-    m
-    z
-    xLib_static)
+    ${XLIB_LIBRARIES}
+    ${YAML_CPP_LIBRARIES})
 #--------------------------------------------------------------------------------------------------
 # config
 configure_file(
