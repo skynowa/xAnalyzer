@@ -27,6 +27,11 @@ public:
 
 	void_t run() override;
 
+	void_t runDiff() const;
+		///< run analysis for Git diff
+	void_t runFile() const;
+		///< run analysis for whole file
+
 private:
 
 };

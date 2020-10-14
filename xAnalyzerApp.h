@@ -25,9 +25,6 @@ public:
 	ExitCode onRun() override;
 
 private:
-	void_t runClangTidyDiff() const;
-	void_t runClangTidyFile() const;
-
 	void_t getComplierInfo() const;
 	void_t getIncludeDirs() const;
 	void_t getCompilerIncludeDirs() const;
