@@ -72,54 +72,6 @@ AnalyzerApp::AnalyzerApp(
 AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
-#if 0
-def run(self):
-	"" Run analysis by type ""
-
-	if (options.QUICK_CHECK == 1):
-		self.traceOk("Start analysis (quick)...")
-	else:
-		self.traceOk("Start analysis (full)...")
-
-	out = None
-
-	# profiler
-	time_start_sec = time.time()
-
-	if   (self._type == options.TYPE_CPPCHECK):
-		out = self.runCppcheck()
-	elif (self._type == options.TYPE_CLANG_TIDY):
-		out = self.runClangTidy()
-	elif (self._type == options.TYPE_CLANG_TIDY_DIFF):
-		out = self.runClangTidyDiff()
-	elif (self._type == options.TYPE_CLANG_TIDY_FILE):
-		out = self.runClangTidyFile()
-
-	stdout,stderr = out.communicate()
-	stdout_str = stdout.decode("utf8").strip(" \t\r\n")
-	stderr_str = stderr.decode("utf8").strip(" \t\r\n")
-
-	# profiler
-	time_stop_sec_str = "({0:.2f} sec)".format(time.time() - time_start_sec)
-
-	print(stdout_str)
-
-	# rm extra warning info
-	stderr_str = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n")
-	stderr_str = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n")
-
-	stderr_str = re.sub("^\d+ warnings and \d error generated\.", "", stderr_str).strip(" \t\r\n")
-	self.traceError(stderr_str)
-
-	if (self.isError(out, stderr_str)):
-		if (options.STOP_ON_FAIL == 1):
-			self.traceError("***** Detect errors. Commit stopped ***** " + time_stop_sec_str)
-			sys.exit(1)
-		else:
-			self.traceError("***** Detect errors. Commited ***** " + time_stop_sec_str)
-	else:
-		self.traceOk("No warnings. OK " + time_stop_sec_str)
-#else
 	if (::QUICK_CHECK) {
 		traceOk("Start analysis (quick)...");
 	} else {
@@ -208,7 +160,6 @@ def run(self):
 	}
 
 	return ExitCode::Success;
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
