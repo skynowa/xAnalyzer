@@ -120,10 +120,11 @@ def run(self):
 	else:
 		self.traceOk("No warnings. OK " + time_stop_sec_str)
 #else
-	if (::QUICK_CHECK)
+	if (::QUICK_CHECK) {
 		traceOk("Start analysis (quick)...");
-	else
+	} else {
 		traceOk("Start analysis (full)...");
+	}
 
 	// profiler
 	/// time_start_sec = time.time();
