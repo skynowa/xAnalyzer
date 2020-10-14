@@ -19,65 +19,6 @@ AnalyzerApp::AnalyzerApp(
 ) :
 	Application(a_appGuid, a_locale)
 {
-#if 0
-def __init__(self, a_type):
-	"" Constructor ""
-
-	"" Constants ""
-
-	"" Project root directory ""
-	self.PROJECT_DIR = "/home/httpd/triptake-all"
-
-	"" Shell colors ""
-	self.COLOR_RED     = "\033[0;91m"
-	self.COLOR_YELLOW  = "\033[0;93m"
-	self.COLOR_GREEN   = "\033[0;92m"
-	self.COLOR_MAGENTA = "\033[0;95m"
-	self.COLOR_NORMAL  = "\033[0m"
-
-	"" Compiler types ""
-	self.COMPILER_ID_UNKNOWN = 0
-	self.COMPILER_ID_CLANG   = 1
-	self.COMPILER_ID_GCC     = 2
-
-	"" Number of jobs (Cppcheck support only) ""
-	self.JOBS_NUM = str(multiprocessing.cpu_count())
-
-
-	"" current OS ""
-	self._os_name = os.uname()[0]
-
-	"" analyzer type ""
-	self._type = a_type
-
-	"" analyzer name ""
-	names = {
-		options.TYPE_CPPCHECK:        "[Cppcheck]",
-		options.TYPE_CLANG_TIDY:      "[Clang-Tidy]",
-		options.TYPE_CLANG_TIDY_DIFF: "[Clang-Tidy-Diff]",
-		options.TYPE_CLANG_TIDY_FILE: "[Clang-Tidy-File]"
-	}
-
-	self._name = names[a_type]
-	if (self._name == ""):
-		self.traceError("Bad type: " + a_type)
-		sys.exit(1)
-
-	"" GIT modified files ""
-	self._git_modified_files = self.getGitModifiedFiles()
-	if (len(self._git_modified_files) == 0 and self._type != options.TYPE_CLANG_TIDY_FILE):
-		self.traceOk("No changes. OK")
-		sys.exit(0)
-
-	"" compiler info ""
-	self._complier_id, self._complier_name = self.getComplierInfo()
-
-	"" C++ include dirs ""
-	self._include_dirs = self.getIncludeDirs()
-
-	"" file to check for manual run ""
-	self._file_to_check = ""
-#else
 	{
 		std::vec_tstring_t appArgs;
 		args(true, &appArgs);
@@ -108,6 +49,7 @@ def __init__(self, a_type):
 	if (_name == "") {
 		traceError("Bad type: " + Enum::str(_type));
 		Process::currentExit(1);
+		return;
 	}
 
 	// GIT modified files
@@ -117,6 +59,7 @@ def __init__(self, a_type):
 	{
 		traceOk("No changes. OK");
 		Process::currentExit(1);
+		return;
 	}
 
 	// compiler info
@@ -127,7 +70,6 @@ def __init__(self, a_type):
 
 	// file to check for manual run
 	/// self._file_to_check = ""
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
