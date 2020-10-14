@@ -1,21 +1,19 @@
 /**
- * \file  xAnalyzerApp.cpp
- * \brief xAnalyzerApp
+ * \file  AnalyzerApp.cpp
+ * \brief AnalyzerApp
  */
 
 
-#include "xAnalyzerApp.h"
+#include "AnalyzerApp.h"
 
-//-------------------------------------------------------------------------------------------------
-namespace
-{
-}
-//-------------------------------------------------------------------------------------------------
+#include "Analyzers/IAnalyzer.h"
+#include "AnalyzerFactory.h"
+
 
 namespace xa
 {
 //-------------------------------------------------------------------------------------------------
-xAnalyzerApp::xAnalyzerApp(
+AnalyzerApp::AnalyzerApp(
 	std::ctstring_t &a_appGuid,
 	std::ctstring_t &a_locale
 ) :
@@ -93,8 +91,8 @@ def __init__(self, a_type):
 #endif
 }
 //-------------------------------------------------------------------------------------------------
-xAnalyzerApp::ExitCode
-xAnalyzerApp::onRun() /* override */
+AnalyzerApp::ExitCode
+AnalyzerApp::onRun() /* override */
 {
 #if 0
 def run(self):
@@ -144,12 +142,15 @@ def run(self):
 	else:
 		self.traceOk("No warnings. OK " + time_stop_sec_str)
 #else
+	std::unique_ptr<IAnalyzer> cppCheck  = AnalyzerFactory::create(AnalyzerFactory::Type::CppCheck);
+	std::unique_ptr<IAnalyzer> clangTidy = AnalyzerFactory::create(AnalyzerFactory::Type::ClangTidy);
+
 	return ExitCode::Success;
 #endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::getComplierInfo() const
+AnalyzerApp::getComplierInfo() const
 {
 #if 0
 def getComplierInfo(self):
@@ -174,7 +175,7 @@ def getComplierInfo(self):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::getIncludeDirs() const
+AnalyzerApp::getIncludeDirs() const
 {
 #if 0
 def getIncludeDirs(self):
@@ -219,7 +220,7 @@ def getIncludeDirs(self):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::getCompilerIncludeDirs() const
+AnalyzerApp::getCompilerIncludeDirs() const
 {
 #if 0
 def getCompilerIncludeDirs(self):
@@ -256,7 +257,7 @@ def getCompilerIncludeDirs(self):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::getPkgConfig(
+AnalyzerApp::getPkgConfig(
 	std::ctstring_t &a_lib_name
 ) const
 {
@@ -291,7 +292,7 @@ def getPkgConfig(self, a_lib_name):
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
-xAnalyzerApp::isError(
+AnalyzerApp::isError(
 	std::ctstring_t &a_out,
 	std::ctstring_t &a_stderr_str
 ) const
@@ -308,7 +309,7 @@ def isError(self, a_out, a_stderr_str):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::traceOptions() const
+AnalyzerApp::traceOptions() const
 {
 #if 0
 def traceOptions(self):
@@ -330,7 +331,7 @@ def traceOptions(self):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::traceColor(
+AnalyzerApp::traceColor(
 	std::ctstring_t &a_color,
 	std::ctstring_t &a_msg
 ) const
@@ -349,7 +350,7 @@ def traceColor(self, a_color, a_msg):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::traceOk(
+AnalyzerApp::traceOk(
 	std::ctstring_t &a_msg
 ) const
 {
@@ -368,7 +369,7 @@ def traceOk(self, a_msg):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-xAnalyzerApp::traceError(
+AnalyzerApp::traceError(
 	std::ctstring_t &a_msg
 ) const
 {

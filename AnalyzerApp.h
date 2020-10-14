@@ -1,6 +1,6 @@
 /**
- * \file  xAnalyzerApp.h
- * \brief xAnalyzerApp
+ * \file  AnalyzerApp.h
+ * \brief AnalyzerApp
  */
 
 
@@ -10,16 +10,16 @@
 namespace xa
 {
 
-class xAnalyzerApp :
+class AnalyzerApp :
 	public Application
 {
 public:
 ///@name ctors, dtor
 ///@{
-	xAnalyzerApp(std::ctstring_t &appGuid, std::ctstring_t &locale);
-	~xAnalyzerApp() = default;
+	AnalyzerApp(std::ctstring_t &appGuid, std::ctstring_t &locale);
+	~AnalyzerApp() = default;
 
-	xNO_COPY_ASSIGN(xAnalyzerApp)
+	xNO_COPY_ASSIGN(AnalyzerApp)
 ///@}
 
 	ExitCode onRun() override;

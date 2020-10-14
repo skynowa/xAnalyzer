@@ -27,7 +27,8 @@ include_directories("${LIBXML2_INCLUDE_DIR}")
 # sources
 set(SOURCES
     Main.cpp
-    xAnalyzerApp.cpp
+    AnalyzerApp.cpp
+    AnalyzerFactory.cpp
     Analyzers/CppCheck.cpp
     Analyzers/ClangTidy.cpp)
 #-------------------------------------------------------------------------------

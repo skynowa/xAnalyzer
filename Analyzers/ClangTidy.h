@@ -22,7 +22,7 @@ public:
              ClangTidy();
     virtual ~ClangTidy();
 
-    xNO_COPY_ASSIGN(ClangTidy)
+    /// xNO_COPY_ASSIGN(ClangTidy)
 ///@}
 
 	void_t run() override;

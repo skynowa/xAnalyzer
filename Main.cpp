@@ -4,7 +4,7 @@
  */
 
 
-#include "xAnalyzerApp.h"
+#include "AnalyzerApp.h"
 
 //-------------------------------------------------------------------------------------------------
 int_t main(int_t a_argNum, tchar_t *a_args[])
@@ -36,7 +36,7 @@ def main(argv):
 	auto exitStatus {Application::ExitCode::Failure};
 
 	try {
-		xa::xAnalyzerApp app(::appName, xT(""));
+		xa::AnalyzerApp app(::appName, xT(""));
 		exitStatus = app.run();
 	}
 	catch (const Exception &a_e) {
