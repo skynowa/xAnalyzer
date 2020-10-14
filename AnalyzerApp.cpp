@@ -120,17 +120,91 @@ def run(self):
 	else:
 		self.traceOk("No warnings. OK " + time_stop_sec_str)
 #else
-	const std::vector<AnalyzersFactory::Type> analyzerTypes
+	if (::QUICK_CHECK)
+		traceOk("Start analysis (quick)...");
+	else
+		traceOk("Start analysis (full)...");
+
+	// profiler
+	/// time_start_sec = time.time();
+
+	std::tstring_t stdOut;
+	std::tstring_t stdError;
 	{
-		AnalyzersFactory::Type::CppCheck,
-		AnalyzersFactory::Type::ClangTidy
-	};
+		if (false) {
+			const std::vector<AnalyzersFactory::Type> analyzerTypes
+			{
+				AnalyzersFactory::Type::CppCheck,
+				AnalyzersFactory::Type::ClangTidy
+			};
 
-	for (const auto &it_analyzerType : analyzerTypes) {
-		auto &analyzer = AnalyzersFactory::create(it_analyzerType);
-		analyzer->run();
+			for (const auto &it_analyzerType : analyzerTypes) {
+				auto &analyzer = AnalyzersFactory::create(it_analyzerType);
+				analyzer->run();
 
-	} // for (analyzerTypes)
+			}
+		}
+		else {
+			switch (_type) {
+			case ::TypeActive::TYPE_CPPCHECK:
+				{
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::CppCheck);
+					analyzer->run();
+				}
+				break;
+			case ::TypeActive::TYPE_CLANG_TIDY:
+				{
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
+					analyzer->run();
+				}
+				break;
+			case ::TypeActive::TYPE_CLANG_TIDY_DIFF:
+				{
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
+					/// self.runClangTidyDiff();
+					analyzer->run();
+				}
+				break;
+			case ::TypeActive::TYPE_CLANG_TIDY_FILE:
+				{
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
+					/// self.runClangTidyFile();
+					analyzer->run();
+				}
+				break;
+			}
+		}
+
+		// TODO: stdOut, stdError - fill
+
+		stdOut   = ::String::trimSpace(stdOut);
+		stdError = ::String::trimSpace(stdError);
+	}
+
+	// TODO: profiler
+	std::ctstring_t time_stop_sec_str = "";
+	/// time_stop_sec_str = "({0:.2f} sec)".format(time.time() - time_start_sec);
+
+	trace(stdOut);
+
+	// rm extra warning info
+	/// stdOut   = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n");
+	/// stdError = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n");
+
+	/// stdError = re.sub("^\d+ warnings and \d error generated\.", "", stdError).strip(" \t\r\n");
+	traceError(stdError);
+
+	if ( isError(stdOut, stdError) ) {
+		if (::STOP_ON_FAIL) {
+			traceError("***** Detect errors. Commit stopped ***** " + time_stop_sec_str);
+			Process::currentExit(1);
+			return  ExitCode::Failure;
+		} else {
+			traceError("***** Detect errors. Commited ***** " + time_stop_sec_str);
+		}
+	} else {
+		traceOk("No warnings. OK " + time_stop_sec_str);
+	}
 
 	return ExitCode::Success;
 #endif
