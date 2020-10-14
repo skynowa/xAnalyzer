@@ -168,8 +168,11 @@ AnalyzerApp::complierInfo(
 	std::tstring_t *out_complier_name
 ) const
 {
-	*out_complier_id = {};
-	out_complier_name->clear();
+	xCHECK_DO(out_complier_id == nullptr, return);
+	xCHECK_DO(out_complier_name == nullptr, return);
+
+	*out_complier_id   = {};
+	*out_complier_name = {};
 
 	std::cvec_tstring_t params
 	{
@@ -201,44 +204,8 @@ AnalyzerApp::includeDirs(
 	std::vec_tstring_t *out_dirPathes
 ) const
 {
-#if 0
-def includeDirs(self):
-	"" Get include dirs ""
+	xCHECK_DO(out_dirPathes == nullptr, return);
 
-	result = ""
-
-	if (options.TYPE_ACTIVE == options.TYPE_CPPCHECK and
-		options.QUICK_CHECK == 1
-	):
-		result = ""
-	else:
-		"" System includes (cpp -v) ""
-		if (1) :
-			result = \
-				self.getCompilerIncludeDirs() + " "
-		else:
-			result = \
-				"-I/usr/lib/gcc/x86_64-linux-gnu/8/include " \
-				"-I/usr/local/include " \
-				"-I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed " \
-				"-I/usr/include/x86_64-linux-gnu " \
-				"-I/usr/include"
-
-		result += \
-			"-I/usr/local/include " + \
-			"".join(self.getPkgConfig("libxml-2.0")) + " " + \
-			"".join(self.getPkgConfig("ImageMagick")) + " " + \
-			\
-			"-I/usr/local/gen++v3/class " + \
-			"-I" +       self.PROJECT_DIR + "/functions " + \
-			"-isystem" + self.PROJECT_DIR + "/suppliers/gen/base " + \
-			"-isystem" + self.PROJECT_DIR + "/booked/gen/base " + \
-			"-isystem" + self.PROJECT_DIR + "/syntexts/gen/base " + \
-			"-isystem" + self.PROJECT_DIR + "/core/gen/base " + \
-			"-isystem" + self.PROJECT_DIR + "/api/gen/base " + \
-			"-isystem" + self.PROJECT_DIR + "/seo/gen/base"
-	return result
-#else
 	out_dirPathes->clear();
 
 	if (::TypeActive::TYPE_ACTIVE == ::TypeActive::TYPE_CPPCHECK &&
@@ -281,7 +248,6 @@ def includeDirs(self):
 
 		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
 	}
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
