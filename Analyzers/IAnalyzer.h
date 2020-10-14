@@ -1,6 +1,6 @@
 /**
- * \file  CppCheck.h
- * \brief CppCheck
+ * \file  IAnalyzer.h
+ * \brief Analyzers interface
  */
 
 
@@ -12,7 +12,7 @@ namespace xa
 {
 
 class IAnalyzer
-    ///
+    /// Analyzers interface
 {
 public:
 ///@name ctors, dtor
