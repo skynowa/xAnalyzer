@@ -39,7 +39,7 @@ private:
 		///< get complier info (ID, name)
 	void_t includeDirs(std::vec_tstring_t *dirPathes) const;
 		///< get include dirs
-	void_t getCompilerIncludeDirs(std::vec_tstring_t *dirPathes) const;
+	void_t compilerIncludeDirs(std::vec_tstring_t *dirPathes) const;
 	void_t getPkgConfig(std::ctstring_t &lib_name) const;
 
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;

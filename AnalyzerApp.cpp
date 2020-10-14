@@ -216,7 +216,7 @@ AnalyzerApp::includeDirs(
 		// System includes (cpp -v)
 		if (true) {
 			std::vec_tstring_t dirPathes;
-			getCompilerIncludeDirs(&dirPathes);
+			compilerIncludeDirs(&dirPathes);
 
 			*out_dirPathes = dirPathes;
 		} else {
@@ -251,12 +251,12 @@ AnalyzerApp::includeDirs(
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::getCompilerIncludeDirs(
+AnalyzerApp::compilerIncludeDirs(
 	std::vec_tstring_t *out_dirPathes
 ) const
 {
 #if 0
-def getCompilerIncludeDirs(self):
+def compilerIncludeDirs(self):
 	""  Get complier include dirs ""
 
 	result = ""
