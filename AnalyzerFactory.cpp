@@ -14,7 +14,7 @@ namespace xa
 
 //-------------------------------------------------------------------------------------------------
 /* static */
-std::unique_ptr<IAnalyzer>
+std::unique_ptr<IAnalyzer> &
 AnalyzerFactory::create(
 	cType a_type
 )
@@ -34,7 +34,7 @@ AnalyzerFactory::create(
 		break;
 	}
 
-	_analyzers[a_type] = analyzer;
+	_analyzers[a_type] = std::move(analyzer);
 
 	return analyzer;
 }

@@ -142,8 +142,11 @@ def run(self):
 	else:
 		self.traceOk("No warnings. OK " + time_stop_sec_str)
 #else
-	std::unique_ptr<IAnalyzer> cppCheck  = AnalyzerFactory::create(AnalyzerFactory::Type::CppCheck);
-	std::unique_ptr<IAnalyzer> clangTidy = AnalyzerFactory::create(AnalyzerFactory::Type::ClangTidy);
+	auto &cppCheck  = AnalyzerFactory::create(AnalyzerFactory::Type::CppCheck);
+	auto &clangTidy = AnalyzerFactory::create(AnalyzerFactory::Type::ClangTidy);
+
+	xUNUSED(cppCheck);
+	xUNUSED(clangTidy);
 
 	return ExitCode::Success;
 #endif
