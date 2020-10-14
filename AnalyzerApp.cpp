@@ -330,7 +330,6 @@ def getPkgConfig(self, a_lib_name):
 #else
 	std::cvec_tstring_t params_cflags
 	{
-		"pkg-config",
 		"--cflags-only-I",
 		a_lib_name
 	};
@@ -338,7 +337,7 @@ def getPkgConfig(self, a_lib_name):
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("clang-tidy", params_cflags, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("pkg-config", params_cflags, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 
 	// suppress all warnings
 	stdOut = String::replaceAll(String::trimSpace(stdOut), "-I", "-isystem");
