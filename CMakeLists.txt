@@ -27,7 +27,9 @@ find_package(yaml-cpp REQUIRED)
 # message(STATUS "YAML_CPP_LIBRARIES:   ${YAML_CPP_LIBRARIES}")
 #-------------------------------------------------------------------------------
 # includes
-include_directories("${LIBXML2_INCLUDE_DIR}")
+include_directories(
+    ${LIBXML2_INCLUDE_DIR}
+    ${YAML_CPP_INCLUDE_DIR})
 
 #-------------------------------------------------------------------------------
 # sources
@@ -40,7 +42,6 @@ set(SOURCES
 #-------------------------------------------------------------------------------
 # target
 add_executable(xAnalyzer ${SOURCES})
-
 #-------------------------------------------------------------------------------
 # flags
 if     (MSVC)
@@ -71,8 +72,22 @@ set_target_properties(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    ${LIBS} ${CMAKE_THREAD_LIBS} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib/x86_64-linux-gnu/libcrypto.so /usr/lib/x86_64-linux-gnu/libmysqlclient.so /usr/lib/x86_64-linux-gnu/libssh2.so /usr/lib/x86_64-linux-gnu/libcurl.so /usr/lib/x86_64-linux-gnu/libxml2.so /usr/lib/x86_64-linux-gnu/libxcb.so /usr/lib/x86_64-linux-gnu/libX11-xcb.so -lpthread dl pthread rt m z xLib_static
-)
+    ${LIBS} ${CMAKE_THREAD_LIBS} ${CMAKE_DL_LIBS} ${OPENSSL_LIBRARIES} ${YAML_CPP_LIBRARIES}
+    /usr/lib/x86_64-linux-gnu/libssl.so
+    /usr/lib/x86_64-linux-gnu/libcrypto.so
+    /usr/lib/x86_64-linux-gnu/libmysqlclient.so
+    /usr/lib/x86_64-linux-gnu/libssh2.so
+    /usr/lib/x86_64-linux-gnu/libcurl.so
+    /usr/lib/x86_64-linux-gnu/libxml2.so
+    /usr/lib/x86_64-linux-gnu/libxcb.so
+    /usr/lib/x86_64-linux-gnu/libX11-xcb.so
+    -lpthread
+    dl
+    pthread
+    rt
+    m
+    z
+    xLib_static)
 #--------------------------------------------------------------------------------------------------
 # config
 configure_file(
