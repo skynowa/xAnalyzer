@@ -155,7 +155,7 @@ def runClangTidyFile(self):
 
 	return subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
 #else
-
+	// _file_to_check - file to check for manual run
 #endif
 }
 //-------------------------------------------------------------------------------------------------

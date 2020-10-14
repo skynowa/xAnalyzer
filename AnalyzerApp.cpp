@@ -67,9 +67,6 @@ AnalyzerApp::AnalyzerApp(
 
 	// C++ include dirs
 	/// self._include_dirs = self.getIncludeDirs()
-
-	// file to check for manual run
-	/// self._file_to_check = ""
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
