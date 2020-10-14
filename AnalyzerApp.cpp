@@ -307,7 +307,7 @@ def compilerIncludeDirs(self):
 	std::csize_t pos_right = stdOut.find(str_right, pos_left);
 	xTEST_LESS(pos_left, pos_right);
 
-	/// stdOut = stdOut[pos_left + str_left.size() : pos_right];
+	/// stdOut = stdOut[int(pos_left) + len(str_left):int(pos_right)].strip();
 
 	std::vec_tstring_t includes;
 	String::split(stdOut, "???", &includes);
