@@ -22,7 +22,7 @@ public:
              CppCheck();
     virtual ~CppCheck();
 
-    /// xNO_COPY_ASSIGN(CppCheck)
+    xNO_COPY_ASSIGN(CppCheck)
 ///@}
 
 	void_t run() override;

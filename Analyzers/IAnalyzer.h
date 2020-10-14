@@ -20,7 +20,7 @@ public:
              IAnalyzer() = default;
     virtual ~IAnalyzer() = default;
 
-    /// xNO_COPY_ASSIGN(IAnalyzer)
+    xNO_COPY_ASSIGN(IAnalyzer)
 ///@}
 
     virtual void_t run() = 0;
