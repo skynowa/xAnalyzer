@@ -230,11 +230,23 @@ AnalyzerApp::includeDirs(
 				};
 		}
 
+		// libxml
+		{
+			std::vec_tstring_t cflags;
+			pkgConfig("libxml-2.0", &cflags);
+			out_dirPathes->insert(out_dirPathes->end(), cflags.cbegin(), cflags.cend());
+		}
+
+		// ImageMagick
+		{
+			std::vec_tstring_t cflags;
+			pkgConfig("ImageMagick", &cflags);
+			out_dirPathes->insert(out_dirPathes->end(), cflags.cbegin(), cflags.cend());
+		}
+
 		std::vec_tstring_t dirPathes
 		{
 			"-I/usr/local/include ",
-			/// "".join(self.pkgConfig("libxml-2.0")),
-			/// "".join(self.pkgConfig("ImageMagick")),
 
 			"-I/usr/local/gen++v3/class",
 			"-I" +       ::PROJECT_DIR + "/functions",
