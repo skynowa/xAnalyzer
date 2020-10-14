@@ -31,7 +31,7 @@ public:
 ///@}
 
 	static
-	std::unique_ptr<IAnalyzer> & create(cType type);
+	std::unique_ptr<IAnalyzer> &create(cType type);
 
 private:
 	static std::map<Type, std::unique_ptr<IAnalyzer>> _analyzers;

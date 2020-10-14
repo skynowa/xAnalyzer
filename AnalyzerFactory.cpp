@@ -13,6 +13,8 @@ namespace xa
 {
 
 //-------------------------------------------------------------------------------------------------
+std::map<AnalyzerFactory::Type, std::unique_ptr<IAnalyzer>> AnalyzerFactory::_analyzers;
+//-------------------------------------------------------------------------------------------------
 /* static */
 std::unique_ptr<IAnalyzer> &
 AnalyzerFactory::create(
@@ -23,20 +25,16 @@ AnalyzerFactory::create(
 		return it->second;
 	}
 
-	std::unique_ptr<IAnalyzer> analyzer;
-
 	switch (a_type) {
 	case Type::CppCheck:
-		analyzer = std::make_unique<CppCheck>();
+		_analyzers[a_type] = std::make_unique<CppCheck>();
 		break;
 	case Type::ClangTidy:
-		analyzer = std::make_unique<ClangTidy>();
+		_analyzers[a_type] = std::make_unique<ClangTidy>();
 		break;
 	}
 
-	_analyzers[a_type] = std::move(analyzer);
-
-	return analyzer;
+	return _analyzers[a_type];
 }
 //-------------------------------------------------------------------------------------------------
 
