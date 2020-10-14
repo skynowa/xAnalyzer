@@ -25,8 +25,6 @@ public:
 	ExitCode onRun() override;
 
 private:
-	void_t runCppcheck() const;
-	void_t runClangTidy() const;
 	void_t runClangTidyDiff() const;
 	void_t runClangTidyFile() const;
 
