@@ -67,7 +67,11 @@ ClangTidy::run() /* override */
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("clang-tidy", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("/usr/bin/clang-tidy", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+#if 1
+	Cout() << xTRACE_VAR(stdOut);
+	Cout() << xTRACE_VAR(stdError);
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t

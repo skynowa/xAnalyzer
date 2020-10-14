@@ -188,6 +188,11 @@ AnalyzerApp::complierInfo(
 
 	Process::execute("/usr/bin/c++", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #if 0
+	Cout() << xTRACE_VAR(stdOut);
+	Cout() << xTRACE_VAR(stdError);
+#endif
+
+#if 0
 	if (out.returncode == 1):
 		self.traceError("complierInfo")
 		return self.COMPILER_ID_UNKNOWN
@@ -333,6 +338,10 @@ AnalyzerApp::pkgConfig(
 	std::tstring_t stdError;
 
 	Process::execute("/usr/bin/pkg-config", params_cflags, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+#if 0
+	Cout() << xTRACE_VAR(stdOut);
+	Cout() << xTRACE_VAR(stdError);
+#endif
 
 	// suppress all warnings
 	stdOut = String::replaceAll(String::trimSpace(stdOut), "-I", "-isystem");
