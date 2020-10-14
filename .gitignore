@@ -34,3 +34,6 @@
 # LibreOffice
 *.odg#
 
+#
+Config.h
+
