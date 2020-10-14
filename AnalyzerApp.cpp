@@ -186,7 +186,7 @@ AnalyzerApp::complierInfo(
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("c++", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("/usr/bin/c++", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #if 0
 	if (out.returncode == 1):
 		self.traceError("complierInfo")
@@ -284,19 +284,20 @@ AnalyzerApp::compilerIncludeDirs(
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("cpp", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("/usr/bin/cpp", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	xUNUSED(stdOut);
 
 	std::tstring_t str_left  = "#include <...> search starts here:";
 	std::tstring_t str_right = "End of search list.";
 
-	std::csize_t pos_left  = stdOut.find(str_left);
-	std::csize_t pos_right = stdOut.find(str_right, pos_left);
+	std::csize_t pos_left  = stdError.find(str_left);
+	std::csize_t pos_right = stdError.find(str_right, pos_left);
 	xTEST_LESS(pos_left, pos_right);
 
-	stdOut = String::trimSpace( stdOut.substr(pos_left + str_left.size(), pos_right) );
+	stdError = String::trimSpace( String::cut(stdError, str_left, str_right) );
 
 	std::vec_tstring_t includes;
-	String::split(stdOut, "???", &includes);
+	String::split(stdError, "???", &includes);
 
 	for (const auto &it_include : includes) {
 		out_dirPathes->push_back("-I" + it_include);
@@ -327,7 +328,7 @@ AnalyzerApp::pkgConfig(
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("pkg-config", params_cflags, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("/usr/bin/pkg-config", params_cflags, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 
 	// suppress all warnings
 	stdOut = String::replaceAll(String::trimSpace(stdOut), "-I", "-isystem");
