@@ -53,10 +53,13 @@ CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"}
 CPPCHECK_ERROR_LEVEL = "warning,missingInclude"
 #else
 // Analyzer types
-// TYPE_CPPCHECK        = 1
-// TYPE_CLANG_TIDY      = 2
-// TYPE_CLANG_TIDY_DIFF = 3
-// TYPE_ACTIVE          = TYPE_CLANG_TIDY
+enum class TypeActive
+{
+	TYPE_CPPCHECK        = 1,
+	TYPE_CLANG_TIDY      = 2,
+	TYPE_CLANG_TIDY_DIFF = 3,
+	TYPE_ACTIVE          = TYPE_CLANG_TIDY
+};
 
 // Check mode
 // 0 - check changed files and headers
@@ -70,21 +73,21 @@ cbool_t QUICK_CHECK = true;
 // 0 - enable checks
 // 1 - skip checks
 
-// # SKIP_CHECK = os.environ.get("ANALYZER_SKIP_CHECK")
-// SKIP_CHECK = "1"
+// SKIP_CHECK = os.environ.get("ANALYZER_SKIP_CHECK")
+cbool_t SKIP_CHECK = true;
 
 // Disallow committing when errors/warnings occur
 // 0 - allow commit
 // 1 - disallow commit
 
-// STOP_ON_FAIL = 0
+cbool_t STOP_ON_FAIL = false;
 
 // C++ language / standart
 std::ctstring_t CPP_LANG = "c++";
 std::ctstring_t CPP_STD  = "c++11";
 
 // Exclude files for checking
-// CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"}
+std::cvec_tstring_t CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"};
 
 // Cppcheck
 std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";

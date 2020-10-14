@@ -318,23 +318,16 @@ def isError(self, a_out, a_stderr_str):
 void_t
 AnalyzerApp::traceOptions() const
 {
-#if 0
-def traceOptions(self):
-	"" Trace options (confogs) ""
-
-	print("")
-	self.traceOk("Options:")
-	print("TYPE_ACTIVE: ", self._name)
-	print("COMPILER_ID: ", self._complier_name)
-	print("QUICK_CHECK: ", options.QUICK_CHECK)
-	print("SKIP_CHECK:  ", options.SKIP_CHECK)
-	print("STOP_ON_FAIL:", options.STOP_ON_FAIL)
-	print("CPP_STD:     ", options.CPP_STD)
-	print("CPP_MASK:    ", ", ".join(options.CPP_MASK))
-	print("")
-#else
-
-#endif
+	trace("");
+	traceOk("Options:");
+	/// trace("TYPE_ACTIVE: " + self._name);
+	/// trace("COMPILER_ID: " + self._complier_name);
+	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
+	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
+	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
+	trace("CPP_STD:     " + ::CPP_STD);
+	trace("CPP_MASK:    " + String::join(::CPP_MASK, ", "));
+	trace("");
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -354,6 +347,14 @@ def traceColor(self, a_color, a_msg):
 #else
 
 #endif
+}
+//-------------------------------------------------------------------------------------------------
+void_t
+AnalyzerApp::trace(
+	std::ctstring_t &a_msg
+) const
+{
+	Cout() << a_msg;
 }
 //-------------------------------------------------------------------------------------------------
 void_t
