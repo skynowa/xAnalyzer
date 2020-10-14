@@ -46,7 +46,7 @@ AnalyzerApp::AnalyzerApp(
 	};
 
 	_name = names[_type];
-	if (_name == "") {
+	if ( _name.empty() ) {
 		traceError("Bad type: " + Enum::str(_type));
 		Process::currentExit(1);
 		return;
