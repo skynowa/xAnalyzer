@@ -1,6 +1,6 @@
 /**
- * \file  Main.cpp
- * \brief GitPrompt
+ * \file  xAnalyzerApp.cpp
+ * \brief xAnalyzerApp
  */
 
 

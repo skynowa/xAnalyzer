@@ -1,6 +1,6 @@
 /**
- * \file  Main.h
- * \brief GitPrompt
+ * \file  xAnalyzerApp.h
+ * \brief xAnalyzerApp
  */
 
 
@@ -13,10 +13,13 @@ class xAnalyzerApp :
 	public Application
 {
 public:
-			 xAnalyzerApp(std::ctstring_t &appGuid, std::ctstring_t &locale);
-			~xAnalyzerApp() = default;
+///@name ctors, dtor
+///@{
+	xAnalyzerApp(std::ctstring_t &appGuid, std::ctstring_t &locale);
+	~xAnalyzerApp() = default;
 
 	xNO_COPY_ASSIGN(xAnalyzerApp)
+///@}
 
 	ExitCode onRun() override;
 
