@@ -19,6 +19,7 @@ message("CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
 
 find_package(xLib REQUIRED)
 find_package(LibXml2 REQUIRED)
+# sudo apt-get install libyaml-cpp-dev
 find_package(yaml-cpp REQUIRED)
 message(STATUS "yaml-cpp config: ${yaml-cpp_CONFIG}")
 #-------------------------------------------------------------------------------
