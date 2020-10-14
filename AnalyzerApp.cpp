@@ -63,7 +63,7 @@ AnalyzerApp::AnalyzerApp(
 	}
 
 	// compiler info
-	/// self._complier_id, self._complier_name = self.getComplierInfo()
+	/// self._complier_id, self._complier_name = self.complierInfo()
 
 	// C++ include dirs
 	/// self._include_dirs = self.getIncludeDirs()
@@ -163,29 +163,11 @@ AnalyzerApp::onRun() /* override */
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::getComplierInfo(
+AnalyzerApp::complierInfo(
 	::CompilerId   *out_complier_id,
 	std::tstring_t *out_complier_name
 ) const
 {
-#if 0
-def getComplierInfo(self):
-	"" Get complier info (ID, name) ""
-
-	cmd = "c++ --version".split()
-
-	out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-	stdout,stderr = out.communicate()
-	if (out.returncode == 1):
-		self.traceError("getComplierInfo")
-		return self.COMPILER_ID_UNKNOWN
-
-	version_str = stdout.decode("utf8").strip();
-	if (version_str.find("clang version") > 0):
-		return self.COMPILER_ID_CLANG, "clang"
-	else:
-		return self.COMPILER_ID_GCC, "gcc"
-#else
 	std::cvec_tstring_t params
 	{
 		"--version"
@@ -197,7 +179,7 @@ def getComplierInfo(self):
 	Process::execute("c+", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #if 0
 	if (out.returncode == 1):
-		self.traceError("getComplierInfo")
+		self.traceError("complierInfo")
 		return self.COMPILER_ID_UNKNOWN
 #endif
 
@@ -209,7 +191,6 @@ def getComplierInfo(self):
 		*out_complier_id   = ::CompilerId::COMPILER_ID_GCC;
 		*out_complier_name = "gcc";
 	}
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t

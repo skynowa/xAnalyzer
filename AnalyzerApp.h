@@ -35,7 +35,7 @@ private:
 	std::tstring_t      _complier_name;
 	std::tstring_t      _include_dirs;
 
-	void_t getComplierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;
+	void_t complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;
 		///< get complier info (ID, name)
 	void_t getIncludeDirs() const;
 	void_t getCompilerIncludeDirs() const;
