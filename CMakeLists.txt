@@ -11,7 +11,6 @@ project(xAnalyzer)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 #--------------------------------------------------------------------------------------------------
 # find packages
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_ROOT}/Modules/CMakeLib")
@@ -30,7 +29,6 @@ find_package(yaml-cpp REQUIRED)
 include_directories(
     ${LIBXML2_INCLUDE_DIR}
     ${YAML_CPP_INCLUDE_DIR})
-
 #-------------------------------------------------------------------------------
 # sources
 set(SOURCES
@@ -64,8 +62,7 @@ set_target_properties(
     ${PROJECT_NAME}
     PROPERTIES
         # COMPILE_DEFINITIONS
-        COMPILE_FLAGS ${FLAGS}
-)
+        COMPILE_FLAGS ${FLAGS})
 
 target_link_libraries(
     ${PROJECT_NAME}
