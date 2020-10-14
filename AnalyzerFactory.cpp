@@ -34,6 +34,8 @@ AnalyzerFactory::create(
 		break;
 	}
 
+	xTEST_GR(_analyzers.count(a_type), std::size_t{0});
+
 	return _analyzers[a_type];
 }
 //-------------------------------------------------------------------------------------------------
