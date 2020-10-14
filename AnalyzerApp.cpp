@@ -255,36 +255,6 @@ AnalyzerApp::compilerIncludeDirs(
 	std::vec_tstring_t *out_dirPathes
 ) const
 {
-#if 0
-def compilerIncludeDirs(self):
-	""  Get complier include dirs ""
-
-	result = ""
-
-	cmd = "cpp -v /dev/null".split()
-
-	out = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-	stdout,stderr = out.communicate()
-
-	out_info = stderr.decode("utf8")
-
-	str_left    = "#include <...> search starts here:"
-	str_right   = "End of search list."
-
-	pos_left  = out_info.find(str_left)
-	pos_right = out_info.find(str_right, pos_left)
-	assert pos_left < pos_right
-
-	includes = out_info[int(pos_left) + len(str_left):int(pos_right)].strip().split()
-
-	for it_include in includes:
-		result += "-I" + it_include + " "
-
-	if (self._os_name == "FreeBSD") :
-		result += "-isystem/usr/include/c++/v1"
-
-	return result
-#else
 	xCHECK_DO(out_dirPathes == nullptr, return);
 
 	out_dirPathes->clear();
@@ -319,7 +289,6 @@ def compilerIncludeDirs(self):
 	if (_os_name == SystemInfo::OsType::FreeBSD) {
 		out_dirPathes->push_back("-isystem/usr/include/c++/v1");
 	}
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
