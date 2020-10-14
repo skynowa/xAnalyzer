@@ -1,6 +1,6 @@
 /**
- * \file  AnalyzerFactory.h
- * \brief AnalyzerFactory
+ * \file  AnalyzersFactory.h
+ * \brief AnalyzersFactory
  */
 
 
@@ -12,7 +12,7 @@ namespace xa
 
 class IAnalyzer;
 
-class AnalyzerFactory
+class AnalyzersFactory
 {
 public:
 	enum class Type
@@ -24,8 +24,8 @@ public:
 
 ///@name ctors, dtor
 ///@{
-	xNO_DEFAULT_CONSTRUCT(AnalyzerFactory)
-	xNO_COPY_ASSIGN(AnalyzerFactory)
+	xNO_DEFAULT_CONSTRUCT(AnalyzersFactory)
+	xNO_COPY_ASSIGN(AnalyzersFactory)
 ///@}
 
 	static

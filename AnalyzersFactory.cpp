@@ -1,10 +1,10 @@
 /**
- * \file  AnalyzerFactory.cpp
- * \brief AnalyzerFactory
+ * \file  AnalyzersFactory.cpp
+ * \brief AnalyzersFactory
  */
 
 
-#include "AnalyzerFactory.h"
+#include "AnalyzersFactory.h"
 
 #include "Analyzers/CppCheck.h"
 #include "Analyzers/ClangTidy.h"
@@ -13,11 +13,11 @@ namespace xa
 {
 
 //-------------------------------------------------------------------------------------------------
-AnalyzerFactory::analyzers_map_t AnalyzerFactory::_analyzers;
+AnalyzersFactory::analyzers_map_t AnalyzersFactory::_analyzers;
 //-------------------------------------------------------------------------------------------------
 /* static */
 const std::unique_ptr<IAnalyzer> &
-AnalyzerFactory::create(
+AnalyzersFactory::create(
 	cType a_type
 )
 {

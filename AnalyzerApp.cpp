@@ -7,7 +7,7 @@
 #include "AnalyzerApp.h"
 
 #include "Analyzers/IAnalyzer.h"
-#include "AnalyzerFactory.h"
+#include "AnalyzersFactory.h"
 
 
 namespace xa
@@ -140,14 +140,14 @@ def run(self):
 	else:
 		self.traceOk("No warnings. OK " + time_stop_sec_str)
 #else
-	const std::vector<AnalyzerFactory::Type> analyzerTypes
+	const std::vector<AnalyzersFactory::Type> analyzerTypes
 	{
-		AnalyzerFactory::Type::CppCheck,
-		AnalyzerFactory::Type::ClangTidy
+		AnalyzersFactory::Type::CppCheck,
+		AnalyzersFactory::Type::ClangTidy
 	};
 
 	for (const auto &it_analyzerType : analyzerTypes) {
-		auto &analyzer = AnalyzerFactory::create(it_analyzerType);
+		auto &analyzer = AnalyzersFactory::create(it_analyzerType);
 		analyzer->run();
 
 	} // for (analyzerTypes)

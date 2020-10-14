@@ -30,7 +30,7 @@ include_directories("${LIBXML2_INCLUDE_DIR}")
 set(SOURCES
     Main.cpp
     AnalyzerApp.cpp
-    AnalyzerFactory.cpp
+    AnalyzersFactory.cpp
     Analyzers/CppCheck.cpp
     Analyzers/ClangTidy.cpp)
 #-------------------------------------------------------------------------------
