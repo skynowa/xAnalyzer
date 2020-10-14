@@ -233,8 +233,8 @@ AnalyzerApp::includeDirs(
 		std::vec_tstring_t dirPathes
 		{
 			"-I/usr/local/include ",
-			/// "".join(self.getPkgConfig("libxml-2.0")),
-			/// "".join(self.getPkgConfig("ImageMagick")),
+			/// "".join(self.pkgConfig("libxml-2.0")),
+			/// "".join(self.pkgConfig("ImageMagick")),
 
 			"-I/usr/local/gen++v3/class",
 			"-I" +       ::PROJECT_DIR + "/functions",
@@ -292,7 +292,7 @@ AnalyzerApp::compilerIncludeDirs(
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::getPkgConfig(
+AnalyzerApp::pkgConfig(
 	std::ctstring_t    &a_lib_name,
 	std::vec_tstring_t *out_cflags
 ) const
@@ -303,7 +303,7 @@ AnalyzerApp::getPkgConfig(
 	out_cflags->clear();
 
 #if 0
-def getPkgConfig(self, a_lib_name):
+def pkgConfig(self, a_lib_name):
 	"" Get libs, cflags by pkg-config tool ""
 
 	try:
