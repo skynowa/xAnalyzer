@@ -302,32 +302,6 @@ AnalyzerApp::pkgConfig(
 
 	out_cflags->clear();
 
-#if 0
-def pkgConfig(self, a_lib_name):
-	"" Get libs, cflags by pkg-config tool ""
-
-	try:
-		# cmd_libs = ["pkg-config", "--libs-only-L",   a_lib_name]
-		# libs = (
-		#     subprocess.check_output(cmd_libs)
-		#     .decode("utf8")
-		#     .strip()
-		#     # .replace("-L", "")
-		# )
-
-		cmd_cflags = ["pkg-config", "--cflags-only-I", a_lib_name]
-		cflags = (
-			subprocess.check_output(cmd_cflags)
-			.decode("utf8")
-			.strip()
-			.replace("-I", "-isystem") # suppress all warnings
-		)
-
-		return (cflags)
-	except Exception:
-		self.traceError("pkg-config: " + a_lib_name + " - fail")
-		pass
-#else
 	std::cvec_tstring_t params_cflags
 	{
 		"--cflags-only-I",
@@ -347,7 +321,6 @@ def pkgConfig(self, a_lib_name):
 		traceError("pkg-config: " + a_lib_name + " - fail");
 		return;
 	}
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
