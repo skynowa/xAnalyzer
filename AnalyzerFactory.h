@@ -24,14 +24,12 @@ public:
 
 ///@name ctors, dtor
 ///@{
-	AnalyzerFactory() = default;
-   ~AnalyzerFactory() = default;
-
+	xNO_DEFAULT_CONSTRUCT(AnalyzerFactory)
 	xNO_COPY_ASSIGN(AnalyzerFactory)
 ///@}
 
 	static
-	std::unique_ptr<IAnalyzer> &create(cType type);
+	const std::unique_ptr<IAnalyzer> &create(cType type);
 
 private:
 	static std::map<Type, std::unique_ptr<IAnalyzer>> _analyzers;

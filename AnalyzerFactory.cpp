@@ -16,7 +16,7 @@ namespace xa
 std::map<AnalyzerFactory::Type, std::unique_ptr<IAnalyzer>> AnalyzerFactory::_analyzers;
 //-------------------------------------------------------------------------------------------------
 /* static */
-std::unique_ptr<IAnalyzer> &
+const std::unique_ptr<IAnalyzer> &
 AnalyzerFactory::create(
 	cType a_type
 )
