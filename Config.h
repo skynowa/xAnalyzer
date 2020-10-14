@@ -52,7 +52,9 @@ CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"}
 "" Cppcheck ""
 CPPCHECK_ERROR_LEVEL = "warning,missingInclude"
 #else
-// Analyzer types
+/**
+ * Analyzer types
+ */
 enum class TypeActive
 {
 	TYPE_CPPCHECK        = 1,
@@ -61,38 +63,50 @@ enum class TypeActive
 	TYPE_ACTIVE          = TYPE_CLANG_TIDY
 };
 
-// Check mode
-// 0 - check changed files and headers
-// 1 - check only changed files
-
+/**
+ * Check mode
+ * 0 - check changed files and headers
+ * 1 - check only changed files
+ */
 cbool_t QUICK_CHECK = true;
 
-// Set OS environment variable to disable checks
-// From shell: export ANALYZER_SKIP_CHECK=1
-//
-// 0 - enable checks
-// 1 - skip checks
-
-// SKIP_CHECK = os.environ.get("ANALYZER_SKIP_CHECK")
+/**
+ * Set OS environment variable to disable checks
+ * From shell: export ANALYZER_SKIP_CHECK=1
+ *
+ * 0 - enable checks
+ * 1 - skip checks
+ *
+ * SKIP_CHECK = os.environ.get("ANALYZER_SKIP_CHECK")
+ */
 cbool_t SKIP_CHECK = true;
 
-// Disallow committing when errors/warnings occur
-// 0 - allow commit
-// 1 - disallow commit
-
+/**
+ * Disallow committing when errors/warnings occur
+ * 0 - allow commit
+ * 1 - disallow commit
+ */
 cbool_t STOP_ON_FAIL = false;
 
-// C++ language / standart
+/**
+ * C++ language / standart
+ */
 std::ctstring_t CPP_LANG = "c++";
 std::ctstring_t CPP_STD  = "c++11";
 
-// Exclude files for checking
+/**
+ * Exclude files for checking
+ */
 std::cvec_tstring_t CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"};
 
-// Cppcheck
+/**
+ * Cppcheck
+ */
 std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";
 
-// Compiler types
+/**
+ * Compiler types
+ */
 enum class CompilerId
 {
 	COMPILER_ID_UNKNOWN = 0,
@@ -100,7 +114,9 @@ enum class CompilerId
 	COMPILER_ID_GCC     = 2
 };
 
-// Etc
+/**
+ * Etc
+ */
 std::ctstring_t PROJECT_DIR = "~/Projects/xLib";
 std::csize_t    JOBS_NUM    = 1;
 
