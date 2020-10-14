@@ -150,8 +150,8 @@ AnalyzerApp::onRun() /* override */
 	if ( isError(stdOut, stdError) ) {
 		if (::STOP_ON_FAIL) {
 			traceError("***** Detect errors. Commit stopped ***** " + time_stop_sec_str);
-			Process::currentExit(1);
-			return  ExitCode::Failure;
+
+			return ExitCode::Failure;
 		} else {
 			traceError("***** Detect errors. Commited ***** " + time_stop_sec_str);
 		}
