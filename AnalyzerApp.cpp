@@ -63,10 +63,10 @@ AnalyzerApp::AnalyzerApp(
 	}
 
 	// compiler info
-	/// self._complier_id, self._complier_name = self.complierInfo()
+	complierInfo(&_complier_id, &_complier_name);
 
 	// C++ include dirs
-	/// self._include_dirs = self.getIncludeDirs()
+	includeDirs(&_include_dirs);
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
@@ -168,6 +168,9 @@ AnalyzerApp::complierInfo(
 	std::tstring_t *out_complier_name
 ) const
 {
+	*out_complier_id = {};
+	out_complier_name->clear();
+
 	std::cvec_tstring_t params
 	{
 		"--version"
@@ -194,10 +197,12 @@ AnalyzerApp::complierInfo(
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::getIncludeDirs() const
+AnalyzerApp::includeDirs(
+	std::vec_tstring_t *out_dirPathes
+) const
 {
 #if 0
-def getIncludeDirs(self):
+def includeDirs(self):
 	"" Get include dirs ""
 
 	result = ""
@@ -234,12 +239,55 @@ def getIncludeDirs(self):
 			"-isystem" + self.PROJECT_DIR + "/seo/gen/base"
 	return result
 #else
+	out_dirPathes->clear();
 
+	if (::TypeActive::TYPE_ACTIVE == ::TypeActive::TYPE_CPPCHECK &&
+		::QUICK_CHECK)
+	{
+		*out_dirPathes = {};
+	} else {
+		// System includes (cpp -v)
+		if (true) {
+			std::vec_tstring_t dirPathes;
+			getCompilerIncludeDirs(&dirPathes);
+
+			*out_dirPathes = dirPathes;
+		} else {
+			*out_dirPathes =
+				{
+					"-I/usr/lib/gcc/x86_64-linux-gnu/8/include",
+					"-I/usr/local/include",
+					"-I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed",
+					"-I/usr/include/x86_64-linux-gnu",
+					"-I/usr/include"
+				};
+		}
+
+		std::vec_tstring_t dirPathes
+		{
+			"-I/usr/local/include ",
+			/// "".join(self.getPkgConfig("libxml-2.0")),
+			/// "".join(self.getPkgConfig("ImageMagick")),
+
+			"-I/usr/local/gen++v3/class",
+			"-I" +       ::PROJECT_DIR + "/functions",
+			"-isystem" + ::PROJECT_DIR + "/suppliers/gen/base",
+			"-isystem" + ::PROJECT_DIR + "/booked/gen/base",
+			"-isystem" + ::PROJECT_DIR + "/syntexts/gen/base",
+			"-isystem" + ::PROJECT_DIR + "/core/gen/base",
+			"-isystem" + ::PROJECT_DIR + "/api/gen/base",
+			"-isystem" + ::PROJECT_DIR + "/seo/gen/base"
+		};
+
+		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
+	}
 #endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::getCompilerIncludeDirs() const
+AnalyzerApp::getCompilerIncludeDirs(
+	std::vec_tstring_t *out_dirPathes
+) const
 {
 #if 0
 def getCompilerIncludeDirs(self):

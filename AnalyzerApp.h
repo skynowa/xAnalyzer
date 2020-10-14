@@ -31,14 +31,15 @@ private:
 	TypeActive          _type {};
 	std::tstring_t      _name;
 	std::vec_tstring_t  _git_modified_files;
-	std::tstring_t      _complier_id;
+	::CompilerId        _complier_id;
 	std::tstring_t      _complier_name;
-	std::tstring_t      _include_dirs;
+	std::vec_tstring_t  _include_dirs;
 
 	void_t complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;
 		///< get complier info (ID, name)
-	void_t getIncludeDirs() const;
-	void_t getCompilerIncludeDirs() const;
+	void_t includeDirs(std::vec_tstring_t *dirPathes) const;
+		///< get include dirs
+	void_t getCompilerIncludeDirs(std::vec_tstring_t *dirPathes) const;
 	void_t getPkgConfig(std::ctstring_t &lib_name) const;
 
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
