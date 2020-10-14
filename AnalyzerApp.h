@@ -25,6 +25,7 @@ public:
 	ExitCode onRun() override;
 
 private:
+	Console   _console;
 	GitClient _git;
 
 	SystemInfo::OsType  _os_name {};
@@ -47,7 +48,8 @@ private:
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
 	void_t traceOptions() const;
 		///< Trace options (configs)
-	void_t traceColor(std::ctstring_t &color, std::ctstring_t &msg) const;
+	void_t traceColor(Console::Foreground color, std::ctstring_t &msg) const;
+		///< Trace using color
 	void_t trace(std::ctstring_t &msg) const;
 	void_t traceOk(std::ctstring_t &msg) const;
 	void_t traceError(std::ctstring_t &msg) const;

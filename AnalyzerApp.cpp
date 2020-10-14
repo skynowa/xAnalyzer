@@ -369,21 +369,16 @@ AnalyzerApp::traceOptions() const
 //-------------------------------------------------------------------------------------------------
 void_t
 AnalyzerApp::traceColor(
-	std::ctstring_t &a_color,
-	std::ctstring_t &a_msg
+	Console::Foreground  a_color,
+	std::ctstring_t     &a_msg
 ) const
 {
-#if 0
-def traceColor(self, a_color, a_msg):
-	"" Trace using color ""
+	xCHECK_DO(a_msg.empty(), return);
 
-	if (len(a_msg) == 0):
-		return
+	std::ctstring_t str = _console.setAttributesText(a_color, Console::Background::Default,
+		static_cast<int_t>(Console::Attribute::Bold), _name);
 
-	print(a_color + self._name + self.COLOR_NORMAL + " " + a_msg)
-#else
-	trace(a_msg);
-#endif
+	_console.writeLine(str + " " + a_msg);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -391,7 +386,7 @@ AnalyzerApp::trace(
 	std::ctstring_t &a_msg
 ) const
 {
-	Cout() << a_msg;
+	_console.writeLine(a_msg);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
