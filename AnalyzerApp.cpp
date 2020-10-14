@@ -80,9 +80,8 @@ def __init__(self, a_type):
 #else
 	std::vec_tstring_t appArgs;
 	args(true, &appArgs);
-	xUNUSED(appArgs);
 
-	// Cout() << xTRACE_VAR(appArgs);
+	Cout() << xTRACE_VAR(appArgs);
 
 	CmdOptions options;
 
