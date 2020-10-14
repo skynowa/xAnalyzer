@@ -410,17 +410,13 @@ AnalyzerApp::traceError(
 	std::ctstring_t &a_msg
 ) const
 {
-#if 0
-def traceError(self, a_msg):
-	"" Trace as error ""
+	xCHECK_DO(a_msg.empty(), return);
 
-	if (len(a_msg) == 0):
-		return
+	std::ctstring_t str =
+		_console.setAttributesText(Console::Foreground::Red , Console::Background::Default,
+		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
 
-	print(self.COLOR_RED + self._name + " " + a_msg + self.COLOR_NORMAL)
-#else
-	trace(a_msg);
-#endif
+	_console.writeLine(str);
 }
 //-------------------------------------------------------------------------------------------------
 } // namespace xa
