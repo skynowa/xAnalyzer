@@ -163,7 +163,10 @@ AnalyzerApp::onRun() /* override */
 }
 //-------------------------------------------------------------------------------------------------
 void_t
-AnalyzerApp::getComplierInfo() const
+AnalyzerApp::getComplierInfo(
+	::CompilerId   *out_complier_id,
+	std::tstring_t *out_complier_name
+) const
 {
 #if 0
 def getComplierInfo(self):
@@ -183,7 +186,29 @@ def getComplierInfo(self):
 	else:
 		return self.COMPILER_ID_GCC, "gcc"
 #else
+	std::cvec_tstring_t params
+	{
+		"--version"
+	};
 
+	std::tstring_t stdOut;
+	std::tstring_t stdError;
+
+	Process::execute("c+", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+#if 0
+	if (out.returncode == 1):
+		self.traceError("getComplierInfo")
+		return self.COMPILER_ID_UNKNOWN
+#endif
+
+	std::ctstring_t &version_str = String::trimSpace(stdOut);
+	if (version_str.find("clang version") != std::tstring_t::npos) {
+		*out_complier_id   = ::CompilerId::COMPILER_ID_CLANG;
+		*out_complier_name = "clang";
+	} else {
+		*out_complier_id   = ::CompilerId::COMPILER_ID_GCC;
+		*out_complier_name = "gcc";
+	}
 #endif
 }
 //-------------------------------------------------------------------------------------------------
