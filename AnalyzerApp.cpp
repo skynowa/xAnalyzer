@@ -394,18 +394,15 @@ AnalyzerApp::traceOk(
 	std::ctstring_t &a_msg
 ) const
 {
-#if 0
-def traceOk(self, a_msg):
-	"" Trace as OK ""
+	xCHECK_DO(a_msg.empty(), return);
 
-	if (len(a_msg) == 0):
-		return
+	std::tstring_t str;
+	str = _console.setAttributesText(Console::Foreground::Yellow , Console::Background::Default,
+		static_cast<int_t>(Console::Attribute::Bold), _name);
+	str += _console.setAttributesText(Console::Foreground::Green , Console::Background::Default,
+		static_cast<int_t>(Console::Attribute::Bold), a_msg);
 
-	print(self.COLOR_YELLOW + self._name + self.COLOR_NORMAL + " " +
-		self.COLOR_GREEN + a_msg + self.COLOR_NORMAL)
-#else
-	trace(a_msg);
-#endif
+	_console.writeLine(str);
 }
 //-------------------------------------------------------------------------------------------------
 void_t

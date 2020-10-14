@@ -43,16 +43,20 @@ private:
 	void_t compilerIncludeDirs(std::vec_tstring_t *dirPathes) const;
 		///< get compiler include dirs
 	void_t pkgConfig(std::ctstring_t &lib_name, std::vec_tstring_t *cflags) const;
-		///< Get libs, cflags by pkg-config tool
+		///< get libs, cflags by pkg-config tool
 
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
+
 	void_t traceOptions() const;
-		///< Trace options (configs)
+		///< trace options (configs)
 	void_t traceColor(Console::Foreground color, std::ctstring_t &msg) const;
-		///< Trace using color
+		///< trace using color
 	void_t trace(std::ctstring_t &msg) const;
+		///< trace obly
 	void_t traceOk(std::ctstring_t &msg) const;
+		///< trace as OK
 	void_t traceError(std::ctstring_t &msg) const;
+		///< trace as error
 };
 
 } // namespace xa
