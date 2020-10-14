@@ -182,7 +182,7 @@ AnalyzerApp::complierInfo(
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("c+", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute("c++", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #if 0
 	if (out.returncode == 1):
 		self.traceError("complierInfo")
