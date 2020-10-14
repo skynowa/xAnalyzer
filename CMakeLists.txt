@@ -17,8 +17,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_ROOT}/Modules/CMakeLib")
 message("CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
 
-find_package(xLib REQUIRED)
-find_package(LibXml2 REQUIRED)
+find_package(xLib     REQUIRED)
+find_package(LibXml2  REQUIRED)
 
 # yaml-cpp
 find_package(yaml-cpp REQUIRED)
