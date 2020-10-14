@@ -66,7 +66,47 @@ def runClangTidy(self):
 
 	return subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
 #else
+	// TODO: complier_id - impl
+	const auto complierId = ::CompilerId::COMPILER_ID_UNKNOWN;
 
+	std::ctstring_t line_filter = ""; // n/a
+
+	std::map<::CompilerId, std::tstring_t> args_stdlib
+	{
+		{::CompilerId::COMPILER_ID_CLANG, "-stdlib=libstdc++"},
+		{::CompilerId::COMPILER_ID_GCC,   ""}
+	};
+
+	std::ctstring_t force_cpp = "-x " + ::CPP_LANG;
+
+	std::tstring_t header_filter;
+	if (::QUICK_CHECK) {
+		header_filter = ""; // skip
+	} else {
+		header_filter = Format::str("^{}/.*", ::PROJECT_DIR); // all
+	}
+
+	std::ctstring_t include_dirs       = "self._include_dirs";
+	std::ctstring_t git_modified_files = "self._git_modified_files";
+
+	std::cvec_tstring_t params
+	{
+		git_modified_files,
+		"-system-headers=0",
+		"-line-filter="    + line_filter,
+		"-header-filter="  + header_filter,
+		"-extra-arg=-std=" + ::CPP_STD,
+		"-extra-arg="      + args_stdlib[complierId],
+		"-quiet",
+		"--",
+		include_dirs,
+		force_cpp
+	};
+
+	std::tstring_t stdOut;
+	std::tstring_t stdError;
+
+	Process::execute("clang-tidy", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #endif
 }
 //-------------------------------------------------------------------------------------------------

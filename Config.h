@@ -62,7 +62,7 @@ CPPCHECK_ERROR_LEVEL = "warning,missingInclude"
 // 0 - check changed files and headers
 // 1 - check only changed files
 
-// QUICK_CHECK = 1
+cbool_t QUICK_CHECK = true;
 
 // Set OS environment variable to disable checks
 // From shell: export ANALYZER_SKIP_CHECK=1
@@ -89,8 +89,17 @@ std::ctstring_t CPP_STD  = "c++11";
 // Cppcheck
 std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";
 
+// Compiler types
+enum class CompilerId
+{
+	COMPILER_ID_UNKNOWN = 0,
+	COMPILER_ID_CLANG   = 1,
+	COMPILER_ID_GCC     = 2
+};
+
 // Etc
-std::csize_t JOBS_NUM = 1;
+std::ctstring_t PROJECT_DIR = "~/Projects/xLib";
+std::csize_t    JOBS_NUM    = 1;
 
 #endif
 //-------------------------------------------------------------------------------------------------
