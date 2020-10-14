@@ -20,8 +20,10 @@ enum class TypeActive
 	TYPE_CPPCHECK        = 1,
 	TYPE_CLANG_TIDY      = 2,
 	TYPE_CLANG_TIDY_DIFF = 3,
+	TYPE_CLANG_TIDY_FILE = 4,
 	TYPE_ACTIVE          = TYPE_CLANG_TIDY
 };
+xUSING_CONST(TypeActive);
 
 /**
  * Check mode
@@ -73,10 +75,15 @@ enum class CompilerId
 	COMPILER_ID_CLANG   = 1,
 	COMPILER_ID_GCC     = 2
 };
+xUSING_CONST(CompilerId);
 
 /**
- * Etc
+ * Project root directory
  */
 std::ctstring_t PROJECT_DIR = "~/Projects/xLib";
-std::csize_t    JOBS_NUM    = 1;
+
+/**
+ * TODO: Number of jobs (Cppcheck support only)
+ */
+std::csize_t JOBS_NUM = 1;
 //-------------------------------------------------------------------------------------------------

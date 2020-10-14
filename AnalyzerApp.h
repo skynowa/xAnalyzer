@@ -25,6 +25,8 @@ public:
 	ExitCode onRun() override;
 
 private:
+	GitClient _git;
+
 	void_t getComplierInfo() const;
 	void_t getIncludeDirs() const;
 	void_t getCompilerIncludeDirs() const;

@@ -78,14 +78,56 @@ def __init__(self, a_type):
 	"" file to check for manual run ""
 	self._file_to_check = ""
 #else
-	std::vec_tstring_t appArgs;
-	args(true, &appArgs);
-	Cout() << xTRACE_VAR(appArgs);
+	{
+		std::vec_tstring_t appArgs;
+		args(true, &appArgs);
+		Cout() << xTRACE_VAR(appArgs);
 
-	std::vector<CmdOptionsUsage> usage;
+		std::vector<CmdOptionsUsage> usage;
 
-	CmdOptions options;
-	options.parse(appArgs, usage);
+		CmdOptions options;
+		options.parse(appArgs, usage);
+	}
+
+	// current OS
+	SystemInfo::cOsType _os_name = SystemInfo().os();
+
+	// TODO: analyzer type - from ctor
+	cTypeActive a_type = ::TypeActive::TYPE_ACTIVE;
+
+	// analyzer name
+	std::map<::TypeActive, std::tstring_t> names
+	{
+		{::TypeActive::TYPE_CPPCHECK,        "[Cppcheck]"},
+		{::TypeActive::TYPE_CLANG_TIDY,      "[Clang-Tidy]"},
+		{::TypeActive::TYPE_CLANG_TIDY_DIFF, "[Clang-Tidy-Diff]"},
+		{::TypeActive::TYPE_CLANG_TIDY_FILE, "[Clang-Tidy-File]"}
+	};
+
+	std::ctstring_t _name = names[a_type];
+	if (_name == "") {
+		traceError("Bad type: " + Enum::str(a_type));
+		Process::currentExit(1);
+	}
+
+	// GIT modified files
+	std::vec_tstring_t _git_modified_files;
+	_git.modifiedFiles(::CPP_MASK, &_git_modified_files);
+	if (_git_modified_files.empty() &&
+		a_type != ::TypeActive::TYPE_CLANG_TIDY_FILE)
+	{
+		traceOk("No changes. OK");
+		Process::currentExit(1);
+	}
+
+	// compiler info
+	/// self._complier_id, self._complier_name = self.getComplierInfo()
+
+	// C++ include dirs
+	/// self._include_dirs = self.getIncludeDirs()
+
+	// file to check for manual run
+	/// self._file_to_check = ""
 #endif
 }
 //-------------------------------------------------------------------------------------------------
