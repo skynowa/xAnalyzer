@@ -30,10 +30,11 @@ public:
 	xNO_COPY_ASSIGN(AnalyzerFactory)
 ///@}
 
+	static
 	std::unique_ptr<IAnalyzer> create(cType type);
 
 private:
-	std::map<Type, std::unique_ptr<IAnalyzer>> _analyzers;
+	static std::map<Type, std::unique_ptr<IAnalyzer>> _analyzers;
 };
 
 } // namespace xa

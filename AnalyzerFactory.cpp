@@ -13,13 +13,13 @@ namespace xa
 {
 
 //-------------------------------------------------------------------------------------------------
+/* static */
 std::unique_ptr<IAnalyzer>
 AnalyzerFactory::create(
 	cType a_type
 )
 {
-	auto it = _analyzers.find(a_type);
-	if (it != _analyzers.cend()) {
+	if (auto it = _analyzers.find(a_type); it != _analyzers.cend()) {
 		return it->second;
 	}
 
@@ -27,10 +27,10 @@ AnalyzerFactory::create(
 
 	switch (a_type) {
 	case Type::CppCheck:
-		analyzer = std::unique_ptr<IAnalyzer>(new CppCheck());
+		analyzer = std::make_unique<CppCheck>();
 		break;
 	case Type::ClangTidy:
-		analyzer = std::unique_ptr<IAnalyzer>(new ClangTidy());
+		analyzer = std::make_unique<ClangTidy>();
 		break;
 	}
 
