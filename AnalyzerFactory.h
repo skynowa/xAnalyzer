@@ -32,7 +32,9 @@ public:
 	const std::unique_ptr<IAnalyzer> &create(cType type);
 
 private:
-	static std::map<Type, std::unique_ptr<IAnalyzer>> _analyzers;
+	using analyzers_map_t = std::map<Type, std::unique_ptr<IAnalyzer>>;
+
+	static analyzers_map_t _analyzers;
 };
 
 } // namespace xa

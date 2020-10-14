@@ -19,6 +19,8 @@ message("CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
 
 find_package(xLib REQUIRED)
 find_package(LibXml2 REQUIRED)
+find_package(yaml-cpp REQUIRED)
+message(STATUS "yaml-cpp config: ${yaml-cpp_CONFIG}")
 #-------------------------------------------------------------------------------
 # includes
 include_directories("${LIBXML2_INCLUDE_DIR}")
