@@ -286,6 +286,10 @@ AnalyzerApp::compilerIncludeDirs(
 
 	Process::execute("/usr/bin/cpp", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 	xUNUSED(stdOut);
+#if 0
+	Cout() << xTRACE_VAR(stdOut);
+	Cout() << xTRACE_VAR(stdError);
+#endif
 
 	std::tstring_t str_left  = "#include <...> search starts here:";
 	std::tstring_t str_right = "End of search list.";
@@ -297,10 +301,10 @@ AnalyzerApp::compilerIncludeDirs(
 	stdError = String::trimSpace( String::cut(stdError, str_left, str_right) );
 
 	std::vec_tstring_t includes;
-	String::split(stdError, "???", &includes);
+	String::split(stdError, Const::nl(), &includes);
 
 	for (const auto &it_include : includes) {
-		out_dirPathes->push_back("-I" + it_include);
+		out_dirPathes->push_back("-I" + String::trimSpace(it_include));
 	}
 
 	if (_os_name == SystemInfo::OsType::FreeBSD) {
