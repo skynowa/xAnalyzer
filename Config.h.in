@@ -21,7 +21,7 @@ enum class TypeActive
 	TYPE_CLANG_TIDY      = 2,
 	TYPE_CLANG_TIDY_DIFF = 3,
 	TYPE_CLANG_TIDY_FILE = 4,
-	TYPE_ACTIVE          = TYPE_CLANG_TIDY
+	TYPE_ACTIVE          = TYPE_CPPCHECK
 };
 xUSING_CONST(TypeActive);
 
