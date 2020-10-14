@@ -358,7 +358,7 @@ AnalyzerApp::traceOptions() const
 	trace("");
 	traceOk("Options:");
 	trace("TYPE_ACTIVE: " + _name);
-	/// trace("COMPILER_ID: " + self._complier_name);
+	trace("COMPILER_ID: " + _complier_name);
 	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
 	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
 	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
