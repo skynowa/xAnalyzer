@@ -56,39 +56,26 @@ AnalyzerApp::AnalyzerApp(
 
 	// GIT modified files
 	_git.modifiedFiles(::CPP_MASK, &_git_modified_files);
-	if (_git_modified_files.empty() &&
-		_type != ::TypeActive::TYPE_CLANG_TIDY_FILE)
-	{
-		traceOk("No changes. OK");
-		Process::currentExit(1);
-		return;
-	}
 
 	// compiler info
 	complierInfo(&_complier_id, &_complier_name);
 
 	// C++ include dirs
 	includeDirs(&_include_dirs);
-}
-//-------------------------------------------------------------------------------------------------
-void_t
-AnalyzerApp::traceOptions() const
-{
-	trace("");
-	traceOk("Options:");
-	trace("TYPE_ACTIVE: " + _name);
-	trace("COMPILER_ID: " + _complier_name);
-	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
-	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
-	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
-	trace("CPP_STD:     " + ::CPP_STD);
-	trace("CPP_MASK:    " + String::join(::CPP_MASK, ", "));
-	trace("");
+
+	traceOptions();
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
+	if (_git_modified_files.empty() &&
+		_type != ::TypeActive::TYPE_CLANG_TIDY_FILE)
+	{
+		traceOk("No changes. OK");
+		return ExitCode::Success;
+	}
+
 	if (::QUICK_CHECK) {
 		traceOk("Start analysis (quick)...");
 	} else {
@@ -372,6 +359,21 @@ def isError(self, a_out, a_stderr_str):
 }
 //-------------------------------------------------------------------------------------------------
 void_t
+AnalyzerApp::traceOptions() const
+{
+	trace("");
+	traceOk("Options:");
+	trace("TYPE_ACTIVE: " + _name);
+	trace("COMPILER_ID: " + _complier_name);
+	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
+	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
+	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
+	trace("CPP_STD:     " + ::CPP_STD);
+	trace("CPP_MASK:    " + String::join(::CPP_MASK, ", "));
+	trace("");
+}
+//-------------------------------------------------------------------------------------------------
+void_t
 AnalyzerApp::traceColor(
 	Console::Foreground  a_color,
 	std::ctstring_t     &a_msg
@@ -390,8 +392,6 @@ AnalyzerApp::trace(
 	std::ctstring_t &a_msg
 ) const
 {
-	Cout() << "sdfgsdrfgsdr";
-
 	_console.writeLine(a_msg);
 }
 //-------------------------------------------------------------------------------------------------

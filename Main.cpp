@@ -35,7 +35,6 @@ def main(argv):
 
 	try {
 		xa::AnalyzerApp app(::appName, xT(""));
-		app.traceOptions();
 		exitStatus = app.run();
 	}
 	catch (const Exception &a_e) {
