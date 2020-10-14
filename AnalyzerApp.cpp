@@ -296,6 +296,8 @@ AnalyzerApp::getPkgConfig(
 	std::ctstring_t &a_lib_name
 ) const
 {
+	xTEST(!a_lib_name.empty());
+
 #if 0
 def getPkgConfig(self, a_lib_name):
 	"" Get libs, cflags by pkg-config tool ""

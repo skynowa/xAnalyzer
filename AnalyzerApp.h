@@ -40,7 +40,9 @@ private:
 	void_t includeDirs(std::vec_tstring_t *dirPathes) const;
 		///< get include dirs
 	void_t compilerIncludeDirs(std::vec_tstring_t *dirPathes) const;
+		///< get compiler include dirs
 	void_t getPkgConfig(std::ctstring_t &lib_name) const;
+		///< Get libs, cflags by pkg-config tool
 
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
 	void_t traceOptions() const;
