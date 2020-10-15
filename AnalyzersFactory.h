@@ -10,6 +10,7 @@
 namespace xa
 {
 
+class AnalyzerDataIn;
 class IAnalyzer;
 
 class AnalyzersFactory
@@ -29,7 +30,7 @@ public:
 ///@}
 
 	static
-	const std::unique_ptr<IAnalyzer> &create(cType type);
+	const std::unique_ptr<IAnalyzer> &create(cType type, const AnalyzerDataIn &dataIn);
 
 private:
 	using analyzers_map_t = std::map<Type, std::unique_ptr<IAnalyzer>>;

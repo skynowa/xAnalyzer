@@ -77,6 +77,9 @@ AnalyzerApp::onRun() /* override */
 	// profiler
 	/// time_start_sec = time.time();
 
+	// TODO: dataIn
+	AnalyzerDataIn dataIn;
+
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 	{
@@ -88,7 +91,7 @@ AnalyzerApp::onRun() /* override */
 			};
 
 			for (const auto &it_analyzerType : analyzerTypes) {
-				auto &analyzer = AnalyzersFactory::create(it_analyzerType);
+				auto &analyzer = AnalyzersFactory::create(it_analyzerType, dataIn);
 				analyzer->run();
 
 			}
@@ -97,26 +100,26 @@ AnalyzerApp::onRun() /* override */
 			switch (_type) {
 			case ::TypeActive::CppCheck:
 				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::CppCheck);
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::CppCheck, dataIn);
 					analyzer->run();
 				}
 				break;
 			case ::TypeActive::ClangTidy:
 				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					analyzer->run();
 				}
 				break;
 			case ::TypeActive::ClangTidyDiff:
 				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					/// self.runClangTidyDiff();
 					analyzer->run();
 				}
 				break;
 			case ::TypeActive::ClangTidyFile:
 				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy);
+					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					/// self.runClangTidyFile();
 					analyzer->run();
 				}
