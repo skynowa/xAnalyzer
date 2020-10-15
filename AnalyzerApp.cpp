@@ -45,6 +45,9 @@ AnalyzerApp::AnalyzerApp(
 
 	// GIT modified files
 	_git.modifiedFiles(::CPP_MASK, &_git_modified_files);
+#if 1
+	Cout() << xTRACE_VAR(_git_modified_files);
+#endif
 
 	// compiler info
 	complierInfo(&_complier_id, &_complier_name);

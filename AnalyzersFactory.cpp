@@ -25,12 +25,15 @@ AnalyzersFactory::create(
 		return it->second;
 	}
 
+	// TODO: dataIn
+	AnalyzerDataIn dataIn;
+
 	switch (a_type) {
 	case Type::CppCheck:
-		_analyzers[a_type] = std::make_unique<CppCheck>();
+		_analyzers[a_type] = std::make_unique<CppCheck>(dataIn);
 		break;
 	case Type::ClangTidy:
-		_analyzers[a_type] = std::make_unique<ClangTidy>();
+		_analyzers[a_type] = std::make_unique<ClangTidy>(dataIn);
 		break;
 	}
 

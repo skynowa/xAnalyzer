@@ -19,7 +19,7 @@ class CppCheck :
 public:
 ///@name ctors, dtor
 ///@{
-             CppCheck();
+             CppCheck(cAnalyzerDataIn &dataIn);
     virtual ~CppCheck();
 
     xNO_COPY_ASSIGN(CppCheck)

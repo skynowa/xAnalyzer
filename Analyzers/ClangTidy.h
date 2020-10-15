@@ -19,7 +19,7 @@ class ClangTidy :
 public:
 ///@name ctors, dtor
 ///@{
-             ClangTidy();
+             ClangTidy(cAnalyzerDataIn &dataIn);
     virtual ~ClangTidy();
 
     xNO_COPY_ASSIGN(ClangTidy)

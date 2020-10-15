@@ -35,6 +35,7 @@ set(SOURCES
     Main.cpp
     AnalyzerApp.cpp
     AnalyzersFactory.cpp
+    Analyzers/IAnalyzer.cpp
     Analyzers/CppCheck.cpp
     Analyzers/ClangTidy.cpp)
 #-------------------------------------------------------------------------------

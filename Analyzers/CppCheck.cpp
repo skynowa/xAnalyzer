@@ -16,7 +16,10 @@ namespace xa
 **************************************************************************************************/
 
 //-------------------------------------------------------------------------------------------------
-CppCheck::CppCheck()
+CppCheck::CppCheck(
+	cAnalyzerDataIn &a_dataIn
+) :
+	IAnalyzer(a_dataIn)
 {
 }
 //-------------------------------------------------------------------------------------------------
@@ -42,8 +45,13 @@ CppCheck::run() /* override */
 		"--force",
 		"-j" + std::to_string(::JOBS_NUM),
 		"--relative-paths",
-		"--error-exitcode=1"
+		"--error-exitcode=1",
+
+		"--xml", "--xml-version=2"
 	};
+
+	int i = 0;
+	i = 1 / i;
 
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
