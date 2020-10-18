@@ -38,35 +38,35 @@ ClangTidy::run() /* override */
 
 	// partial - ClangTidy
 
-	std::ctstring_t line_filter = ""; // n/a
+	std::ctstring_t lineFilter = ""; // n/a
 
-	std::map<::CompilerId, std::tstring_t> args_stdlib
+	std::map<::CompilerId, std::tstring_t> argsStdlib
 	{
 		{::CompilerId::Clang, "-stdlib=libstdc++"},
 		{::CompilerId::Gcc,   ""}
 	};
 
-	std::ctstring_t force_cpp = "-x " + cppLanguage;
+	std::ctstring_t forceCpp = "-x " + cppLanguage;
 
-	std::tstring_t header_filter;
+	std::tstring_t headerFilter;
 	if (::QUICK_CHECK) {
-		header_filter = ""; // skip
+		headerFilter = ""; // skip
 	} else {
-		header_filter = Format::str("^{}/.*", projectDirPath); // all
+		headerFilter = Format::str("^{}/.*", projectDirPath); // all
 	}
 
 	std::cvec_tstring_t params
 	{
 		modifiedFiles,
 		"-system-headers=0",
-		"-line-filter="    + line_filter,
-		"-header-filter="  + header_filter,
+		"-line-filter="    + lineFilter,
+		"-header-filter="  + headerFilter,
 		"-extra-arg=-std=" + cppStandart,
-		"-extra-arg="      + args_stdlib[compilerId],
+		"-extra-arg="      + argsStdlib[compilerId],
 		"-quiet",
 		"--",
 		includeDirs,
-		force_cpp
+		forceCpp
 	};
 
 	std::tstring_t stdOut;
