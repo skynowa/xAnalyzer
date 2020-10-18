@@ -84,6 +84,7 @@ AnalyzerApp::onRun() /* override */
 	dataIn.cppStandart         = ::CPP_STD;
 	dataIn.includeDirs         = {};
 	_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
+	dataIn.defines             = "-UKERN_PROC_PATHNAME";
 
 	// partial - CppCheck
 	dataIn.cppCheck_cLanguage  = ::C_LANG;

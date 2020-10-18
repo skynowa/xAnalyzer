@@ -32,6 +32,7 @@ ClangTidy::run() /* override */
 	std::ctstring_t cppStandart   = _dataIn.cppStandart;
 	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
+	std::ctstring_t defines       = _dataIn.defines; // TODO: impl
 
 	// partial - ClangTidy
 

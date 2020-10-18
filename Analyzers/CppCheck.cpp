@@ -32,6 +32,7 @@ CppCheck::run() /* override */
 	std::tstring_t  cppStandart   = _dataIn.cppStandart;
 	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
+	std::ctstring_t defines       = _dataIn.defines;
 
 	// partial - CppCheck
 	std::ctstring_t cLanguage     = _dataIn.cppCheck_cLanguage;
@@ -43,7 +44,7 @@ CppCheck::run() /* override */
 		includeDirs,
 		modifiedFiles,
 		"--library=std.cfg", "--library=posix.cfg",
-		/// "-UKERN_PROC_PATHNAME",
+		defines,
 		"--enable=" + errorLevel, "--inconclusive",
 		"--language=" + cLanguage, "--language=" + cppLanguage, "--std=" + cppStandart,
 		"--platform=unix64",

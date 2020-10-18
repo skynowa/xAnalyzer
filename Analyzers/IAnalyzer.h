@@ -18,6 +18,7 @@ struct AnalyzerDataIn
 	std::tstring_t     cppStandart;
 	std::vec_tstring_t includeDirs;
 	std::vec_tstring_t modifiedFiles;
+	std::tstring_t     defines;
 
 	// partial - CppCheck
 	std::tstring_t     cppCheck_cLanguage;
