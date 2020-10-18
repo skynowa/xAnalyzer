@@ -18,6 +18,7 @@ public:
 ///@name ctors, dtor
 ///@{
              Log();
+             Log(std::tstring_t &title);
     virtual ~Log() = default;
 
     xNO_COPY_ASSIGN(Log)
@@ -30,6 +31,8 @@ public:
 
 private:
 	Console _console;
+
+	std::ctstring_t _title;
 };
 //-------------------------------------------------------------------------------------------------
 } // namespace xa

@@ -15,6 +15,13 @@ Log::Log()
 	_console.setEscapeValues(false);
 }
 //-------------------------------------------------------------------------------------------------
+Log::Log(
+	std::tstring_t &a_title
+) :
+	_title(a_title)
+{
+}
+//-------------------------------------------------------------------------------------------------
 void_t
 Log::write(
 	std::ctstring_t &a_msg
@@ -31,10 +38,8 @@ Log::writeColor(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
 	_console.writeLine(a_color, Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
-#endif
+		static_cast<int_t>(Console::Attribute::Bold), _title + " " + a_msg);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -44,10 +49,8 @@ Log::writeOk(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
-	traceColor(Console::Foreground::Yellow, _name);
-	traceColor(Console::Foreground::Green, " " + a_msg);
-#endif
+	writeColor(Console::Foreground::Yellow, _title);
+	writeColor(Console::Foreground::Green, " " + a_msg);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -57,9 +60,7 @@ Log::writeError(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
-	_console.traceColor(Console::Foreground::Red, _name + " " + a_msg);
-#endif
+	writeColor(Console::Foreground::Red, _title + " " + a_msg);
 }
 //-------------------------------------------------------------------------------------------------
 
