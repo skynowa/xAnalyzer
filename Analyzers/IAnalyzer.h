@@ -12,8 +12,6 @@
 namespace xa
 {
 //-------------------------------------------------------------------------------------------------
-class AnalyzerDataIn;
-
 class IAnalyzer
     /// Analyzers interface
 {
@@ -30,7 +28,7 @@ public:
 
 protected:
 	cTypeActive     _type {};
-	cAnalyzerDataIn _dataIn {};
+	cAnalyzerDataIn _dataIn;
 
 	std::tstring_t  _binPath() const;
 		///< path to binary file

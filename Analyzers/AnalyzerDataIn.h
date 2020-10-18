@@ -11,7 +11,8 @@
 namespace xa
 {
 //-------------------------------------------------------------------------------------------------
-class AnalyzerDataIn
+class AnalyzerDataIn :
+	public IData
 {
 public:
 	// common
@@ -36,6 +37,10 @@ public:
 	 AnalyzerDataIn();
 	~AnalyzerDataIn() = default;
 ///@}
+
+	bool_t isValid() const override;
+	void_t clear() override;
+	void_t print(core::OStream &os) const override;
 
 private:
 	void_t _complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;

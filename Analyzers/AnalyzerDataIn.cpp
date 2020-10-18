@@ -36,6 +36,41 @@ AnalyzerDataIn::AnalyzerDataIn()
 	/// traceOptions();
 }
 //-------------------------------------------------------------------------------------------------
+bool_t
+AnalyzerDataIn::isValid() const /* override */
+{
+	// common
+	xCHECK_RET(!Dir(projectDirPath).isExists(), false);
+	xCHECK_RET(cppLanguage.empty(), false);
+	xCHECK_RET(cppStandart.empty(), false);
+	xCHECK_RET(includeDirs.empty(), false);
+	xTEST_NA(modifiedFiles);
+	xTEST_NA(defines);
+	xCHECK_RET(osName == SystemInfo::OsType::Unknown, false);
+	xTEST_NA(compilerId);
+	xCHECK_RET(compilerName.empty(), false);
+	xTEST_NA(isQuickCheck);
+
+	// partial - CppCheck
+	xCHECK_RET(cppCheck_cLanguage.empty(), false);
+	xCHECK_RET(cppCheck_jobsNum == 0, false);
+	xCHECK_RET(cppCheck_errorLevel.empty(), false);
+
+	return true;
+}
+//-------------------------------------------------------------------------------------------------
+void_t
+AnalyzerDataIn::clear() /* override */
+{
+}
+//-------------------------------------------------------------------------------------------------
+void_t
+AnalyzerDataIn::print(
+	core::OStream &a_os
+) const /* override */
+{
+}
+//-------------------------------------------------------------------------------------------------
 
 
 /**************************************************************************************************
