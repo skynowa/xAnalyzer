@@ -34,8 +34,8 @@ CppCheck::run() /* override */
 	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
 	// partial - CppCheck
-	std::tstring_t  cLanguage          = _dataIn.cLanguage;
-	std::size_t     jobsNum            = _dataIn.jobsNum;
+	std::tstring_t  cLanguage          = _dataIn.cppCheck_cLanguage;
+	std::size_t     jobsNum            = _dataIn.cppCheck_jobsNum;
 
 	std::cvec_tstring_t params
 	{

@@ -20,8 +20,8 @@ struct AnalyzerDataIn
 	std::vec_tstring_t modifiedFiles;
 
 	// partial - CppCheck
-	std::tstring_t     cLanguage;
-	std::size_t        jobsNum;
+	std::tstring_t     cppCheck_cLanguage;
+	std::size_t        cppCheck_jobsNum;
 };
 xUSING_CONST(AnalyzerDataIn);
 

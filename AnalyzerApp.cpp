@@ -80,14 +80,14 @@ AnalyzerApp::onRun() /* override */
 	// TODO: dataIn
 	AnalyzerDataIn dataIn;
 	// common
-	dataIn.cppLanguage   = ::CPP_LANG;
-	dataIn.cppStandart   = ::CPP_STD;
-	dataIn.includeDirs   = {};
-	dataIn.modifiedFiles = {};
+	dataIn.cppLanguage        = ::CPP_LANG;
+	dataIn.cppStandart        = ::CPP_STD;
+	dataIn.includeDirs        = {};
+	dataIn.modifiedFiles      = {};
 
 	// partial - CppCheck
-	dataIn.cLanguage     = ::C_LANG;
-	dataIn.jobsNum       = ::JOBS_NUM;
+	dataIn.cppCheck_cLanguage = ::C_LANG;
+	dataIn.cppCheck_jobsNum   = ::JOBS_NUM;
 
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
