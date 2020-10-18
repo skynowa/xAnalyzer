@@ -27,6 +27,7 @@ void_t
 ClangTidy::run() /* override */
 {
 	// [in]
+	std::tstring_t  cppLanguage        = _dataIn.cppLanguage;
 	std::tstring_t  cppStandart        = _dataIn.cppStandart;
 	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
@@ -42,7 +43,7 @@ ClangTidy::run() /* override */
 		{::CompilerId::Gcc,   ""}
 	};
 
-	std::ctstring_t force_cpp = "-x " + ::CPP_LANG;
+	std::ctstring_t force_cpp = "-x " + cppLanguage;
 
 	std::tstring_t header_filter;
 	if (::QUICK_CHECK) {
