@@ -65,12 +65,6 @@ AnalyzerApp::onRun() /* override */
 		return ExitCode::Success;
 	}
 
-	if (::QUICK_CHECK) {
-		traceOk("Start analysis (quick)...");
-	} else {
-		traceOk("Start analysis (full)...");
-	}
-
 	// profiler
 	/// time_start_sec = time.time();
 
@@ -88,6 +82,8 @@ AnalyzerApp::onRun() /* override */
 		std::tstring_t _complier_name;
 		complierInfo(&dataIn.compilerId, &_complier_name);
 		xUNUSED(_complier_name);
+
+		dataIn.isQuickCheck        = ::QUICK_CHECK;
 
 		// partial - CppCheck
 		dataIn.cppCheck_cLanguage  = ::C_LANG;
@@ -385,6 +381,12 @@ def isError(self, a_out, a_stderr_str):
 void_t
 AnalyzerApp::traceOptions() const
 {
+	if (::QUICK_CHECK) {
+		traceOk("Start analysis (quick)...");
+	} else {
+		traceOk("Start analysis (full)...");
+	}
+
 	trace("");
 	traceOk("Options:");
 	trace("TYPE_ACTIVE: " + _name);

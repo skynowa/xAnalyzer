@@ -35,6 +35,7 @@ ClangTidy::run() /* override */
 	std::ctstring_t modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
 	std::ctstring_t defines        = _dataIn.defines; // TODO: impl
 	::cCompilerId   compilerId     = _dataIn.compilerId;
+	cbool_t         isQuickCheck   = _dataIn.isQuickCheck;
 
 	// partial - ClangTidy
 
@@ -49,7 +50,7 @@ ClangTidy::run() /* override */
 	std::ctstring_t forceCpp = "-x " + cppLanguage;
 
 	std::tstring_t headerFilter;
-	if (::QUICK_CHECK) {
+	if (isQuickCheck) {
 		headerFilter = ""; // skip
 	} else {
 		headerFilter = Format::str("^{}/.*", projectDirPath); // all

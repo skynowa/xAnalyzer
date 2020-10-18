@@ -36,6 +36,8 @@ CppCheck::run() /* override */
 	std::ctstring_t defines        = _dataIn.defines;
 	::cCompilerId   compilerId     = _dataIn.compilerId;
 	xUNUSED(compilerId);
+	cbool_t         isQuickCheck   = _dataIn.isQuickCheck;
+	xUNUSED(isQuickCheck);
 
 	// partial - CppCheck
 	std::ctstring_t cLanguage      = _dataIn.cppCheck_cLanguage;
