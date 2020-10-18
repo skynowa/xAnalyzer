@@ -14,6 +14,7 @@ namespace xa
 struct AnalyzerDataIn
 {
 	// common
+	std::tstring_t     projectDirPath;
 	std::tstring_t     cppLanguage;
 	std::tstring_t     cppStandart;
 	std::vec_tstring_t includeDirs;

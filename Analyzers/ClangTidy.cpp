@@ -28,12 +28,13 @@ ClangTidy::run() /* override */
 {
 	// [in]
 	// common
-	std::ctstring_t cppLanguage   = _dataIn.cppLanguage;
-	std::ctstring_t cppStandart   = _dataIn.cppStandart;
-	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
-	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
-	std::ctstring_t defines       = _dataIn.defines; // TODO: impl
-	::cCompilerId   compilerId    = _dataIn.compilerId;
+	std::tstring_t  projectDirPath = _dataIn.projectDirPath;
+	std::ctstring_t cppLanguage    = _dataIn.cppLanguage;
+	std::ctstring_t cppStandart    = _dataIn.cppStandart;
+	std::ctstring_t includeDirs    = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
+	std::ctstring_t defines        = _dataIn.defines; // TODO: impl
+	::cCompilerId   compilerId     = _dataIn.compilerId;
 
 	// partial - ClangTidy
 
@@ -51,7 +52,7 @@ ClangTidy::run() /* override */
 	if (::QUICK_CHECK) {
 		header_filter = ""; // skip
 	} else {
-		header_filter = Format::str("^{}/.*", ::PROJECT_DIR); // all
+		header_filter = Format::str("^{}/.*", projectDirPath); // all
 	}
 
 	std::cvec_tstring_t params

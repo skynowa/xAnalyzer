@@ -28,18 +28,19 @@ CppCheck::run() /* override */
 {
 	// [in]
 	// common
-	std::tstring_t  cppLanguage   = _dataIn.cppLanguage;
-	std::tstring_t  cppStandart   = _dataIn.cppStandart;
-	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
-	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
-	std::ctstring_t defines       = _dataIn.defines;
-	::cCompilerId   compilerId    = _dataIn.compilerId;
+	std::tstring_t  projectDirPath = _dataIn.projectDirPath;
+	std::tstring_t  cppLanguage    = _dataIn.cppLanguage;
+	std::tstring_t  cppStandart    = _dataIn.cppStandart;
+	std::ctstring_t includeDirs    = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
+	std::ctstring_t defines        = _dataIn.defines;
+	::cCompilerId   compilerId     = _dataIn.compilerId;
 	xUNUSED(compilerId);
 
 	// partial - CppCheck
-	std::ctstring_t cLanguage     = _dataIn.cppCheck_cLanguage;
-	std::csize_t    jobsNum       = _dataIn.cppCheck_jobsNum;
-	std::ctstring_t errorLevel    = _dataIn.cppCheck_errorLevel;
+	std::ctstring_t cLanguage      = _dataIn.cppCheck_cLanguage;
+	std::csize_t    jobsNum        = _dataIn.cppCheck_jobsNum;
+	std::ctstring_t errorLevel     = _dataIn.cppCheck_errorLevel;
 
 	std::cvec_tstring_t params
 	{

@@ -78,6 +78,7 @@ AnalyzerApp::onRun() /* override */
 	AnalyzerDataIn dataIn;
 	{
 		// common
+		dataIn.projectDirPath      = ::PROJECT_DIR;
 		dataIn.cppLanguage         = ::CPP_LANG;
 		dataIn.cppStandart         = ::CPP_STD;
 		dataIn.includeDirs         = {};
