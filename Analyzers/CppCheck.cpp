@@ -34,8 +34,9 @@ CppCheck::run() /* override */
 	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
 
 	// partial - CppCheck
-	std::tstring_t  cLanguage     = _dataIn.cppCheck_cLanguage;
+	std::ctstring_t cLanguage     = _dataIn.cppCheck_cLanguage;
 	std::size_t     jobsNum       = _dataIn.cppCheck_jobsNum;
+	std::ctstring_t errorLevel    = _dataIn.cppCheck_errorLevel;
 
 	std::cvec_tstring_t params
 	{
@@ -43,7 +44,7 @@ CppCheck::run() /* override */
 		modifiedFiles,
 		"--library=std.cfg", "--library=posix.cfg",
 		/// "-UKERN_PROC_PATHNAME",
-		"--enable=" + ::CPPCHECK_ERROR_LEVEL, "--inconclusive",
+		"--enable=" + errorLevel, "--inconclusive",
 		"--language=" + cLanguage, "--language=" + cppLanguage, "--std=" + cppStandart,
 		"--platform=unix64",
 		"--force",

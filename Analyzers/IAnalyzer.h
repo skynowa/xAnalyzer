@@ -22,6 +22,7 @@ struct AnalyzerDataIn
 	// partial - CppCheck
 	std::tstring_t     cppCheck_cLanguage;
 	std::size_t        cppCheck_jobsNum;
+	std::tstring_t     cppCheck_errorLevel;
 };
 xUSING_CONST(AnalyzerDataIn);
 //-------------------------------------------------------------------------------------------------
