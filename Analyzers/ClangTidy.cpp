@@ -28,10 +28,10 @@ ClangTidy::run() /* override */
 {
 	// [in]
 	// common
-	std::ctstring_t cppLanguage        = _dataIn.cppLanguage;
-	std::ctstring_t cppStandart        = _dataIn.cppStandart;
-	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
-	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
+	std::ctstring_t cppLanguage   = _dataIn.cppLanguage;
+	std::ctstring_t cppStandart   = _dataIn.cppStandart;
+	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
 
 	// partial - ClangTidy
 
@@ -57,7 +57,7 @@ ClangTidy::run() /* override */
 
 	std::cvec_tstring_t params
 	{
-		git_modified_files,
+		modifiedFiles,
 		"-system-headers=0",
 		"-line-filter="    + line_filter,
 		"-header-filter="  + header_filter,
@@ -65,7 +65,7 @@ ClangTidy::run() /* override */
 		"-extra-arg="      + args_stdlib[complierId],
 		"-quiet",
 		"--",
-		include_dirs,
+		includeDirs,
 		force_cpp
 	};
 

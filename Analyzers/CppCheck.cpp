@@ -28,19 +28,19 @@ CppCheck::run() /* override */
 {
 	// [in]
 	// common
-	std::tstring_t  cppLanguage        = _dataIn.cppLanguage;
-	std::tstring_t  cppStandart        = _dataIn.cppStandart;
-	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
-	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
+	std::tstring_t  cppLanguage   = _dataIn.cppLanguage;
+	std::tstring_t  cppStandart   = _dataIn.cppStandart;
+	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
 
 	// partial - CppCheck
-	std::tstring_t  cLanguage          = _dataIn.cppCheck_cLanguage;
-	std::size_t     jobsNum            = _dataIn.cppCheck_jobsNum;
+	std::tstring_t  cLanguage     = _dataIn.cppCheck_cLanguage;
+	std::size_t     jobsNum       = _dataIn.cppCheck_jobsNum;
 
 	std::cvec_tstring_t params
 	{
-		include_dirs,
-		git_modified_files,
+		includeDirs,
+		modifiedFiles,
 		"--library=std.cfg", "--library=posix.cfg",
 		/// "-UKERN_PROC_PATHNAME",
 		"--enable=" + ::CPPCHECK_ERROR_LEVEL, "--inconclusive",
