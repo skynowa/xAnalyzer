@@ -20,7 +20,7 @@ ClangTidy::ClangTidy(
 	cAnalyzerDataIn &a_dataIn
 ) :
 	IAnalyzer(Type::ClangTidy, a_dataIn),
-	_log     ("XXX")
+	_log     (_dataIn.compilerName)
 {
 }
 //-------------------------------------------------------------------------------------------------
