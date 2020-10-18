@@ -16,9 +16,21 @@ class IAnalyzer
     /// Analyzers interface
 {
 public:
+	/**
+	 * Analyzer types
+	 */
+	enum class Type
+	{
+		CppCheck      = 1,
+		ClangTidy     = 2,
+		ClangTidyDiff = 3,
+		ClangTidyFile = 4
+	};
+	xUSING_CONST(Type);
+
 ///@name ctors, dtor
 ///@{
-             IAnalyzer(cAnalyzerType type, cAnalyzerDataIn &dataIn);
+             IAnalyzer(cType type, cAnalyzerDataIn &dataIn);
     virtual ~IAnalyzer() = default;
 
     xNO_COPY_ASSIGN(IAnalyzer)
@@ -27,7 +39,7 @@ public:
     virtual void_t run() = 0;
 
 protected:
-	cAnalyzerType     _type {};
+	cType           _type {};
 	std::tstring_t  _name;
 	cAnalyzerDataIn _dataIn;
 

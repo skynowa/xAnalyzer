@@ -56,29 +56,29 @@ AnalyzerApp::onRun() /* override */
 			}
 		}
 		else {
-			cAnalyzerType _type {};
+			IAnalyzer::cType _type {};
 
 			switch (_type) {
-			case ::AnalyzerType::CppCheck:
+			case IAnalyzer::Type::CppCheck:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::CppCheck, dataIn);
 					analyzer->run();
 				}
 				break;
-			case ::AnalyzerType::ClangTidy:
+			case IAnalyzer::Type::ClangTidy:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					analyzer->run();
 				}
 				break;
-			case ::AnalyzerType::ClangTidyDiff:
+			case IAnalyzer::Type::ClangTidyDiff:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					/// self.runClangTidyDiff();
 					analyzer->run();
 				}
 				break;
-			case ::AnalyzerType::ClangTidyFile:
+			case IAnalyzer::Type::ClangTidyFile:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					/// self.runClangTidyFile();
