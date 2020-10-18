@@ -49,7 +49,7 @@ public:
 ///@name ctors, dtor
 ///@{
              IAnalyzer(cTypeActive type, cAnalyzerDataIn &dataIn);
-    virtual ~IAnalyzer();
+    virtual ~IAnalyzer() = default;
 
     xNO_COPY_ASSIGN(IAnalyzer)
 ///@}
