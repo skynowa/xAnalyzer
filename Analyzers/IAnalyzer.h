@@ -21,7 +21,8 @@ struct AnalyzerDataIn
 	std::vec_tstring_t includeDirs;
 	std::vec_tstring_t modifiedFiles;
 
-	// partial
+	// partial - CppCheck
+	std::ctstring_t    cLanguage {"c"};
 };
 xUSING_CONST(AnalyzerDataIn);
 
