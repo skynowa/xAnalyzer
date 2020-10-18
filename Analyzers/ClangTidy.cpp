@@ -188,11 +188,6 @@ ClangTidy::_parseReport(
 	AnalyzerDataOut *out_dataOut
 ) const /* override */
 {
-#if 1
-	_log.write("stdOut: "   + out_dataOut->stdOut);
-	_log.write("stdError: " + out_dataOut->stdError);
-#endif
-
 	std::tstring_t stdOut   = ::String::trimSpace(out_dataOut->stdOut);
 	std::tstring_t stdError = ::String::trimSpace(out_dataOut->stdError);
 
