@@ -19,7 +19,7 @@ namespace xa
 ClangTidy::ClangTidy(
 	cAnalyzerDataIn &a_dataIn
 ) :
-	IAnalyzer(::TypeActive::ClangTidy, a_dataIn)
+	IAnalyzer(::AnalyzerType::ClangTidy, a_dataIn)
 {
 }
 //-------------------------------------------------------------------------------------------------

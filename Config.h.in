@@ -42,14 +42,14 @@ cbool_t STOP_ON_FAIL = false;
 /**
  * Analyzer types
  */
-enum class TypeActive
+enum class AnalyzerType
 {
 	CppCheck      = 1,
 	ClangTidy     = 2,
 	ClangTidyDiff = 3,
 	ClangTidyFile = 4
 };
-xUSING_CONST(TypeActive);
+xUSING_CONST(AnalyzerType);
 
 /**
  * Check mode

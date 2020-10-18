@@ -11,19 +11,19 @@ namespace xa
 
 //-------------------------------------------------------------------------------------------------
 IAnalyzer::IAnalyzer(
-	cTypeActive      a_type,
+	cAnalyzerType      a_type,
 	cAnalyzerDataIn &a_dataIn
 ) :
 	_type  {a_type},
 	_dataIn{a_dataIn}
 {
 	// analyzer name
-	std::map<::TypeActive, std::tstring_t> names
+	std::map<::AnalyzerType, std::tstring_t> names
 	{
-		{::TypeActive::CppCheck,      "[Cppcheck]"},
-		{::TypeActive::ClangTidy,     "[Clang-Tidy]"},
-		{::TypeActive::ClangTidyDiff, "[Clang-Tidy-Diff]"},
-		{::TypeActive::ClangTidyFile, "[Clang-Tidy-File]"}
+		{::AnalyzerType::CppCheck,      "[Cppcheck]"},
+		{::AnalyzerType::ClangTidy,     "[Clang-Tidy]"},
+		{::AnalyzerType::ClangTidyDiff, "[Clang-Tidy-Diff]"},
+		{::AnalyzerType::ClangTidyFile, "[Clang-Tidy-File]"}
 	};
 
 	_name = names[_type];
@@ -47,10 +47,10 @@ IAnalyzer::_binPath() const
 {
 	std::tstring_t sRv;
 
-	static const std::map<::TypeActive, std::vec_tstring_t> dirPaths
+	static const std::map<::AnalyzerType, std::vec_tstring_t> dirPaths
 	{
 		{
-			::TypeActive::CppCheck,
+			::AnalyzerType::CppCheck,
 			{
 			#if   xENV_WIN
 				// echo %Path%
@@ -63,7 +63,7 @@ IAnalyzer::_binPath() const
 			}
 		},
 		{
-			::TypeActive::ClangTidy,
+			::AnalyzerType::ClangTidy,
 			{
 			#if   xENV_WIN
 				// echo %Path%
@@ -77,10 +77,10 @@ IAnalyzer::_binPath() const
 		}
 	};
 
-	static const std::map<::TypeActive, std::tstring_t> binNames
+	static const std::map<::AnalyzerType, std::tstring_t> binNames
 	{
 		{
-			::TypeActive::CppCheck,
+			::AnalyzerType::CppCheck,
 		#if   xENV_WIN
 			xT("cppcheck.exe")
 		#elif xENV_UNIX
@@ -88,7 +88,7 @@ IAnalyzer::_binPath() const
 		#endif
 		},
 		{
-			::TypeActive::ClangTidy,
+			::AnalyzerType::ClangTidy,
 		#if   xENV_WIN
 			xT("clang-tidy.exe")
 		#elif xENV_UNIX

@@ -18,7 +18,7 @@ class IAnalyzer
 public:
 ///@name ctors, dtor
 ///@{
-             IAnalyzer(cTypeActive type, cAnalyzerDataIn &dataIn);
+             IAnalyzer(cAnalyzerType type, cAnalyzerDataIn &dataIn);
     virtual ~IAnalyzer() = default;
 
     xNO_COPY_ASSIGN(IAnalyzer)
@@ -27,7 +27,7 @@ public:
     virtual void_t run() = 0;
 
 protected:
-	cTypeActive     _type {};
+	cAnalyzerType     _type {};
 	std::tstring_t  _name;
 	cAnalyzerDataIn _dataIn;
 

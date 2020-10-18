@@ -19,7 +19,7 @@ namespace xa
 CppCheck::CppCheck(
 	cAnalyzerDataIn &a_dataIn
 ) :
-	IAnalyzer(::TypeActive::CppCheck, a_dataIn)
+	IAnalyzer(::AnalyzerType::CppCheck, a_dataIn)
 {
 }
 //-------------------------------------------------------------------------------------------------
