@@ -42,9 +42,6 @@ AnalyzerApp::AnalyzerApp(
 		Process::currentExit(1);
 		return;
 	}
-
-	// C++ include dirs
-	includeDirs(&_include_dirs);
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
