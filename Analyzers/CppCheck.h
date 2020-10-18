@@ -25,7 +25,7 @@ public:
     xNO_COPY_ASSIGN(CppCheck)
 ///@}
 
-	bool_t run() override;
+	bool_t run(AnalyzerDataOut *dataOut) override;
 
 private:
 	Log _log;

@@ -17,11 +17,13 @@ namespace xa
 //-------------------------------------------------------------------------------------------------
 AnalyzerDataOut::AnalyzerDataOut()
 {
+#if 0
 	// common
 	stdOut   = "OOOOOOOOO";
 	stdError = "EEEEEEEEEEEEEEEEEEEEE";
 
 	xTEST(isValid());
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 bool_t

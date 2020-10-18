@@ -44,12 +44,9 @@ AnalyzerApp::onRun() /* override */
 			static_cast<ClangTidy &>(*analyzer).runFile();
 		}
 
-		std::tstring_t stdOut;
-		std::tstring_t stdError;
-
-		bool_t bRv = analyzer->run();
-
-		// TODO: stdOut, stdError - fill
+		AnalyzerDataOut dataOut;
+		bool_t bRv = analyzer->run(&dataOut);
+		xUNUSED(dataOut);
 
 		if (!bRv) {
 			if (dataIn.isStopOnFail) {

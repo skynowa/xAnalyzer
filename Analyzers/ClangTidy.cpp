@@ -25,7 +25,9 @@ ClangTidy::ClangTidy(
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
-ClangTidy::run() /* override */
+ClangTidy::run(
+	AnalyzerDataOut *out_dataOut
+) /* override */
 {
 	// [in]
 	// common

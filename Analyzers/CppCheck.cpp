@@ -25,7 +25,9 @@ CppCheck::CppCheck(
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
-CppCheck::run() /* override */
+CppCheck::run(
+	AnalyzerDataOut *out_dataOut
+) /* override */
 {
 	// [in]
 	// common
