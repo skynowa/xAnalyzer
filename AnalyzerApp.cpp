@@ -60,6 +60,9 @@ AnalyzerApp::onRun() /* override */
 		} else {
 			_log.writeOk("No warnings. OK ");
 		}
+
+		/// TODO: rm - break
+		break;
 	} // for (analyzerTypes)
 
 	return ExitCode::Success;
