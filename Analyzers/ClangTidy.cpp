@@ -30,6 +30,10 @@ ClangTidy::~ClangTidy()
 void_t
 ClangTidy::run() /* override */
 {
+	// [in]
+	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
+
 	// TODO: complier_id - impl
 	const auto complierId = ::CompilerId::Unknown;
 
@@ -49,9 +53,6 @@ ClangTidy::run() /* override */
 	} else {
 		header_filter = Format::str("^{}/.*", ::PROJECT_DIR); // all
 	}
-
-	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
-	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
 	std::cvec_tstring_t params
 	{

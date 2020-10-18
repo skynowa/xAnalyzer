@@ -30,6 +30,7 @@ CppCheck::~CppCheck()
 void_t
 CppCheck::run() /* override */
 {
+	// [in]
 	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
