@@ -43,6 +43,8 @@ protected:
 
 	std::tstring_t  _binPath() const;
 		///< path to binary file
+	virtual void_t  _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
+		///<
 };
 //-------------------------------------------------------------------------------------------------
 } // namespace xa
