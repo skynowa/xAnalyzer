@@ -88,6 +88,8 @@ AnalyzerDataIn::print(
 {
 	a_os
 		// common
+		<< "\n"
+		<< "DataIn:"                       << "\n"
 		<< xTRACE_VAR(projectDirPath)      << "\n"
 		<< xTRACE_VAR(cppLanguage)         << "\n"
 		<< xTRACE_VAR(cppStandart)         << "\n"

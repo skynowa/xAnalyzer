@@ -14,24 +14,8 @@ using namespace xl;
 const std::ctstring_t appName = xT("@PROJECT_NAME@");
 //-------------------------------------------------------------------------------------------------
 /**
- * Analyzer types
+ * AnalyzerApp
  */
-enum class TypeActive
-{
-	CppCheck      = 1,
-	ClangTidy     = 2,
-	ClangTidyDiff = 3,
-	ClangTidyFile = 4,
-	Active        = CppCheck
-};
-xUSING_CONST(TypeActive);
-
-/**
- * Check mode
- * 0 - check changed files and headers
- * 1 - check only changed files
- */
-cbool_t QUICK_CHECK = true;
 
 /**
  * Set OS environment variable to disable checks
@@ -50,6 +34,30 @@ cbool_t SKIP_CHECK = false;
  * 1 - disallow commit
  */
 cbool_t STOP_ON_FAIL = false;
+//-------------------------------------------------------------------------------------------------
+/**
+ * AnalyzerDataIn
+ */
+
+/**
+ * Analyzer types
+ */
+enum class TypeActive
+{
+	CppCheck      = 1,      /**< CppCheck */     /**< CppCheck */
+	ClangTidy     = 2,      /**< ClangTidy */    /**< ClangTidy */
+	ClangTidyDiff = 3,      /**< ClangTidyDiff *//**< ClangTidyDiff */
+	ClangTidyFile = 4,      /**< ClangTidyFile *//**< ClangTidyFile */
+	Active        = CppCheck/**< Active */       /**< Active */
+};
+xUSING_CONST(TypeActive);
+
+/**
+ * Check mode
+ * 0 - check changed files and headers
+ * 1 - check only changed files
+ */
+cbool_t QUICK_CHECK = true;
 
 /**
  * C++ language / standart
