@@ -76,20 +76,22 @@ AnalyzerApp::onRun() /* override */
 
 	// TODO: dataIn
 	AnalyzerDataIn dataIn;
-	// common
-	dataIn.cppLanguage         = ::CPP_LANG;
-	dataIn.cppStandart         = ::CPP_STD;
-	dataIn.includeDirs         = {};
-	_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
-	dataIn.defines             = "-UKERN_PROC_PATHNAME";
+	{
+		// common
+		dataIn.cppLanguage         = ::CPP_LANG;
+		dataIn.cppStandart         = ::CPP_STD;
+		dataIn.includeDirs         = {};
+		_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
+		dataIn.defines             = "-UKERN_PROC_PATHNAME";
 
-	std::tstring_t _complier_name;
-	complierInfo(&dataIn.compilerId, &_complier_name);
+		std::tstring_t _complier_name;
+		complierInfo(&dataIn.compilerId, &_complier_name);
 
-	// partial - CppCheck
-	dataIn.cppCheck_cLanguage  = ::C_LANG;
-	dataIn.cppCheck_jobsNum    = ::JOBS_NUM;
-	dataIn.cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
+		// partial - CppCheck
+		dataIn.cppCheck_cLanguage  = ::C_LANG;
+		dataIn.cppCheck_jobsNum    = ::JOBS_NUM;
+		dataIn.cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
+	}
 
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
