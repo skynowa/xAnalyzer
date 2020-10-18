@@ -43,44 +43,22 @@ AnalyzerApp::onRun() /* override */
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 	{
-		if (false) {
-			const std::vector<IAnalyzer::Type> analyzerTypes
-			{
-				IAnalyzer::Type::CppCheck,
-				IAnalyzer::Type::ClangTidy
-			};
+		const std::vector<IAnalyzer::Type> analyzerTypes
+		{
+			IAnalyzer::Type::CppCheck,
+			IAnalyzer::Type::ClangTidy
+		};
 
-			for (const auto &it_analyzerType : analyzerTypes) {
-				auto &analyzer = AnalyzersFactory::create(it_analyzerType, dataIn);
+		for (const auto &it_analyzerType : analyzerTypes) {
+			auto &analyzer = AnalyzersFactory::create(it_analyzerType, dataIn);
 
-				if (it_analyzerType == IAnalyzer::Type::ClangTidy) {
-					static_cast<ClangTidy &>(*analyzer).runDiff();
-					static_cast<ClangTidy &>(*analyzer).runFile();
-				}
-
-				analyzer->run();
-
+			if (it_analyzerType == IAnalyzer::Type::ClangTidy) {
+				static_cast<ClangTidy &>(*analyzer).runDiff();
+				static_cast<ClangTidy &>(*analyzer).runFile();
 			}
-		}
-		else {
-			IAnalyzer::cType _type {};
 
-			switch (_type) {
-			case IAnalyzer::Type::CppCheck:
-				{
-					auto &analyzer = AnalyzersFactory::create(IAnalyzer::Type::CppCheck, dataIn);
-					analyzer->run();
-				}
-				break;
-			case IAnalyzer::Type::ClangTidy:
-				{
-					auto &analyzer = AnalyzersFactory::create(IAnalyzer::Type::ClangTidy, dataIn);
-					/// analyzer.runDiff();
-					/// analyzer.runFile();
-					analyzer->run();
-				}
-				break;
-			}
+			analyzer->run();
+
 		}
 
 		// TODO: stdOut, stdError - fill
