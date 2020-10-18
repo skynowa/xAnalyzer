@@ -45,8 +45,6 @@ AnalyzerApp::AnalyzerApp(
 
 	// C++ include dirs
 	includeDirs(&_include_dirs);
-
-	traceOptions();
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
@@ -76,6 +74,8 @@ AnalyzerApp::onRun() /* override */
 		dataIn.cppCheck_cLanguage  = ::C_LANG;
 		dataIn.cppCheck_jobsNum    = ::JOBS_NUM;
 		dataIn.cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
+
+		traceOptions();
 
 		if (dataIn.modifiedFiles.empty() &&
 			_type != ::TypeActive::ClangTidyFile)
