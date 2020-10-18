@@ -40,6 +40,11 @@ cbool_t STOP_ON_FAIL = false;
  */
 
 /**
+ * Project root directory
+ */
+std::ctstring_t PROJECT_DIR = "~/Projects/xLib";
+
+/**
  * Check mode
  * 0 - check changed files and headers
  * 1 - check only changed files
@@ -59,11 +64,6 @@ std::ctstring_t CPP_STD  = "c++11";
 std::cvec_tstring_t CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"};
 
 /**
- * Cppcheck
- */
-std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";
-
-/**
  * Compiler types
  */
 enum class CompilerId
@@ -75,12 +75,12 @@ enum class CompilerId
 xUSING_CONST(CompilerId);
 
 /**
- * Project root directory
- */
-std::ctstring_t PROJECT_DIR = "~/Projects/xLib";
-
-/**
  * TODO: Number of jobs (Cppcheck support only)
  */
 std::csize_t JOBS_NUM = 1;
+
+/**
+ * Cppcheck
+ */
+std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";
 //-------------------------------------------------------------------------------------------------
