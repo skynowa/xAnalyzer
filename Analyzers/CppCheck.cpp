@@ -79,6 +79,21 @@ CppCheck::_parseReport(
 	Cout() << xTRACE_VAR(a_stdOut);
 	Cout() << xTRACE_VAR(a_stdError);
 #endif
+
+
+	bool_t bRv = _isError(a_stdOut, a_stdError);
+	if (bRv) {
+
+	}
+}
+//-------------------------------------------------------------------------------------------------
+bool_t
+CppCheck::_isError(
+	std::ctstring_t &stdOut,
+	std::ctstring_t &stdError
+) const /* override */
+{
+	return false;
 }
 //-------------------------------------------------------------------------------------------------
 } // namespace xa

@@ -29,6 +29,7 @@ public:
 
 private:
 	void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const override;
+	bool_t _isError(std::ctstring_t &stdOut, std::ctstring_t &stdError) const override;
 };
 
 } // namespace xa

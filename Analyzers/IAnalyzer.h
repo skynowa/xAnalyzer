@@ -39,6 +39,8 @@ public:
 protected:
 	virtual void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
 		///<
+	virtual bool_t _isError(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
+		///<
 
 protected:
 	cType           _type {};
