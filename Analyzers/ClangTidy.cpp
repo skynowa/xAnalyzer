@@ -187,6 +187,17 @@ ClangTidy::_parseReport(
 	Cout() << xTRACE_VAR(a_stdError);
 #endif
 
+	std::tstring_t stdOut   = ::String::trimSpace(a_stdOut);
+	std::tstring_t stdError = ::String::trimSpace(a_stdError);
+
+	/// trace(stdOut);
+
+	// rm extra warning info
+	/// stdOut   = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n");
+	/// stdError = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n");
+
+	/// stdError = re.sub("^\d+ warnings and \d error generated\.", "", stdError).strip(" \t\r\n");
+	/// traceError(stdError);
 
 	bool_t bRv = _isError(a_stdOut, a_stdError);
 	if (bRv) {

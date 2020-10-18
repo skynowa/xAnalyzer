@@ -60,18 +60,6 @@ AnalyzerApp::onRun() /* override */
 
 		// TODO: stdOut, stdError - fill
 
-		stdOut   = ::String::trimSpace(stdOut);
-		stdError = ::String::trimSpace(stdError);
-
-		trace(stdOut);
-
-		// rm extra warning info
-		/// stdOut   = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n");
-		/// stdError = re.sub("^\d+ warnings generated\.", "", stderr_str).strip(" \t\r\n");
-
-		/// stdError = re.sub("^\d+ warnings and \d error generated\.", "", stdError).strip(" \t\r\n");
-		traceError(stdError);
-
 		if ( isError(stdOut, stdError) ) {
 			if (::STOP_ON_FAIL) {
 				traceError("***** Detect errors. Commit stopped ***** ");
