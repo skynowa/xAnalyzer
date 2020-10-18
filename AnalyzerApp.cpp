@@ -36,7 +36,7 @@ AnalyzerApp::onRun() /* override */
 		return ExitCode::Success;
 	}
 
-	for (const auto &it_analyzerType : IAnalyzer::types()) {
+	for (const auto &it_analyzerType : AnalyzersFactory::types()) {
 		auto &analyzer = AnalyzersFactory::create(it_analyzerType, dataIn);
 
 		if (it_analyzerType == IAnalyzer::Type::ClangTidy) {

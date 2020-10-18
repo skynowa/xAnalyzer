@@ -16,6 +16,13 @@ namespace xa
 AnalyzersFactory::analyzers_map_t AnalyzersFactory::_analyzers;
 //-------------------------------------------------------------------------------------------------
 /* static */
+std::vector<IAnalyzer::Type>
+AnalyzersFactory::types()
+{
+	return {IAnalyzer::Type::CppCheck, IAnalyzer::Type::ClangTidy};
+}
+//-------------------------------------------------------------------------------------------------
+/* static */
 const std::unique_ptr<IAnalyzer> &
 AnalyzersFactory::create(
 	IAnalyzer::cType  a_type,

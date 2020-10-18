@@ -23,6 +23,9 @@ public:
 ///@}
 
 	static
+	std::vector<IAnalyzer::Type> types();
+
+	static
 	const std::unique_ptr<IAnalyzer> &create(IAnalyzer::cType type, const AnalyzerDataIn &dataIn);
 
 private:

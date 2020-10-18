@@ -37,9 +37,6 @@ public:
 
     virtual bool_t run() = 0;
 
-	static
-	std::vector<IAnalyzer::Type> types();
-
 protected:
 	virtual void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
 		///<
