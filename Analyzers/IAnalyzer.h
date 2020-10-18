@@ -21,10 +21,8 @@ public:
 	 */
 	enum class Type
 	{
-		CppCheck      = 1,
-		ClangTidy     = 2,
-		ClangTidyDiff = 3,
-		ClangTidyFile = 4
+		CppCheck  = 1,
+		ClangTidy = 2
 	};
 	xUSING_CONST(Type);
 

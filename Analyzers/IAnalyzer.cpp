@@ -20,10 +20,8 @@ IAnalyzer::IAnalyzer(
 	// analyzer name
 	std::map<Type, std::tstring_t> names
 	{
-		{Type::CppCheck,      "[Cppcheck]"},
-		{Type::ClangTidy,     "[Clang-Tidy]"},
-		{Type::ClangTidyDiff, "[Clang-Tidy-Diff]"},
-		{Type::ClangTidyFile, "[Clang-Tidy-File]"}
+		{Type::CppCheck,  "[Cppcheck]"},
+		{Type::ClangTidy, "[Clang-Tidy]"}
 	};
 
 	_name = names[_type];

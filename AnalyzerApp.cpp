@@ -68,19 +68,7 @@ AnalyzerApp::onRun() /* override */
 			case IAnalyzer::Type::ClangTidy:
 				{
 					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
-					analyzer->run();
-				}
-				break;
-			case IAnalyzer::Type::ClangTidyDiff:
-				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					/// self.runDiff();
-					analyzer->run();
-				}
-				break;
-			case IAnalyzer::Type::ClangTidyFile:
-				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
 					/// self.runFile();
 					analyzer->run();
 				}
