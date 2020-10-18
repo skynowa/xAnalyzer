@@ -166,7 +166,8 @@ AnalyzerDataIn::_includeDirs(
 
 	out_dirPathes->clear();
 
-	if (::TypeActive::Active == ::TypeActive::CppCheck &&
+	// TODO: TypeActive
+	if (/* ::TypeActive::Active == ::TypeActive::CppCheck && */
 		::QUICK_CHECK)
 	{
 		*out_dirPathes = {};

@@ -27,9 +27,6 @@ public:
 private:
 	Console _console;
 
-	TypeActive     _type {};
-
-
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
 		///< Check if errors detected
 

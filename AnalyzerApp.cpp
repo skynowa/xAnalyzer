@@ -20,9 +20,6 @@ AnalyzerApp::AnalyzerApp(
 	Application(a_appGuid, a_locale)
 {
 	_console.setEscapeValues(false);
-
-	// analyzer type
-	_type = ::TypeActive::Active;
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
@@ -59,6 +56,8 @@ AnalyzerApp::onRun() /* override */
 			}
 		}
 		else {
+			cTypeActive _type {};
+
 			switch (_type) {
 			case ::TypeActive::CppCheck:
 				{

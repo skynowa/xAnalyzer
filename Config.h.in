@@ -47,8 +47,7 @@ enum class TypeActive
 	CppCheck      = 1,
 	ClangTidy     = 2,
 	ClangTidyDiff = 3,
-	ClangTidyFile = 4,
-	Active        = CppCheck
+	ClangTidyFile = 4
 };
 xUSING_CONST(TypeActive);
 
