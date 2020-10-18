@@ -85,6 +85,23 @@ AnalyzerDataIn::print(
 	core::OStream &a_os
 ) const /* override */
 {
+	a_os
+		// common
+		<< xTRACE_VAR(projectDirPath)      << "\n"
+		<< xTRACE_VAR(cppLanguage)         << "\n"
+		<< xTRACE_VAR(cppStandart)         << "\n"
+		<< xTRACE_VAR(includeDirs)         << "\n"
+		<< xTRACE_VAR(modifiedFiles)       << "\n"
+		<< xTRACE_VAR(defines)             << "\n"
+		<< xTRACE_VAR((int)osName)         << "\n"
+		<< xTRACE_VAR((int)compilerId)     << "\n"
+		<< xTRACE_VAR(compilerName)        << "\n"
+		<< xTRACE_VAR(isQuickCheck)        << "\n"
+		<< "\n"                            << "\n"
+		// partial - CppCheck
+		<< xTRACE_VAR(cppCheck_cLanguage)  << "\n"
+		<< xTRACE_VAR(cppCheck_jobsNum)    << "\n"
+		<< xTRACE_VAR(cppCheck_errorLevel);
 }
 //-------------------------------------------------------------------------------------------------
 
