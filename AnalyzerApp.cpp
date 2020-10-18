@@ -57,14 +57,12 @@ AnalyzerApp::onRun() /* override */
 		dataIn.projectDirPath      = ::PROJECT_DIR;
 		dataIn.cppLanguage         = ::CPP_LANG;
 		dataIn.cppStandart         = ::CPP_STD;
-		dataIn.includeDirs         = {};
+		includeDirs(&dataIn.includeDirs);
 		_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
 		dataIn.defines             = "-UKERN_PROC_PATHNAME";
-
 		std::tstring_t _complier_name;
 		complierInfo(&dataIn.compilerId, &_complier_name);
 		xUNUSED(_complier_name);
-
 		dataIn.isQuickCheck        = ::QUICK_CHECK;
 
 		// partial - CppCheck
