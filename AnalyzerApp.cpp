@@ -7,6 +7,7 @@
 #include "AnalyzerApp.h"
 
 #include "Analyzers/IAnalyzer.h"
+#include "Analyzers/ClangTidy.h"
 #include "AnalyzersFactory.h"
 
 
@@ -51,6 +52,12 @@ AnalyzerApp::onRun() /* override */
 
 			for (const auto &it_analyzerType : analyzerTypes) {
 				auto &analyzer = AnalyzersFactory::create(it_analyzerType, dataIn);
+
+				if (it_analyzerType == IAnalyzer::Type::ClangTidy) {
+					static_cast<ClangTidy &>(*analyzer).runDiff();
+					static_cast<ClangTidy &>(*analyzer).runFile();
+				}
+
 				analyzer->run();
 
 			}
