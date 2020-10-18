@@ -191,11 +191,8 @@ AnalyzerApp::traceOk(
 	xCHECK_DO(a_msg.empty(), return);
 
 #if 0
-	_console.writeLine(Console::Foreground::Yellow , Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), _name);
-
-	_console.writeLine(Console::Foreground::Green , Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), " " + a_msg);
+	traceColor(Console::Foreground::Yellow, _name);
+	traceColor(Console::Foreground::Green, " " + a_msg);
 #endif
 }
 //-------------------------------------------------------------------------------------------------
@@ -207,8 +204,7 @@ AnalyzerApp::traceError(
 	xCHECK_DO(a_msg.empty(), return);
 
 #if 0
-	_console.writeLine(Console::Foreground::Red , Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
+	_console.traceColor(Console::Foreground::Red, _name + " " + a_msg);
 #endif
 }
 //-------------------------------------------------------------------------------------------------
