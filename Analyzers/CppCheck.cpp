@@ -27,13 +27,15 @@ void_t
 CppCheck::run() /* override */
 {
 	// [in]
+	// common
 	std::tstring_t  cppLanguage        = _dataIn.cppLanguage;
-
 	std::tstring_t  cppStandart        = _dataIn.cppStandart;
 	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
+	// partial - CppCheck
 	std::tstring_t  cLanguage          = _dataIn.cLanguage;
+	std::size_t     jobsNum            = _dataIn.jobsNum;
 
 	std::cvec_tstring_t params
 	{
@@ -45,7 +47,7 @@ CppCheck::run() /* override */
 		"--language=" + cLanguage, "--language=" + cppLanguage, "--std=" + cppStandart,
 		"--platform=unix64",
 		"--force",
-		"-j" + std::to_string(::JOBS_NUM),
+		"-j" + std::to_string(jobsNum),
 		"--relative-paths",
 		"--error-exitcode=1",
 

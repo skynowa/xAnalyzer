@@ -54,6 +54,7 @@ cbool_t STOP_ON_FAIL = false;
 /**
  * C++ language / standart
  */
+std::ctstring_t C_LANG   = "c";
 std::ctstring_t CPP_LANG = "c++";
 std::ctstring_t CPP_STD  = "c++11";
 

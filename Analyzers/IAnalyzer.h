@@ -13,16 +13,15 @@ namespace xa
 
 struct AnalyzerDataIn
 {
-	// constants
-	std::ctstring_t    cppLanguage {"c++"};
-
 	// common
+	std::tstring_t     cppLanguage;
 	std::tstring_t     cppStandart;
 	std::vec_tstring_t includeDirs;
 	std::vec_tstring_t modifiedFiles;
 
 	// partial - CppCheck
-	std::ctstring_t    cLanguage {"c"};
+	std::tstring_t     cLanguage;
+	std::size_t        jobsNum;
 };
 xUSING_CONST(AnalyzerDataIn);
 
