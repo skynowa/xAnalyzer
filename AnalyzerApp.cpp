@@ -28,6 +28,10 @@ AnalyzerApp::AnalyzerApp(
 AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
+	if (::SKIP_CHECK) {
+		return Application::ExitCode::Success;
+	}
+
 	// profiler
 	/// time_start_sec = time.time();
 
@@ -141,7 +145,7 @@ def isError(self, a_out, a_stderr_str):
 void_t
 AnalyzerApp::traceOptions() const
 {
-#if 1
+#if 0
 	if (::QUICK_CHECK) {
 		traceOk("Start analysis (quick)...");
 	} else {
@@ -164,7 +168,7 @@ AnalyzerApp::traceColor(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 1
+#if 0
 	_console.writeLine(a_color, Console::Background::Default,
 		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
 #endif
@@ -185,7 +189,7 @@ AnalyzerApp::traceOk(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 1
+#if 0
 	traceColor(Console::Foreground::Yellow, _name);
 	traceColor(Console::Foreground::Green, " " + a_msg);
 #endif
@@ -198,7 +202,7 @@ AnalyzerApp::traceError(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 1
+#if 0
 	_console.traceColor(Console::Foreground::Red, _name + " " + a_msg);
 #endif
 }
