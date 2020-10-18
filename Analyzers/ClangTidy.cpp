@@ -50,8 +50,8 @@ ClangTidy::run() /* override */
 		header_filter = Format::str("^{}/.*", ::PROJECT_DIR); // all
 	}
 
-	std::ctstring_t include_dirs       = "self._include_dirs";
-	std::ctstring_t git_modified_files = "self._git_modified_files";
+	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
 	std::cvec_tstring_t params
 	{
