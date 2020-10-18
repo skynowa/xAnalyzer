@@ -36,13 +36,7 @@ AnalyzerApp::onRun() /* override */
 		return ExitCode::Success;
 	}
 
-	const std::vector<IAnalyzer::Type> analyzerTypes
-	{
-		IAnalyzer::Type::CppCheck,
-		IAnalyzer::Type::ClangTidy
-	};
-
-	for (const auto &it_analyzerType : analyzerTypes) {
+	for (const auto &it_analyzerType : IAnalyzer::types()) {
 		auto &analyzer = AnalyzersFactory::create(it_analyzerType, dataIn);
 
 		if (it_analyzerType == IAnalyzer::Type::ClangTidy) {

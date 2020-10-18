@@ -35,6 +35,9 @@ public:
     xNO_COPY_ASSIGN(IAnalyzer)
 ///@}
 
+	static
+	std::vector<IAnalyzer::Type> types();
+
     virtual bool_t run() = 0;
 
 protected:
