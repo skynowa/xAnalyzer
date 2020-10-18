@@ -75,10 +75,8 @@ ClangTidy::run() /* override */
 	std::tstring_t stdError;
 
 	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
-#if 1
-	Cout() << xTRACE_VAR(stdOut);
-	Cout() << xTRACE_VAR(stdError);
-#endif
+
+	_parseReport(stdOut, stdError);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -180,10 +178,14 @@ def runClangTidyFile(self):
 //-------------------------------------------------------------------------------------------------
 void_t
 ClangTidy::_parseReport(
-	std::ctstring_t &stdOut,
-	std::ctstring_t &stdError
+	std::ctstring_t &a_stdOut,
+	std::ctstring_t &a_stdError
 ) const /* override */
 {
+#if 1
+	Cout() << xTRACE_VAR(a_stdOut);
+	Cout() << xTRACE_VAR(a_stdError);
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 
