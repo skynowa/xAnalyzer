@@ -55,9 +55,6 @@ CppCheck::run() /* override */
 		"--xml", "--xml-version=2"
 	};
 
-	int i = 0;
-	i = 1 / i;
-
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
