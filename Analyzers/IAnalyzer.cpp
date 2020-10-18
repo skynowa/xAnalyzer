@@ -36,13 +36,7 @@ IAnalyzer::IAnalyzer(
 std::vector<IAnalyzer::Type>
 IAnalyzer::types()
 {
-	static const std::vector<Type> types
-	{
-		Type::CppCheck,
-		Type::ClangTidy
-	};
-
-	return types;
+	return {Type::CppCheck, Type::ClangTidy};
 }
 //-------------------------------------------------------------------------------------------------
 
