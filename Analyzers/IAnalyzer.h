@@ -39,9 +39,9 @@ public:
     virtual bool_t run(AnalyzerDataOut *dataOut) = 0;
 
 protected:
-	virtual void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
+	virtual void_t _parseReport(AnalyzerDataOut *dataOut) const = 0;
 		///<
-	virtual bool_t _isError(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
+	virtual bool_t _isError(const AnalyzerDataOut &dataOut) const = 0;
 		///<
 
 protected:

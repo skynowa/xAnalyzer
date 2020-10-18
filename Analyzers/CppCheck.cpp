@@ -67,24 +67,23 @@ CppCheck::run(
 		&out_dataOut->stdError);
 	xTEST(out_dataOut->isValid());
 
-	_parseReport(out_dataOut->stdOut, out_dataOut->stdError);
+	_parseReport(out_dataOut);
 
-	return _isError(out_dataOut->stdOut, out_dataOut->stdError);
+	return _isError(*out_dataOut);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
 CppCheck::_parseReport(
-	std::ctstring_t &a_stdOut,
-	std::ctstring_t &a_stdError
+	AnalyzerDataOut *out_dataOut
 ) const /* override */
 {
 #if 1
-	_log.write("a_stdOut: "   + a_stdOut);
-	_log.write("a_stdError: " + a_stdError);
+	_log.write("a_stdOut: "   + out_dataOut->stdOut);
+	_log.write("a_stdError: " + out_dataOut->stdError);
 #endif
 
-	std::tstring_t stdOut   = ::String::trimSpace(a_stdOut);
-	std::tstring_t stdError = ::String::trimSpace(a_stdError);
+	std::tstring_t stdOut   = ::String::trimSpace(out_dataOut->stdOut);
+	std::tstring_t stdError = ::String::trimSpace(out_dataOut->stdError);
 
 	_log.write(stdOut);
 
@@ -98,8 +97,7 @@ CppCheck::_parseReport(
 //-------------------------------------------------------------------------------------------------
 bool_t
 CppCheck::_isError(
-	std::ctstring_t &stdOut,
-	std::ctstring_t &stdError
+	const AnalyzerDataOut &a_dataOut
 ) const /* override */
 {
 #if 0

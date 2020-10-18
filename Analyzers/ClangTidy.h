@@ -35,8 +35,8 @@ public:
 private:
 	Log _log;
 
-	void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const override;
-	bool_t _isError(std::ctstring_t &stdOut, std::ctstring_t &stdError) const override;
+	void_t _parseReport(AnalyzerDataOut *dataOut) const override;
+	bool_t _isError(const AnalyzerDataOut &dataOut) const override;
 };
 
 } // namespace xa
