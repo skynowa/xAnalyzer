@@ -29,6 +29,8 @@ CppCheck::run(
 	AnalyzerDataOut *out_dataOut
 ) /* override */
 {
+	bool_t bRv {};
+
 	// [in]
 	// common
 	std::tstring_t     projectDirPath = _dataIn.projectDirPath;
@@ -69,7 +71,10 @@ CppCheck::run(
 
 	_parseReport(out_dataOut);
 
-	return _isError(*out_dataOut);
+	bRv = _isError(*out_dataOut);
+	xCHECK_RET(!bRv, false);
+
+	return true;
 }
 //-------------------------------------------------------------------------------------------------
 void_t

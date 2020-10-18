@@ -29,6 +29,8 @@ ClangTidy::run(
 	AnalyzerDataOut *out_dataOut
 ) /* override */
 {
+	bool_t bRv {};
+
 	// [in]
 	// common
 	std::tstring_t     projectDirPath = _dataIn.projectDirPath;
@@ -78,9 +80,10 @@ ClangTidy::run(
 		&out_dataOut->stdError);
 	xTEST(out_dataOut->isValid());
 
-	_parseReport(out_dataOut);
+	bRv = _isError(*out_dataOut);
+	xCHECK_RET(!bRv, false);
 
-	return _isError(*out_dataOut);
+	return true;
 }
 //-------------------------------------------------------------------------------------------------
 void_t
