@@ -37,14 +37,16 @@ public:
     virtual void_t run() = 0;
 
 protected:
+	virtual void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
+		///<
+
+protected:
 	cType           _type {};
 	std::tstring_t  _name;
 	cAnalyzerDataIn _dataIn;
 
 	std::tstring_t  _binPath() const;
 		///< path to binary file
-	virtual void_t  _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;
-		///<
 };
 //-------------------------------------------------------------------------------------------------
 } // namespace xa
