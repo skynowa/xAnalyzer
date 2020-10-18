@@ -62,6 +62,22 @@ AnalyzerDataIn::isValid() const /* override */
 void_t
 AnalyzerDataIn::clear() /* override */
 {
+	// common
+	projectDirPath      = {};
+	cppLanguage         = {};
+	cppStandart         = {};
+	includeDirs         = {};
+	modifiedFiles       = {};
+	defines             = {};
+	osName              = {};
+	compilerId          = {};
+	compilerName        = {};
+	isQuickCheck        = {};
+
+	// partial - CppCheck
+	cppCheck_cLanguage  = {};
+	cppCheck_jobsNum    = {};
+	cppCheck_errorLevel = {};
 }
 //-------------------------------------------------------------------------------------------------
 void_t
