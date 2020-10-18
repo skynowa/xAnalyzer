@@ -34,7 +34,6 @@ AnalyzerApp::onRun() /* override */
 	/// time_start_sec = time.time();
 
 	AnalyzerDataIn dataIn;
-
 	if ( dataIn.modifiedFiles.empty() ) {
 		traceOk("No changes. OK");
 		return ExitCode::Success;
@@ -64,10 +63,6 @@ AnalyzerApp::onRun() /* override */
 		stdOut   = ::String::trimSpace(stdOut);
 		stdError = ::String::trimSpace(stdError);
 
-		// TODO: profiler
-		std::ctstring_t time_stop_sec_str = "";
-		/// time_stop_sec_str = "({0:.2f} sec)".format(time.time() - time_start_sec);
-
 		trace(stdOut);
 
 		// rm extra warning info
@@ -79,14 +74,14 @@ AnalyzerApp::onRun() /* override */
 
 		if ( isError(stdOut, stdError) ) {
 			if (::STOP_ON_FAIL) {
-				traceError("***** Detect errors. Commit stopped ***** " + time_stop_sec_str);
+				traceError("***** Detect errors. Commit stopped ***** ");
 
 				return ExitCode::Failure;
 			}
 
-			traceError("***** Detect errors. Commited ***** " + time_stop_sec_str);
+			traceError("***** Detect errors. Commited ***** ");
 		} else {
-			traceOk("No warnings. OK " + time_stop_sec_str);
+			traceOk("No warnings. OK ");
 		}
 	} // for (analyzerTypes)
 
