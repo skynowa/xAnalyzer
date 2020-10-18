@@ -51,7 +51,7 @@ AnalyzerApp::onRun() /* override */
 	/// time_start_sec = time.time();
 
 	// TODO: dataIn
-	AnalyzerDataIn dataIn;
+	AnalyzerDataIn dataIn {};
 	{
 		// common
 		dataIn.projectDirPath      = ::PROJECT_DIR;
