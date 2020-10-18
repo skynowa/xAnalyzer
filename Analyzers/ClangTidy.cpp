@@ -57,7 +57,7 @@ ClangTidy::run(
 
 	std::tstring_t headerFilter;
 	if (isQuickCheck) {
-		headerFilter = ""; // skip
+		headerFilter = {}; // skip
 	} else {
 		headerFilter = Format::str("^{}/.*", projectDirPath); // all
 	}
