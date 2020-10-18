@@ -7,10 +7,10 @@
 #pragma once
 
 #include "../Config.h"
-//-------------------------------------------------------------------------------------------------
+
 namespace xa
 {
-
+//-------------------------------------------------------------------------------------------------
 struct AnalyzerDataIn
 {
 	// common
@@ -24,14 +24,14 @@ struct AnalyzerDataIn
 	std::size_t        cppCheck_jobsNum;
 };
 xUSING_CONST(AnalyzerDataIn);
-
+//-------------------------------------------------------------------------------------------------
 class IAnalyzer
     /// Analyzers interface
 {
 public:
 ///@name ctors, dtor
 ///@{
-             IAnalyzer(cAnalyzerDataIn &dataIn);
+             IAnalyzer(cTypeActive type, cAnalyzerDataIn &dataIn);
     virtual ~IAnalyzer();
 
     xNO_COPY_ASSIGN(IAnalyzer)
@@ -40,8 +40,11 @@ public:
     virtual void_t run() = 0;
 
 protected:
-	cAnalyzerDataIn _dataIn;
-};
+	cTypeActive     _type {};
+	cAnalyzerDataIn _dataIn {};
 
-} // namespace xa
+	std::tstring_t  _binPath() const;
+		///< path to binary file
+};
 //-------------------------------------------------------------------------------------------------
+} // namespace xa

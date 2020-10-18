@@ -19,7 +19,7 @@ namespace xa
 ClangTidy::ClangTidy(
 	cAnalyzerDataIn &a_dataIn
 ) :
-	IAnalyzer(a_dataIn)
+	IAnalyzer(::TypeActive::ClangTidy, a_dataIn)
 {
 }
 //-------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ ClangTidy::run() /* override */
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("/usr/bin/clang-tidy", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #if 1
 	Cout() << xTRACE_VAR(stdOut);
 	Cout() << xTRACE_VAR(stdError);

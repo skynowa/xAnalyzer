@@ -19,7 +19,7 @@ namespace xa
 CppCheck::CppCheck(
 	cAnalyzerDataIn &a_dataIn
 ) :
-	IAnalyzer(a_dataIn)
+	IAnalyzer(::TypeActive::CppCheck, a_dataIn)
 {
 }
 //-------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ CppCheck::run() /* override */
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
 
-	Process::execute("/usr/bin/cppcheck", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 #if 1
 	Cout() << xTRACE_VAR(stdOut);
 	Cout() << xTRACE_VAR(stdError);

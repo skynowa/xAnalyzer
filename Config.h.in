@@ -12,6 +12,8 @@
 using namespace xl;
 //-------------------------------------------------------------------------------------------------
 const std::ctstring_t appName = xT("@PROJECT_NAME@");
+const std::ctstring_t cppCheckFilePath       = xT("@CPP_CHECK_FILE_PATH@");
+const std::ctstring_t clangTidyCheckFilePath = xT("@CLANG_TIDY_FILE_PATH@");
 //-------------------------------------------------------------------------------------------------
 /**
  * Analyzer types
