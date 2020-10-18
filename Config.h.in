@@ -38,7 +38,7 @@ cbool_t STOP_ON_FAIL = false;
 /**
  * Project root directory
  */
-std::ctstring_t PROJECT_DIR = "~/Projects/xLib";
+std::ctstring_t PROJECT_DIR = "/home/skynowa/Projects/xLib";
 
 /**
  * Check mode
