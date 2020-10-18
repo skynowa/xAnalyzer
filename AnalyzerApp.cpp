@@ -56,11 +56,11 @@ AnalyzerApp::onRun() /* override */
 		std::tstring_t stdOut;
 		std::tstring_t stdError;
 
-		analyzer->run();
+		bool bRv = analyzer->run();
 
 		// TODO: stdOut, stdError - fill
 
-		if ( isError(stdOut, stdError) ) {
+		if (!bRv) {
 			if (::STOP_ON_FAIL) {
 				traceError("***** Detect errors. Commit stopped ***** ");
 
@@ -74,25 +74,6 @@ AnalyzerApp::onRun() /* override */
 	} // for (analyzerTypes)
 
 	return ExitCode::Success;
-}
-//-------------------------------------------------------------------------------------------------
-bool_t
-AnalyzerApp::isError(
-	std::ctstring_t &a_out,
-	std::ctstring_t &a_stderr_str
-) const
-{
-#if 0
-def isError(self, a_out, a_stderr_str):
-	"" Check if errors detected ""
-
-	return
-		bool((a_out.returncode == 1 or
-			  re.search("^.*(error|warning).*$", a_stderr_str, re.MULTILINE)) and
-		a_stderr_str.find("Error while processing") > 0)
-#else
-	return false;
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t

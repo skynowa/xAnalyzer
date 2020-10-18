@@ -208,7 +208,17 @@ ClangTidy::_isError(
 	std::ctstring_t &stdError
 ) const /* override */
 {
+#if 0
+def isError(self, a_out, a_stderr_str):
+	"" Check if errors detected ""
+
+	return
+		bool((a_out.returncode == 1 or
+			  re.search("^.*(error|warning).*$", a_stderr_str, re.MULTILINE)) and
+		a_stderr_str.find("Error while processing") > 0)
+#else
 	return false;
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 } // namespace xa
