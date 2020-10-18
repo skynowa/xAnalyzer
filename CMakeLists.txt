@@ -37,6 +37,7 @@ set(SOURCES
     AnalyzersFactory.cpp
     Log.cpp
     Analyzers/AnalyzerDataIn.cpp
+    Analyzers/AnalyzerDataOut.cpp
     Analyzers/IAnalyzer.cpp
     Analyzers/CppCheck.cpp
     Analyzers/ClangTidy.cpp)

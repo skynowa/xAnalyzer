@@ -4,7 +4,7 @@
  */
 
 
-#include "IAnalyzer.h"
+#include "AnalyzerDataIn.h"
 
 namespace xa
 {
@@ -35,7 +35,6 @@ AnalyzerDataIn::AnalyzerDataIn()
 	cppCheck_jobsNum    = ::JOBS_NUM;
 	cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
 
-	/// traceOptions();
 	xTEST(isValid());
 }
 //-------------------------------------------------------------------------------------------------
