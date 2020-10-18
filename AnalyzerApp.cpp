@@ -21,9 +21,6 @@ AnalyzerApp::AnalyzerApp(
 {
 	_console.setEscapeValues(false);
 
-	// current OS
-	_os_name = SystemInfo().os();
-
 	// analyzer type
 	_type = ::TypeActive::Active;
 
@@ -63,6 +60,7 @@ AnalyzerApp::onRun() /* override */
 		std::tstring_t _complier_name;
 		complierInfo(&dataIn.compilerId, &_complier_name);
 		xUNUSED(_complier_name);
+		dataIn.osName              = SystemInfo().os();
 		dataIn.isQuickCheck        = ::QUICK_CHECK;
 
 		// partial - CppCheck
@@ -307,7 +305,7 @@ AnalyzerApp::compilerIncludeDirs(
 		out_dirPathes->push_back("-I" + String::trimSpace(it_include));
 	}
 
-	if (_os_name == SystemInfo::OsType::FreeBSD) {
+	if (SystemInfo().os() == SystemInfo::OsType::FreeBSD) {
 		out_dirPathes->push_back("-isystem/usr/include/c++/v1");
 	}
 }

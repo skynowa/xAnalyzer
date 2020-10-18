@@ -28,7 +28,6 @@ private:
 	Console   _console;
 	GitClient _git;
 
-	SystemInfo::OsType  _os_name {};
 	TypeActive          _type {};
 	std::tstring_t      _name;
 

@@ -20,6 +20,7 @@ struct AnalyzerDataIn
 	std::vec_tstring_t includeDirs;
 	std::vec_tstring_t modifiedFiles;
 	std::tstring_t     defines;
+	SystemInfo::OsType osName {};		// includeDirs
 	::CompilerId       compilerId {};	// ClangTidy
 	bool               isQuickCheck {};	// ClangTidy
 
