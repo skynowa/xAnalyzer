@@ -47,35 +47,11 @@ AnalyzerApp::onRun() /* override */
 	// profiler
 	/// time_start_sec = time.time();
 
-	// TODO: dataIn
-	AnalyzerDataIn dataIn {};
-	{
-		// common
-		dataIn.projectDirPath      = ::PROJECT_DIR;
-		dataIn.cppLanguage         = ::CPP_LANG;
-		dataIn.cppStandart         = ::CPP_STD;
-		/// includeDirs(&dataIn.includeDirs);
-		_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
-		dataIn.defines             = "-UKERN_PROC_PATHNAME";
-		std::tstring_t _complier_name;
-		/// complierInfo(&dataIn.compilerId, &_complier_name);
-		xUNUSED(_complier_name);
-		dataIn.osName              = SystemInfo().os();
-		dataIn.isQuickCheck        = ::QUICK_CHECK;
+	AnalyzerDataIn dataIn;
 
-		// partial - CppCheck
-		dataIn.cppCheck_cLanguage  = ::C_LANG;
-		dataIn.cppCheck_jobsNum    = ::JOBS_NUM;
-		dataIn.cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
-
-		traceOptions();
-
-		if (dataIn.modifiedFiles.empty() &&
-			_type != ::TypeActive::ClangTidyFile)
-		{
-			traceOk("No changes. OK");
-			return ExitCode::Success;
-		}
+	if ( dataIn.modifiedFiles.empty() ) {
+		traceOk("No changes. OK");
+		return ExitCode::Success;
 	}
 
 	std::tstring_t stdOut;

@@ -30,6 +30,12 @@ public:
 	std::size_t        cppCheck_jobsNum {};
 	std::tstring_t     cppCheck_errorLevel;
 
+///@name ctors, dtor
+///@{
+	 AnalyzerDataIn();
+	~AnalyzerDataIn() = default;
+///@}
+
 private:
 	void_t _complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;
 		///< get complier info (ID, name)

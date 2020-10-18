@@ -25,11 +25,10 @@ public:
 	ExitCode onRun() override;
 
 private:
-	Console   _console;
-	GitClient _git;
+	Console _console;
 
-	TypeActive          _type {};
-	std::tstring_t      _name;
+	TypeActive     _type {};
+	std::tstring_t _name;
 
 	bool_t isError(std::ctstring_t &out, std::ctstring_t &stderr_str) const;
 		///< Check if errors detected

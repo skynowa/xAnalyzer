@@ -10,6 +10,37 @@ namespace xa
 {
 
 /**************************************************************************************************
+*   public
+*
+**************************************************************************************************/
+
+//-------------------------------------------------------------------------------------------------
+AnalyzerDataIn::AnalyzerDataIn()
+{
+	// common
+	projectDirPath      = ::PROJECT_DIR;
+	cppLanguage         = ::CPP_LANG;
+	cppStandart         = ::CPP_STD;
+	_includeDirs(&includeDirs);
+	GitClient().modifiedFiles(::CPP_MASK, &modifiedFiles);
+	defines             = "-UKERN_PROC_PATHNAME";
+	std::tstring_t _complier_name;
+	_complierInfo(&compilerId, &_complier_name);
+	xUNUSED(_complier_name);
+	osName              = SystemInfo().os();
+	isQuickCheck        = ::QUICK_CHECK;
+
+	// partial - CppCheck
+	cppCheck_cLanguage  = ::C_LANG;
+	cppCheck_jobsNum    = ::JOBS_NUM;
+	cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
+
+	/// traceOptions();
+}
+//-------------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
 *   priivate
 *
 **************************************************************************************************/
