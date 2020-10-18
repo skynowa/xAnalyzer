@@ -86,6 +86,7 @@ AnalyzerApp::onRun() /* override */
 
 		std::tstring_t _complier_name;
 		complierInfo(&dataIn.compilerId, &_complier_name);
+		xUNUSED(_complier_name);
 
 		// partial - CppCheck
 		dataIn.cppCheck_cLanguage  = ::C_LANG;
