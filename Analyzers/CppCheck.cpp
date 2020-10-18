@@ -41,7 +41,6 @@ CppCheck::run(
 	SystemInfo::OsType osName         = _dataIn.osName;       xUNUSED(osName);
 	cbool_t            isQuickCheck   = _dataIn.isQuickCheck; xUNUSED(isQuickCheck);
 
-
 	// partial - CppCheck
 	std::ctstring_t    cLanguage      = _dataIn.cppCheck_cLanguage;
 	std::csize_t       jobsNum        = _dataIn.cppCheck_jobsNum;
@@ -64,14 +63,13 @@ CppCheck::run(
 		"--xml", "--xml-version=2"
 	};
 
-	std::tstring_t stdOut;
-	std::tstring_t stdError;
+	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &out_dataOut->stdOut,
+		&out_dataOut->stdError);
+	xTEST(out_dataOut->isValid());
 
-	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	_parseReport(out_dataOut->stdOut, out_dataOut->stdError);
 
-	_parseReport(stdOut, stdError);
-
-	return _isError(stdOut, stdError);
+	return _isError(out_dataOut->stdOut, out_dataOut->stdError);
 }
 //-------------------------------------------------------------------------------------------------
 void_t

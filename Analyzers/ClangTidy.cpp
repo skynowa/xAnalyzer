@@ -74,14 +74,13 @@ ClangTidy::run(
 		forceCpp
 	};
 
-	std::tstring_t stdOut;
-	std::tstring_t stdError;
+	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &out_dataOut->stdOut,
+		&out_dataOut->stdError);
+	xTEST(out_dataOut->isValid());
 
-	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+	_parseReport(out_dataOut->stdOut, out_dataOut->stdError);
 
-	_parseReport(stdOut, stdError);
-
-	return _isError(stdOut, stdError);
+	return _isError(out_dataOut->stdOut, out_dataOut->stdError);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
