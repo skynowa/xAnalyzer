@@ -27,9 +27,6 @@ public:
 
 private:
 	Log _log;
-
-	void_t traceOptions() const;
-		///< trace options (configs)
 };
 
 } // namespace xa

@@ -25,6 +25,8 @@ public:
 	SystemInfo::OsType osName {};		// includeDirs
 	::CompilerId       compilerId {};	// ClangTidy
 	std::tstring_t     compilerName;	//
+	bool_t             isSkipCheck {};
+	bool_t             isStopOnFail {};
 	bool_t             isQuickCheck {};	// ClangTidy
 
 	// partial - CppCheck

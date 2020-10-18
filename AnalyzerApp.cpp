@@ -25,11 +25,12 @@ AnalyzerApp::AnalyzerApp(
 AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
-	if (::SKIP_CHECK) {
+	const AnalyzerDataIn dataIn;
+
+	if (dataIn.isSkipCheck) {
 		return Application::ExitCode::Success;
 	}
 
-	AnalyzerDataIn dataIn;
 	if ( dataIn.modifiedFiles.empty() ) {
 		_log.writeOk("No changes. OK");
 		return ExitCode::Success;
@@ -52,12 +53,12 @@ AnalyzerApp::onRun() /* override */
 		std::tstring_t stdOut;
 		std::tstring_t stdError;
 
-		bool bRv = analyzer->run();
+		bool_t bRv = analyzer->run();
 
 		// TODO: stdOut, stdError - fill
 
 		if (!bRv) {
-			if (::STOP_ON_FAIL) {
+			if (dataIn.isStopOnFail) {
 				_log.writeError("***** Detect errors. Commit stopped ***** ");
 				return ExitCode::Failure;
 			}
@@ -69,22 +70,6 @@ AnalyzerApp::onRun() /* override */
 	} // for (analyzerTypes)
 
 	return ExitCode::Success;
-}
-//-------------------------------------------------------------------------------------------------
-void_t
-AnalyzerApp::traceOptions() const
-{
-	if (::QUICK_CHECK) {
-		_log.writeOk("Start analysis (quick)...");
-	} else {
-		_log.writeOk("Start analysis (full)...");
-	}
-
-	_log.write("");
-	_log.writeOk("Options:");
-	_log.write("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
-	_log.write("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
-	_log.write("");
 }
 //-------------------------------------------------------------------------------------------------
 

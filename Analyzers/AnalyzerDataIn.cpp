@@ -26,6 +26,8 @@ AnalyzerDataIn::AnalyzerDataIn()
 	defines             = "-UKERN_PROC_PATHNAME";
 	_complierInfo(&compilerId, &compilerName);	xUNUSED(compilerName);
 	osName              = SystemInfo().os();
+	isSkipCheck         = ::SKIP_CHECK;
+	isStopOnFail        = ::STOP_ON_FAIL;
 	isQuickCheck        = ::QUICK_CHECK;
 
 	// partial - CppCheck
@@ -51,6 +53,8 @@ AnalyzerDataIn::isValid() const /* override */
 	xTEST_NA(compilerId);
 	xCHECK_RET(compilerName.empty(), false);
 	xTEST_NA(isQuickCheck);
+	xTEST_NA(isSkipCheck);
+	xTEST_NA(isStopOnFail);
 
 	// partial - CppCheck
 	xCHECK_RET(cppCheck_cLanguage.empty(), false);
@@ -73,6 +77,8 @@ AnalyzerDataIn::clear() /* override */
 	osName              = {};
 	compilerId          = {};
 	compilerName        = {};
+	isSkipCheck         = {};
+	isStopOnFail        = {};
 	isQuickCheck        = {};
 
 	// partial - CppCheck
@@ -86,6 +92,14 @@ AnalyzerDataIn::print(
 	core::OStream &a_os
 ) const /* override */
 {
+#if 0
+	if (isSkipCheck) {
+		_log.writeOk("Start analysis (quick)...");
+	} else {
+		_log.writeOk("Start analysis (full)...");
+	}
+#endif
+
 	a_os
 		// common
 		<< "\n"
@@ -99,6 +113,8 @@ AnalyzerDataIn::print(
 		<< xTRACE_VAR((int)osName)         << "\n"
 		<< xTRACE_VAR((int)compilerId)     << "\n"
 		<< xTRACE_VAR(compilerName)        << "\n"
+		<< xTRACE_VAR(isSkipCheck)         << "\n"
+		<< xTRACE_VAR(isStopOnFail)        << "\n"
 		<< xTRACE_VAR(isQuickCheck)        << "\n"
 		<< "\n"                            << "\n"
 		// partial - CppCheck
