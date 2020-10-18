@@ -27,6 +27,7 @@ void_t
 ClangTidy::run() /* override */
 {
 	// [in]
+	std::tstring_t  cppStandart        = _dataIn.cppStandart;
 	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
@@ -56,7 +57,7 @@ ClangTidy::run() /* override */
 		"-system-headers=0",
 		"-line-filter="    + line_filter,
 		"-header-filter="  + header_filter,
-		"-extra-arg=-std=" + ::CPP_STD,
+		"-extra-arg=-std=" + cppStandart,
 		"-extra-arg="      + args_stdlib[complierId],
 		"-quiet",
 		"--",

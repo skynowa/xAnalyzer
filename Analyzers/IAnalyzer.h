@@ -13,6 +13,7 @@ namespace xa
 
 struct AnalyzerDataIn
 {
+	std::tstring_t     cppStandart;
 	std::vec_tstring_t includeDirs;
 	std::vec_tstring_t modifiedFiles;
 };

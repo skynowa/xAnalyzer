@@ -27,6 +27,7 @@ void_t
 CppCheck::run() /* override */
 {
 	// [in]
+	std::tstring_t  cppStandart        = _dataIn.cppStandart;
 	std::ctstring_t include_dirs       = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t git_modified_files = String::join(_dataIn.modifiedFiles, " ");
 
@@ -37,7 +38,7 @@ CppCheck::run() /* override */
 		"--library=std.cfg", "--library=posix.cfg",
 		/// "-UKERN_PROC_PATHNAME",
 		"--enable=" + ::CPPCHECK_ERROR_LEVEL, "--inconclusive",
-		"--language=c", "--language=" + ::CPP_LANG, "--std=" + ::CPP_STD,
+		"--language=c", "--language=" + ::CPP_LANG, "--std=" + cppStandart,
 		"--platform=unix64",
 		"--force",
 		"-j" + std::to_string(::JOBS_NUM),

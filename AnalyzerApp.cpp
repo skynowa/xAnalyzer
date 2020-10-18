@@ -79,6 +79,9 @@ AnalyzerApp::onRun() /* override */
 
 	// TODO: dataIn
 	AnalyzerDataIn dataIn;
+	dataIn.cppStandart   = ::CPP_STD;
+	dataIn.includeDirs   = {};
+	dataIn.modifiedFiles = {};
 
 	std::tstring_t stdOut;
 	std::tstring_t stdError;
