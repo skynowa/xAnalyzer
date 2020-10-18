@@ -11,8 +11,9 @@
 namespace xa
 {
 //-------------------------------------------------------------------------------------------------
-struct AnalyzerDataIn
+class AnalyzerDataIn
 {
+public:
 	// common
 	std::tstring_t     projectDirPath;
 	std::tstring_t     cppLanguage;
@@ -28,6 +29,16 @@ struct AnalyzerDataIn
 	std::tstring_t     cppCheck_cLanguage;
 	std::size_t        cppCheck_jobsNum {};
 	std::tstring_t     cppCheck_errorLevel;
+
+private:
+	void_t _complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;
+		///< get complier info (ID, name)
+	void_t _includeDirs(std::vec_tstring_t *dirPathes) const;
+		///< get include dirs
+	void_t _compilerIncludeDirs(std::vec_tstring_t *dirPathes) const;
+		///< get compiler include dirs
+	void_t _pkgConfig(std::ctstring_t &lib_name, std::vec_tstring_t *cflags) const;
+		///< get libs, cflags by pkg-config tool
 };
 xUSING_CONST(AnalyzerDataIn);
 //-------------------------------------------------------------------------------------------------
