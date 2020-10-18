@@ -49,9 +49,6 @@ AnalyzerApp::AnalyzerApp(
 	Cout() << xTRACE_VAR(_git_modified_files);
 #endif
 
-	// compiler info
-	complierInfo(&_complier_id, &_complier_name);
-
 	// C++ include dirs
 	includeDirs(&_include_dirs);
 
@@ -85,6 +82,10 @@ AnalyzerApp::onRun() /* override */
 	dataIn.includeDirs         = {};
 	_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
 	dataIn.defines             = "-UKERN_PROC_PATHNAME";
+
+	::CompilerId   _complier_id {};
+	std::tstring_t _complier_name;
+	complierInfo(&dataIn.compilerId, &_complier_name);
 
 	// partial - CppCheck
 	dataIn.cppCheck_cLanguage  = ::C_LANG;
@@ -384,7 +385,7 @@ AnalyzerApp::traceOptions() const
 	trace("");
 	traceOk("Options:");
 	trace("TYPE_ACTIVE: " + _name);
-	trace("COMPILER_ID: " + _complier_name);
+	/// trace("COMPILER_ID: " + _complier_name);
 	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
 	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
 	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));

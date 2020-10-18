@@ -33,11 +33,9 @@ ClangTidy::run() /* override */
 	std::ctstring_t includeDirs   = String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t modifiedFiles = String::join(_dataIn.modifiedFiles, " ");
 	std::ctstring_t defines       = _dataIn.defines; // TODO: impl
+	::cCompilerId   compilerId    = _dataIn.compilerId;
 
 	// partial - ClangTidy
-
-	// TODO: complier_id - impl
-	const auto complierId = ::CompilerId::Unknown;
 
 	std::ctstring_t line_filter = ""; // n/a
 
@@ -63,7 +61,7 @@ ClangTidy::run() /* override */
 		"-line-filter="    + line_filter,
 		"-header-filter="  + header_filter,
 		"-extra-arg=-std=" + cppStandart,
-		"-extra-arg="      + args_stdlib[complierId],
+		"-extra-arg="      + args_stdlib[compilerId],
 		"-quiet",
 		"--",
 		includeDirs,
