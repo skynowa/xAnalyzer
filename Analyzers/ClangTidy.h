@@ -25,7 +25,7 @@ public:
     xNO_COPY_ASSIGN(ClangTidy)
 ///@}
 
-	void_t run() override;
+	bool_t run() override;
 
 	void_t runDiff() const;
 		///< run analysis for Git diff

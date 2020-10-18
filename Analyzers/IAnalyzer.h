@@ -34,7 +34,7 @@ public:
     xNO_COPY_ASSIGN(IAnalyzer)
 ///@}
 
-    virtual void_t run() = 0;
+    virtual bool_t run() = 0;
 
 protected:
 	virtual void_t _parseReport(std::ctstring_t &stdOut, std::ctstring_t &stdError) const = 0;

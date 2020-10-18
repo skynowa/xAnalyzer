@@ -23,7 +23,7 @@ ClangTidy::ClangTidy(
 {
 }
 //-------------------------------------------------------------------------------------------------
-void_t
+bool_t
 ClangTidy::run() /* override */
 {
 	// [in]
@@ -77,6 +77,8 @@ ClangTidy::run() /* override */
 	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 
 	_parseReport(stdOut, stdError);
+
+	return _isError(stdOut, stdError);
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -198,11 +200,6 @@ ClangTidy::_parseReport(
 
 	/// stdError = re.sub("^\d+ warnings and \d error generated\.", "", stdError).strip(" \t\r\n");
 	/// traceError(stdError);
-
-	bool_t bRv = _isError(a_stdOut, a_stdError);
-	if (bRv) {
-
-	}
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
