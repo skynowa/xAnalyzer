@@ -26,6 +26,8 @@ AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
 	const AnalyzerDataIn dataIn;
+	std::cout << (core::OStream() << "" << dataIn).str();
+	xTEST(dataIn.isValid());
 
 	if (dataIn.isSkipCheck) {
 		return Application::ExitCode::Success;

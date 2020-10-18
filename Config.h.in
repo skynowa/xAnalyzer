@@ -45,7 +45,7 @@ std::ctstring_t PROJECT_DIR = "/home/skynowa/Projects/xLib";
  * 0 - check changed files and headers
  * 1 - check only changed files
  */
-cbool_t QUICK_CHECK = true;
+cbool_t QUICK_CHECK = false;
 
 /**
  * C++ language / standart
@@ -57,7 +57,7 @@ std::ctstring_t CPP_STD  = "c++11";
 /**
  * Exclude files for checking
  */
-std::cvec_tstring_t CPP_MASK = {".h", ".hh", ".hpp", ".inl", ".cc", ".cpp", ".cxx"};
+std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx"};
 
 /**
  * Compiler types

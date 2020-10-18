@@ -45,9 +45,9 @@ AnalyzerDataOut::print(
 	a_os
 		// common
 		<< "\n"
-		<< "DataOut:"         << "\n"
-		<< xTRACE_VAR(stdOut) << "\n"
-		<< xTRACE_VAR(stdError);
+		<< "DataOut:"                   << "\n"
+		<< "    " << xTRACE_VAR(stdOut) << "\n"
+		<< "    " << xTRACE_VAR(stdError);
 }
 //-------------------------------------------------------------------------------------------------
 

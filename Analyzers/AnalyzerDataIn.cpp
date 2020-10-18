@@ -34,8 +34,6 @@ AnalyzerDataIn::AnalyzerDataIn()
 	cppCheck_cLanguage  = ::C_LANG;
 	cppCheck_jobsNum    = ::JOBS_NUM;
 	cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
-
-	xTEST(isValid());
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
@@ -102,24 +100,24 @@ AnalyzerDataIn::print(
 	a_os
 		// common
 		<< "\n"
-		<< "DataIn:"                       << "\n"
-		<< xTRACE_VAR(projectDirPath)      << "\n"
-		<< xTRACE_VAR(cppLanguage)         << "\n"
-		<< xTRACE_VAR(cppStandart)         << "\n"
-		<< xTRACE_VAR(includeDirs)         << "\n"
-		<< xTRACE_VAR(modifiedFiles)       << "\n"
-		<< xTRACE_VAR(defines)             << "\n"
-		<< xTRACE_VAR((int)osName)         << "\n"
-		<< xTRACE_VAR((int)compilerId)     << "\n"
-		<< xTRACE_VAR(compilerName)        << "\n"
-		<< xTRACE_VAR(isSkipCheck)         << "\n"
-		<< xTRACE_VAR(isStopOnFail)        << "\n"
-		<< xTRACE_VAR(isQuickCheck)        << "\n"
-		<< "\n"                            << "\n"
+		<< "DataIn:"                                 << "\n"
+		<< "    " << xTRACE_VAR(projectDirPath)      << "\n"
+		<< "    " << xTRACE_VAR(cppLanguage)         << "\n"
+		<< "    " << xTRACE_VAR(cppStandart)         << "\n"
+		<< "    " << xTRACE_VAR(includeDirs)         << "\n"
+		<< "    " << xTRACE_VAR(modifiedFiles)       << "\n"
+		<< "    " << xTRACE_VAR(defines)             << "\n"
+		<< "    " << xTRACE_VAR((int)osName)         << "\n"
+		<< "    " << xTRACE_VAR((int)compilerId)     << "\n"
+		<< "    " << xTRACE_VAR(compilerName)        << "\n"
+		<< "    " << xTRACE_VAR(isSkipCheck)         << "\n"
+		<< "    " << xTRACE_VAR(isStopOnFail)        << "\n"
+		<< "    " << xTRACE_VAR(isQuickCheck)        << "\n"
+		<< "\n"
 		// partial - CppCheck
-		<< xTRACE_VAR(cppCheck_cLanguage)  << "\n"
-		<< xTRACE_VAR(cppCheck_jobsNum)    << "\n"
-		<< xTRACE_VAR(cppCheck_errorLevel);
+		<< "    " << xTRACE_VAR(cppCheck_cLanguage)  << "\n"
+		<< "    " << xTRACE_VAR(cppCheck_jobsNum)    << "\n"
+		<< "    " << xTRACE_VAR(cppCheck_errorLevel);
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -183,7 +181,7 @@ AnalyzerDataIn::_includeDirs(
 
 	// TODO: Type
 	if (/* Type::Active == Type::CppCheck && */
-		::QUICK_CHECK)
+		isQuickCheck)
 	{
 		*out_dirPathes = {};
 	} else {
@@ -222,13 +220,13 @@ AnalyzerDataIn::_includeDirs(
 			"-I/usr/local/include ",
 
 			"-I/usr/local/gen++v3/class",
-			"-I" +       ::PROJECT_DIR + "/functions",
-			"-isystem" + ::PROJECT_DIR + "/suppliers/gen/base",
-			"-isystem" + ::PROJECT_DIR + "/booked/gen/base",
-			"-isystem" + ::PROJECT_DIR + "/syntexts/gen/base",
-			"-isystem" + ::PROJECT_DIR + "/core/gen/base",
-			"-isystem" + ::PROJECT_DIR + "/api/gen/base",
-			"-isystem" + ::PROJECT_DIR + "/seo/gen/base"
+			"-I" +       projectDirPath + "/functions",
+			"-isystem" + projectDirPath + "/suppliers/gen/base",
+			"-isystem" + projectDirPath + "/booked/gen/base",
+			"-isystem" + projectDirPath + "/syntexts/gen/base",
+			"-isystem" + projectDirPath + "/core/gen/base",
+			"-isystem" + projectDirPath + "/api/gen/base",
+			"-isystem" + projectDirPath + "/seo/gen/base"
 		};
 
 		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
