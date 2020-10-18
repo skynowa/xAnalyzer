@@ -36,7 +36,7 @@ IAnalyzer::_binPath() const
 {
 	std::tstring_t sRv;
 
-	std::map<::TypeActive, std::vec_tstring_t> dirPaths
+	static const std::map<::TypeActive, std::vec_tstring_t> dirPaths
 	{
 		{
 			::TypeActive::CppCheck,
@@ -66,7 +66,7 @@ IAnalyzer::_binPath() const
 		}
 	};
 
-	std::map<::TypeActive, std::tstring_t> binNames
+	static const std::map<::TypeActive, std::tstring_t> binNames
 	{
 		{
 			::TypeActive::CppCheck,
