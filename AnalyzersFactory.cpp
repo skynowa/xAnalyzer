@@ -18,8 +18,8 @@ AnalyzersFactory::analyzers_map_t AnalyzersFactory::_analyzers;
 /* static */
 const std::unique_ptr<IAnalyzer> &
 AnalyzersFactory::create(
-	cType            a_type,
-	cAnalyzerDataIn &a_dataIn
+	IAnalyzer::cType  a_type,
+	cAnalyzerDataIn  &a_dataIn
 )
 {
 	if (auto it = _analyzers.find(a_type); it != _analyzers.cend()) {
@@ -27,10 +27,10 @@ AnalyzersFactory::create(
 	}
 
 	switch (a_type) {
-	case Type::CppCheck:
+	case IAnalyzer::Type::CppCheck:
 		_analyzers[a_type] = std::make_unique<CppCheck>(a_dataIn);
 		break;
-	case Type::ClangTidy:
+	case IAnalyzer::Type::ClangTidy:
 		_analyzers[a_type] = std::make_unique<ClangTidy>(a_dataIn);
 		break;
 	}

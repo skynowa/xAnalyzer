@@ -43,10 +43,10 @@ AnalyzerApp::onRun() /* override */
 	std::tstring_t stdError;
 	{
 		if (false) {
-			const std::vector<AnalyzersFactory::Type> analyzerTypes
+			const std::vector<IAnalyzer::Type> analyzerTypes
 			{
-				AnalyzersFactory::Type::CppCheck,
-				AnalyzersFactory::Type::ClangTidy
+				IAnalyzer::Type::CppCheck,
+				IAnalyzer::Type::ClangTidy
 			};
 
 			for (const auto &it_analyzerType : analyzerTypes) {
@@ -61,15 +61,15 @@ AnalyzerApp::onRun() /* override */
 			switch (_type) {
 			case IAnalyzer::Type::CppCheck:
 				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::CppCheck, dataIn);
+					auto &analyzer = AnalyzersFactory::create(IAnalyzer::Type::CppCheck, dataIn);
 					analyzer->run();
 				}
 				break;
 			case IAnalyzer::Type::ClangTidy:
 				{
-					auto &analyzer = AnalyzersFactory::create(AnalyzersFactory::Type::ClangTidy, dataIn);
-					/// self.runDiff();
-					/// self.runFile();
+					auto &analyzer = AnalyzersFactory::create(IAnalyzer::Type::ClangTidy, dataIn);
+					/// analyzer.runDiff();
+					/// analyzer.runFile();
 					analyzer->run();
 				}
 				break;

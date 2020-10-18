@@ -6,23 +6,16 @@
 
 #include <xLib/xLib.h>
 #include "Config.h"
+#include "Analyzers/IAnalyzer.h"
 //-------------------------------------------------------------------------------------------------
 namespace xa
 {
 
 class AnalyzerDataIn;
-class IAnalyzer;
 
 class AnalyzersFactory
 {
 public:
-	enum class Type
-	{
-		CppCheck  = 0,
-		ClangTidy = 1
-	};
-	xUSING_CONST(Type);
-
 ///@name ctors, dtor
 ///@{
 	xNO_DEFAULT_CONSTRUCT(AnalyzersFactory)
@@ -30,10 +23,10 @@ public:
 ///@}
 
 	static
-	const std::unique_ptr<IAnalyzer> &create(cType type, const AnalyzerDataIn &dataIn);
+	const std::unique_ptr<IAnalyzer> &create(IAnalyzer::cType type, const AnalyzerDataIn &dataIn);
 
 private:
-	using analyzers_map_t = std::map<Type, std::unique_ptr<IAnalyzer>>;
+	using analyzers_map_t = std::map<IAnalyzer::Type, std::unique_ptr<IAnalyzer>>;
 
 	static analyzers_map_t _analyzers;
 };
