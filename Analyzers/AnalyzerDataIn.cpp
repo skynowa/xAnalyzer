@@ -185,20 +185,12 @@ AnalyzerDataIn::_includeDirs(
 	{
 		*out_dirPathes = {};
 	} else {
-		if (true) {
+		// compiler includes
+		{
 			std::vec_tstring_t dirPathes;
 			_compilerIncludeDirs(&dirPathes);
 
 			*out_dirPathes = dirPathes;
-		} else {
-			*out_dirPathes =
-				{
-					"-I/usr/lib/gcc/x86_64-linux-gnu/8/include",
-					"-I/usr/local/include",
-					"-I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed",
-					"-I/usr/include/x86_64-linux-gnu",
-					"-I/usr/include"
-				};
 		}
 
 		// libxml
