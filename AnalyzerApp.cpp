@@ -59,7 +59,6 @@ AnalyzerApp::onRun() /* override */
 		if (!bRv) {
 			if (::STOP_ON_FAIL) {
 				_log.writeError("***** Detect errors. Commit stopped ***** ");
-
 				return ExitCode::Failure;
 			}
 

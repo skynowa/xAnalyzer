@@ -25,7 +25,7 @@ public:
 	SystemInfo::OsType osName {};		// includeDirs
 	::CompilerId       compilerId {};	// ClangTidy
 	std::tstring_t     compilerName;	//
-	bool               isQuickCheck {};	// ClangTidy
+	bool_t             isQuickCheck {};	// ClangTidy
 
 	// partial - CppCheck
 	std::tstring_t     cppCheck_cLanguage;
