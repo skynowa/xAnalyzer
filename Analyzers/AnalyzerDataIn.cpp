@@ -219,6 +219,7 @@ AnalyzerDataIn::_includeDirs(
 		{
 			"-I/usr/local/include ",
 
+		#if 0
 			"-I/usr/local/gen++v3/class",
 			"-I" +       projectDirPath + "/functions",
 			"-isystem" + projectDirPath + "/suppliers/gen/base",
@@ -227,10 +228,15 @@ AnalyzerDataIn::_includeDirs(
 			"-isystem" + projectDirPath + "/core/gen/base",
 			"-isystem" + projectDirPath + "/api/gen/base",
 			"-isystem" + projectDirPath + "/seo/gen/base"
+		#endif
 		};
 
 		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
 	}
+
+#if 1
+	Cout() << xTRACE_VAR(*out_dirPathes);
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t

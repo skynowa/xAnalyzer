@@ -62,7 +62,7 @@ CppCheck::run(
 		"--relative-paths",
 		"--error-exitcode=1",
 
-		"--xml", "--xml-version=2"
+		/// "--xml", "--xml-version=2"
 	};
 
 	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &out_dataOut->stdOut,
