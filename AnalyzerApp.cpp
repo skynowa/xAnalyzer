@@ -289,14 +289,14 @@ AnalyzerApp::compilerIncludeDirs(
 	Cout() << xTRACE_VAR(stdError);
 #endif
 
-	std::tstring_t str_left  = "#include <...> search starts here:";
-	std::tstring_t str_right = "End of search list.";
+	std::ctstring_t strLeft  = "#include <...> search starts here:";
+	std::ctstring_t strRight = "End of search list.";
 
-	std::csize_t pos_left  = stdError.find(str_left);
-	std::csize_t pos_right = stdError.find(str_right, pos_left);
-	xTEST_LESS(pos_left, pos_right);
+	std::csize_t posLeft  = stdError.find(strLeft);
+	std::csize_t posRight = stdError.find(strRight, posLeft);
+	xTEST_LESS(posLeft, posRight);
 
-	stdError = String::trimSpace( String::cut(stdError, str_left, str_right) );
+	stdError = String::trimSpace( String::cut(stdError, strLeft, strRight) );
 
 	std::vec_tstring_t includes;
 	String::split(stdError, Const::nl(), &includes);
