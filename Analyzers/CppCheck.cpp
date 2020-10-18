@@ -48,6 +48,23 @@ CppCheck::run(
 	std::csize_t       jobsNum        = _dataIn.cppCheck_jobsNum;
 	std::ctstring_t    errorLevel     = _dataIn.cppCheck_errorLevel;
 
+	{
+	#if 1
+		std::cvec_tstring_t params
+		{
+			"--check-config",
+			modifiedFiles
+		};
+
+		std::tstring_t stdOut;
+		std::tstring_t stdError;
+
+		Process::execute("/usr/bin/cppcheck", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+		Cout() << xTRACE_VAR(stdOut);
+		Cout() << xTRACE_VAR(stdError);
+	#endif
+	}
+
 	std::cvec_tstring_t params
 	{
 		includeDirs,
@@ -62,7 +79,7 @@ CppCheck::run(
 		"--relative-paths",
 		"--error-exitcode=1",
 
-		/// "--xml", "--xml-version=2"
+		"--xml", "--xml-version=2"
 	};
 
 	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &out_dataOut->stdOut,

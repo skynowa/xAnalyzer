@@ -209,9 +209,10 @@ AnalyzerDataIn::_includeDirs(
 
 		std::vec_tstring_t dirPathes
 		{
-			"-I/usr/local/include ",
+			"-I/usr/local/include"
 
 		#if 0
+			,
 			"-I/usr/local/gen++v3/class",
 			"-I" +       projectDirPath + "/functions",
 			"-isystem" + projectDirPath + "/suppliers/gen/base",
