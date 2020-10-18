@@ -20,7 +20,7 @@ public:
 ///@name ctors, dtor
 ///@{
              CppCheck(cAnalyzerDataIn &dataIn);
-    virtual ~CppCheck();
+    virtual ~CppCheck() = default;
 
     xNO_COPY_ASSIGN(CppCheck)
 ///@}

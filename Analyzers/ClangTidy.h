@@ -20,7 +20,7 @@ public:
 ///@name ctors, dtor
 ///@{
              ClangTidy(cAnalyzerDataIn &dataIn);
-    virtual ~ClangTidy();
+    virtual ~ClangTidy() = default;
 
     xNO_COPY_ASSIGN(ClangTidy)
 ///@}
