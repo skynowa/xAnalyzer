@@ -141,7 +141,7 @@ def isError(self, a_out, a_stderr_str):
 void_t
 AnalyzerApp::traceOptions() const
 {
-#if 0
+#if 1
 	if (::QUICK_CHECK) {
 		traceOk("Start analysis (quick)...");
 	} else {
@@ -169,7 +169,7 @@ AnalyzerApp::traceColor(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
+#if 1
 	_console.writeLine(a_color, Console::Background::Default,
 		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
 #endif
@@ -190,7 +190,7 @@ AnalyzerApp::traceOk(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
+#if 1
 	traceColor(Console::Foreground::Yellow, _name);
 	traceColor(Console::Foreground::Green, " " + a_msg);
 #endif
@@ -203,7 +203,7 @@ AnalyzerApp::traceError(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
+#if 1
 	_console.traceColor(Console::Foreground::Red, _name + " " + a_msg);
 #endif
 }
