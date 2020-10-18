@@ -31,7 +31,6 @@ private:
 	SystemInfo::OsType  _os_name {};
 	TypeActive          _type {};
 	std::tstring_t      _name;
-	std::vec_tstring_t  _git_modified_files;
 	std::vec_tstring_t  _include_dirs;
 
 	void_t complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;

@@ -43,12 +43,6 @@ AnalyzerApp::AnalyzerApp(
 		return;
 	}
 
-	// GIT modified files
-	_git.modifiedFiles(::CPP_MASK, &_git_modified_files);
-#if 1
-	Cout() << xTRACE_VAR(_git_modified_files);
-#endif
-
 	// C++ include dirs
 	includeDirs(&_include_dirs);
 
@@ -58,13 +52,6 @@ AnalyzerApp::AnalyzerApp(
 AnalyzerApp::ExitCode
 AnalyzerApp::onRun() /* override */
 {
-	if (_git_modified_files.empty() &&
-		_type != ::TypeActive::ClangTidyFile)
-	{
-		traceOk("No changes. OK");
-		return ExitCode::Success;
-	}
-
 	// profiler
 	/// time_start_sec = time.time();
 
@@ -89,6 +76,13 @@ AnalyzerApp::onRun() /* override */
 		dataIn.cppCheck_cLanguage  = ::C_LANG;
 		dataIn.cppCheck_jobsNum    = ::JOBS_NUM;
 		dataIn.cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
+
+		if (dataIn.modifiedFiles.empty() &&
+			_type != ::TypeActive::ClangTidyFile)
+		{
+			traceOk("No changes. OK");
+			return ExitCode::Success;
+		}
 	}
 
 	std::tstring_t stdOut;
