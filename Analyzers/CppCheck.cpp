@@ -36,7 +36,6 @@ CppCheck::run() /* override */
 	std::ctstring_t    modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
 	std::ctstring_t    defines        = _dataIn.defines;
 	::cCompilerId      compilerId     = _dataIn.compilerId;   xUNUSED(compilerId);
-	std::ctstring_t    compilerName   = _dataIn.compilerName; xUNUSED(compilerName);
 	SystemInfo::OsType osName         = _dataIn.osName;       xUNUSED(osName);
 	cbool_t            isQuickCheck   = _dataIn.isQuickCheck; xUNUSED(isQuickCheck);
 
