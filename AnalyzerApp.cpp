@@ -83,7 +83,6 @@ AnalyzerApp::onRun() /* override */
 	_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
 	dataIn.defines             = "-UKERN_PROC_PATHNAME";
 
-	::CompilerId   _complier_id {};
 	std::tstring_t _complier_name;
 	complierInfo(&dataIn.compilerId, &_complier_name);
 
