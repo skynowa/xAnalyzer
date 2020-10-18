@@ -75,7 +75,6 @@ AnalyzerApp::onRun() /* override */
 void_t
 AnalyzerApp::traceOptions() const
 {
-#if 0
 	if (::QUICK_CHECK) {
 		_log.writeOk("Start analysis (quick)...");
 	} else {
@@ -87,7 +86,6 @@ AnalyzerApp::traceOptions() const
 	_log.write("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
 	_log.write("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
 	_log.write("");
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 
