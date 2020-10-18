@@ -83,7 +83,7 @@ AnalyzerApp::onRun() /* override */
 	dataIn.cppLanguage         = ::CPP_LANG;
 	dataIn.cppStandart         = ::CPP_STD;
 	dataIn.includeDirs         = {};
-	dataIn.modifiedFiles       = {};
+	_git.modifiedFiles(::CPP_MASK, &dataIn.modifiedFiles);
 
 	// partial - CppCheck
 	dataIn.cppCheck_cLanguage  = ::C_LANG;
