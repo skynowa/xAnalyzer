@@ -17,6 +17,21 @@ IAnalyzer::IAnalyzer(
 	_type  {a_type},
 	_dataIn{a_dataIn}
 {
+	// analyzer name
+	std::map<::TypeActive, std::tstring_t> names
+	{
+		{::TypeActive::CppCheck,      "[Cppcheck]"},
+		{::TypeActive::ClangTidy,     "[Clang-Tidy]"},
+		{::TypeActive::ClangTidyDiff, "[Clang-Tidy-Diff]"},
+		{::TypeActive::ClangTidyFile, "[Clang-Tidy-File]"}
+	};
+
+	_name = names[_type];
+	if ( _name.empty() ) {
+		/// traceError("Bad type: " + Enum::str(_type));
+		Process::currentExit(1);
+		return;
+	}
 }
 //-------------------------------------------------------------------------------------------------
 

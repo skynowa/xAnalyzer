@@ -28,6 +28,7 @@ public:
 
 protected:
 	cTypeActive     _type {};
+	std::tstring_t  _name;
 	cAnalyzerDataIn _dataIn;
 
 	std::tstring_t  _binPath() const;

@@ -23,22 +23,6 @@ AnalyzerApp::AnalyzerApp(
 
 	// analyzer type
 	_type = ::TypeActive::Active;
-
-	// analyzer name
-	std::map<::TypeActive, std::tstring_t> names
-	{
-		{::TypeActive::CppCheck,      "[Cppcheck]"},
-		{::TypeActive::ClangTidy,     "[Clang-Tidy]"},
-		{::TypeActive::ClangTidyDiff, "[Clang-Tidy-Diff]"},
-		{::TypeActive::ClangTidyFile, "[Clang-Tidy-File]"}
-	};
-
-	_name = names[_type];
-	if ( _name.empty() ) {
-		traceError("Bad type: " + Enum::str(_type));
-		Process::currentExit(1);
-		return;
-	}
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
@@ -157,6 +141,7 @@ def isError(self, a_out, a_stderr_str):
 void_t
 AnalyzerApp::traceOptions() const
 {
+#if 0
 	if (::QUICK_CHECK) {
 		traceOk("Start analysis (quick)...");
 	} else {
@@ -166,13 +151,14 @@ AnalyzerApp::traceOptions() const
 	trace("");
 	traceOk("Options:");
 	trace("TYPE_ACTIVE: " + _name);
-	/// trace("COMPILER_ID: " + _complier_name);
+	trace("COMPILER_ID: " + _complier_name);
 	trace("QUICK_CHECK: " + std::to_string(::QUICK_CHECK));
 	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
 	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
 	trace("CPP_STD:     " + ::CPP_STD);
 	trace("CPP_MASK:    " + String::join(::CPP_MASK, ", "));
 	trace("");
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -183,10 +169,10 @@ AnalyzerApp::traceColor(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-	std::ctstring_t str = _console.setAttributesText(a_color, Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), _name);
-
-	_console.writeLine(str + " " + a_msg);
+#if 0
+	_console.writeLine(a_color, Console::Background::Default,
+		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -204,13 +190,13 @@ AnalyzerApp::traceOk(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-	std::tstring_t str;
-	str = _console.setAttributesText(Console::Foreground::Yellow , Console::Background::Default,
+#if 0
+	_console.writeLine(Console::Foreground::Yellow , Console::Background::Default,
 		static_cast<int_t>(Console::Attribute::Bold), _name);
-	str += _console.setAttributesText(Console::Foreground::Green , Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), " " + a_msg);
 
-	_console.writeLine(str);
+	_console.writeLine(Console::Foreground::Green , Console::Background::Default,
+		static_cast<int_t>(Console::Attribute::Bold), " " + a_msg);
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
@@ -220,11 +206,10 @@ AnalyzerApp::traceError(
 {
 	xCHECK_DO(a_msg.empty(), return);
 
-	std::ctstring_t str =
-		_console.setAttributesText(Console::Foreground::Red , Console::Background::Default,
+#if 0
+	_console.writeLine(Console::Foreground::Red , Console::Background::Default,
 		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
-
-	_console.writeLine(str);
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 } // namespace xa
