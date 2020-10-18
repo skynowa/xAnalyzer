@@ -213,8 +213,6 @@ ClangTidy::_isError(
 {
 #if 0
 def isError(self, a_out, a_stderr_str):
-	"" Check if errors detected ""
-
 	return
 		bool((a_out.returncode == 1 or
 			  re.search("^.*(error|warning).*$", a_stderr_str, re.MULTILINE)) and

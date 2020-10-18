@@ -40,9 +40,9 @@ public:
 
 protected:
 	virtual void_t _parseReport(AnalyzerDataOut *dataOut) const = 0;
-		///<
+		///< out data,parse
 	virtual bool_t _isError(const AnalyzerDataOut &dataOut) const = 0;
-		///<
+		///< out data, check if errors detected
 
 protected:
 	cType           _type {};
