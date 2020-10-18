@@ -185,8 +185,8 @@ ClangTidy::_parseReport(
 ) const /* override */
 {
 #if 1
-	Cout() << xTRACE_VAR(a_stdOut);
-	Cout() << xTRACE_VAR(a_stdError);
+	_log.write("a_stdOut: "   + a_stdOut);
+	_log.write("a_stdError: " + a_stdError);
 #endif
 
 	std::tstring_t stdOut   = ::String::trimSpace(a_stdOut);

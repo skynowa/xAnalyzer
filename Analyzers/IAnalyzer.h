@@ -7,6 +7,7 @@
 #pragma once
 
 #include "../Config.h"
+#include "../Log.h"
 #include "AnalyzerDataIn.h"
 
 namespace xa
@@ -46,6 +47,8 @@ protected:
 	cType           _type {};
 	std::tstring_t  _name;
 	cAnalyzerDataIn _dataIn;
+
+	Log             _log;
 
 	std::tstring_t  _binPath() const;
 		///< path to binary file

@@ -35,6 +35,7 @@ set(SOURCES
     Main.cpp
     AnalyzerApp.cpp
     AnalyzersFactory.cpp
+    Log.cpp
     Analyzers/AnalyzerDataIn.cpp
     Analyzers/IAnalyzer.cpp
     Analyzers/CppCheck.cpp

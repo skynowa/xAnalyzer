@@ -20,7 +20,6 @@ AnalyzerApp::AnalyzerApp(
 ) :
 	Application(a_appGuid, a_locale)
 {
-	_console.setEscapeValues(false);
 }
 //-------------------------------------------------------------------------------------------------
 AnalyzerApp::ExitCode
@@ -35,7 +34,7 @@ AnalyzerApp::onRun() /* override */
 
 	AnalyzerDataIn dataIn;
 	if ( dataIn.modifiedFiles.empty() ) {
-		traceOk("No changes. OK");
+		_log.writeOk("No changes. OK");
 		return ExitCode::Success;
 	}
 
@@ -62,14 +61,14 @@ AnalyzerApp::onRun() /* override */
 
 		if (!bRv) {
 			if (::STOP_ON_FAIL) {
-				traceError("***** Detect errors. Commit stopped ***** ");
+				_log.writeError("***** Detect errors. Commit stopped ***** ");
 
 				return ExitCode::Failure;
 			}
 
-			traceError("***** Detect errors. Commited ***** ");
+			_log.writeError("***** Detect errors. Commited ***** ");
 		} else {
-			traceOk("No warnings. OK ");
+			_log.writeOk("No warnings. OK ");
 		}
 	} // for (analyzerTypes)
 
@@ -81,64 +80,18 @@ AnalyzerApp::traceOptions() const
 {
 #if 0
 	if (::QUICK_CHECK) {
-		traceOk("Start analysis (quick)...");
+		_log.writeOk("Start analysis (quick)...");
 	} else {
-		traceOk("Start analysis (full)...");
+		_log.writeOk("Start analysis (full)...");
 	}
 
-	trace("");
-	traceOk("Options:");
-	trace("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
-	trace("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
-	trace("");
+	_log.write("");
+	_log.writeOk("Options:");
+	_log.write("SKIP_CHECK:  " + std::to_string(::SKIP_CHECK));
+	_log.write("STOP_ON_FAIL:" + std::to_string(::STOP_ON_FAIL));
+	_log.write("");
 #endif
 }
 //-------------------------------------------------------------------------------------------------
-void_t
-AnalyzerApp::traceColor(
-	Console::Foreground  a_color,
-	std::ctstring_t     &a_msg
-) const
-{
-	xCHECK_DO(a_msg.empty(), return);
 
-#if 0
-	_console.writeLine(a_color, Console::Background::Default,
-		static_cast<int_t>(Console::Attribute::Bold), _name + " " + a_msg);
-#endif
-}
-//-------------------------------------------------------------------------------------------------
-void_t
-AnalyzerApp::trace(
-	std::ctstring_t &a_msg
-) const
-{
-	_console.writeLine(a_msg);
-}
-//-------------------------------------------------------------------------------------------------
-void_t
-AnalyzerApp::traceOk(
-	std::ctstring_t &a_msg
-) const
-{
-	xCHECK_DO(a_msg.empty(), return);
-
-#if 0
-	traceColor(Console::Foreground::Yellow, _name);
-	traceColor(Console::Foreground::Green, " " + a_msg);
-#endif
-}
-//-------------------------------------------------------------------------------------------------
-void_t
-AnalyzerApp::traceError(
-	std::ctstring_t &a_msg
-) const
-{
-	xCHECK_DO(a_msg.empty(), return);
-
-#if 0
-	_console.traceColor(Console::Foreground::Red, _name + " " + a_msg);
-#endif
-}
-//-------------------------------------------------------------------------------------------------
 } // namespace xa

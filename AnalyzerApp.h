@@ -6,6 +6,7 @@
 
 #include <xLib/xLib.h>
 #include "Config.h"
+#include "Log.h"
 //-------------------------------------------------------------------------------------------------
 namespace xa
 {
@@ -25,18 +26,10 @@ public:
 	ExitCode onRun() override;
 
 private:
-	Console _console;
+	Log _log;
 
 	void_t traceOptions() const;
 		///< trace options (configs)
-	void_t traceColor(Console::Foreground color, std::ctstring_t &msg) const;
-		///< trace using color
-	void_t trace(std::ctstring_t &msg) const;
-		///< trace obly
-	void_t traceOk(std::ctstring_t &msg) const;
-		///< trace as OK
-	void_t traceError(std::ctstring_t &msg) const;
-		///< trace as error
 };
 
 } // namespace xa
