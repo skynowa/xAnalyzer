@@ -23,8 +23,10 @@ bool_t
 AnalyzerDataOut::isValid() const /* override */
 {
 	// common
+#if 0
 	xCHECK_RET(stdOut.empty(), false);
 	xCHECK_RET(stdError.empty(), false);
+#endif
 
 	return true;
 }

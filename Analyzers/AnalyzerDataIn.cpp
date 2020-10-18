@@ -209,6 +209,15 @@ AnalyzerDataIn::_includeDirs(
 
 		std::vec_tstring_t dirPathes
 		{
+			"-I/home/skynowa/Projects/xLib/Include",
+			"-I/home/skynowa/Projects/xLib/Include/xLib",
+			"-I /home/skynowa/Projects/xLib/Include",
+			"-I /home/skynowa/Projects/xLib/Include/xLib",
+			"/home/skynowa/Projects/xLib/Include",
+			"/home/skynowa/Projects/xLib/Include/xLib",
+			"./Include",
+			"./Include/xLib"
+
 		#if 0
 			"-I/usr/local/include",
 			"-I/usr/local/gen++v3/class",
@@ -224,10 +233,6 @@ AnalyzerDataIn::_includeDirs(
 
 		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
 	}
-
-#if 1
-	Cout() << xTRACE_VAR(*out_dirPathes);
-#endif
 }
 //-------------------------------------------------------------------------------------------------
 void_t
