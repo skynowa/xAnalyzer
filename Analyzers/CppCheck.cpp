@@ -83,8 +83,8 @@ CppCheck::_parseReport(
 ) const /* override */
 {
 #if 1
-	_log.write("a_stdOut: "   + out_dataOut->stdOut);
-	_log.write("a_stdError: " + out_dataOut->stdError);
+	_log.write("stdOut: "   + out_dataOut->stdOut);
+	_log.write("stdError: " + out_dataOut->stdError);
 #endif
 
 	std::tstring_t stdOut   = ::String::trimSpace(out_dataOut->stdOut);
