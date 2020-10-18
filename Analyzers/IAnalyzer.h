@@ -48,8 +48,6 @@ protected:
 	std::tstring_t  _name;
 	cAnalyzerDataIn _dataIn;
 
-	Log             _log;
-
 	std::tstring_t  _binPath() const;
 		///< path to binary file
 };

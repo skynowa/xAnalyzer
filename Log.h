@@ -18,7 +18,7 @@ public:
 ///@name ctors, dtor
 ///@{
              Log();
-             Log(std::tstring_t &title);
+             Log(std::ctstring_t &title);
     virtual ~Log() = default;
 
     xNO_COPY_ASSIGN(Log)
