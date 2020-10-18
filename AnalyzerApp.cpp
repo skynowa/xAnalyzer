@@ -29,9 +29,6 @@ AnalyzerApp::onRun() /* override */
 		return Application::ExitCode::Success;
 	}
 
-	// profiler
-	/// time_start_sec = time.time();
-
 	AnalyzerDataIn dataIn;
 	if ( dataIn.modifiedFiles.empty() ) {
 		_log.writeOk("No changes. OK");
