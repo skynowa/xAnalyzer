@@ -24,9 +24,7 @@ AnalyzerDataIn::AnalyzerDataIn()
 	_includeDirs(&includeDirs);
 	GitClient().modifiedFiles(::CPP_MASK, &modifiedFiles);
 	defines             = "-UKERN_PROC_PATHNAME";
-	std::tstring_t _complier_name;
-	_complierInfo(&compilerId, &_complier_name);
-	xUNUSED(_complier_name);
+	_complierInfo(&compilerId, &compilerName);	xUNUSED(compilerName);
 	osName              = SystemInfo().os();
 	isQuickCheck        = ::QUICK_CHECK;
 

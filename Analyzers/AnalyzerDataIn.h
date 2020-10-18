@@ -23,6 +23,7 @@ public:
 	std::tstring_t     defines;
 	SystemInfo::OsType osName {};		// includeDirs
 	::CompilerId       compilerId {};	// ClangTidy
+	std::tstring_t     compilerName;	//
 	bool               isQuickCheck {};	// ClangTidy
 
 	// partial - CppCheck
