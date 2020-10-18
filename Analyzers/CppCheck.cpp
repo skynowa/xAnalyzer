@@ -35,7 +35,7 @@ CppCheck::run() /* override */
 
 	// partial - CppCheck
 	std::ctstring_t cLanguage     = _dataIn.cppCheck_cLanguage;
-	std::size_t     jobsNum       = _dataIn.cppCheck_jobsNum;
+	std::csize_t    jobsNum       = _dataIn.cppCheck_jobsNum;
 	std::ctstring_t errorLevel    = _dataIn.cppCheck_errorLevel;
 
 	std::cvec_tstring_t params
