@@ -14,10 +14,6 @@ using namespace xl;
 const std::ctstring_t appName = xT("@PROJECT_NAME@");
 //-------------------------------------------------------------------------------------------------
 /**
- * AnalyzerApp
- */
-
-/**
  * Set OS environment variable to disable checks
  * From shell: export ANALYZER_SKIP_CHECK=1
  *
@@ -34,7 +30,7 @@ cbool_t SKIP_CHECK = false;
  * 1 - disallow commit
  */
 cbool_t STOP_ON_FAIL = false;
-//-------------------------------------------------------------------------------------------------
+
 /**
  * AnalyzerDataIn
  */
