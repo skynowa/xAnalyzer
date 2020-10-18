@@ -33,19 +33,19 @@ ClangTidy::run(
 
 	// [in]
 	// common
-	std::tstring_t     projectDirPath = _dataIn.projectDirPath;
-	std::ctstring_t    cppLanguage    = _dataIn.cppLanguage;
-	std::ctstring_t    cppStandart    = _dataIn.cppStandart;
-	std::ctstring_t    includeDirs    = String::join(_dataIn.includeDirs, " ");
-	std::ctstring_t    modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
-	std::ctstring_t    defines        = _dataIn.defines;      xUNUSED(defines); // TODO: impl
-	::cCompilerId      compilerId     = _dataIn.compilerId;
-	SystemInfo::OsType osName         = _dataIn.osName;       xUNUSED(osName);
-	cbool_t            isQuickCheck   = _dataIn.isQuickCheck;
+	std::ctstring_t     projectDirPath = _dataIn.projectDirPath;
+	std::ctstring_t     cppLanguage    = _dataIn.cppLanguage;
+	std::ctstring_t     cppStandart    = _dataIn.cppStandart;
+	std::ctstring_t     includeDirs    = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t     modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
+	std::ctstring_t     defines        = _dataIn.defines;      xUNUSED(defines); // TODO: impl
+	::cCompilerId       compilerId     = _dataIn.compilerId;
+	SystemInfo::cOsType osName         = _dataIn.osName;       xUNUSED(osName);
+	cbool_t             isQuickCheck   = _dataIn.isQuickCheck;
 
 	// partial - ClangTidy
 
-	std::ctstring_t lineFilter = ""; // n/a
+	std::ctstring_t lineFilter {}; // n/a
 
 	std::map<::CompilerId, std::tstring_t> argsStdlib
 	{
