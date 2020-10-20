@@ -15,15 +15,23 @@ class AnalyzerDataIn :
 	public IData
 {
 public:
+	enum class CompilerId
+	{
+		Unknown = 0,
+		Clang   = 1,
+		Gcc     = 2
+	};
+	xUSING_CONST(CompilerId);
+
 	// common
 	std::tstring_t     projectDirPath;
 	std::tstring_t     cppLanguage;
 	std::tstring_t     cppStandart;
 	std::vec_tstring_t includeDirs;
 	std::vec_tstring_t modifiedFiles;
-	std::tstring_t     defines;
+	std::tstring_t     defines;			// TODO: impl
 	SystemInfo::OsType osName {};		// includeDirs
-	::CompilerId       compilerId {};	// ClangTidy
+	CompilerId         compilerId {};	// ClangTidy
 	std::tstring_t     compilerName;	//
 	bool_t             isSkipCheck {};
 	bool_t             isStopOnFail {};
@@ -45,7 +53,7 @@ public:
 	void_t print(core::OStream &os) const override;
 
 private:
-	void_t _complierInfo(::CompilerId *complier_id, std::tstring_t *complier_name) const;
+	void_t _complierInfo(CompilerId *complier_id, std::tstring_t *complier_name) const;
 		///< get complier info (ID, name)
 	void_t _includeDirs(std::vec_tstring_t *dirPathes) const;
 		///< get include dirs

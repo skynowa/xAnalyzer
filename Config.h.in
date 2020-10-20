@@ -60,17 +60,6 @@ std::ctstring_t CPP_STD  = "c++11";
 std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx"};
 
 /**
- * Compiler types
- */
-enum class CompilerId
-{
-	Unknown = 0,
-	Clang   = 1,
-	Gcc     = 2
-};
-xUSING_CONST(CompilerId);
-
-/**
  * TODO: Number of jobs (Cppcheck support only)
  */
 std::csize_t JOBS_NUM = 1;

@@ -130,7 +130,7 @@ AnalyzerDataIn::print(
 //-------------------------------------------------------------------------------------------------
 void_t
 AnalyzerDataIn::_complierInfo(
-	::CompilerId   *out_complier_id,
+	CompilerId     *out_complier_id,
 	std::tstring_t *out_complier_name
 ) const
 {
@@ -162,10 +162,10 @@ AnalyzerDataIn::_complierInfo(
 
 	std::ctstring_t &versionStr = String::trimSpace(stdOut);
 	if (versionStr.find("clang version") != std::tstring_t::npos) {
-		*out_complier_id   = ::CompilerId::Clang;
+		*out_complier_id   = CompilerId::Clang;
 		*out_complier_name = "clang";
 	} else {
-		*out_complier_id   = ::CompilerId::Gcc;
+		*out_complier_id   = CompilerId::Gcc;
 		*out_complier_name = "gcc";
 	}
 }
