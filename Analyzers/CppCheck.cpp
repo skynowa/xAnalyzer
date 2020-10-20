@@ -33,7 +33,7 @@ CppCheck::run(
 
 	// [in]
 	// common
-	std::ctstring_t             projectDirPath = _dataIn.projectDirPath;
+	std::ctstring_t             projectDirPath = _dataIn.projectDirPath;	xUNUSED(projectDirPath);
 	std::ctstring_t             cppLanguage    = _dataIn.cppLanguage;
 	std::ctstring_t             cppStandart    = _dataIn.cppStandart;
 	std::ctstring_t             includeDirs    = _dataIn.isQuickCheck ?
