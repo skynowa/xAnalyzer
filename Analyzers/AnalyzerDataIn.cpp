@@ -189,43 +189,43 @@ AnalyzerDataIn::_includeDirs(
 
 	// libxml
 	{
+	#if 0
 		std::vec_tstring_t cflags;
 		_pkgConfig("libxml-2.0", &cflags);
+
 		out_dirPathes->insert(out_dirPathes->end(), cflags.cbegin(), cflags.cend());
+	#endif
 	}
 
 	// ImageMagick
 	{
+	#if 0
 		std::vec_tstring_t cflags;
 		_pkgConfig("ImageMagick", &cflags);
+
 		out_dirPathes->insert(out_dirPathes->end(), cflags.cbegin(), cflags.cend());
+	#endif
 	}
 
-	std::vec_tstring_t dirPathes
+	// Custom
 	{
-		"-I/home/skynowa/Projects/xLib/Include",
-		"-I/home/skynowa/Projects/xLib/Include/xLib",
-		"-I /home/skynowa/Projects/xLib/Include",
-		"-I /home/skynowa/Projects/xLib/Include/xLib",
-		"/home/skynowa/Projects/xLib/Include",
-		"/home/skynowa/Projects/xLib/Include/xLib",
-		"./Include",
-		"./Include/xLib"
-
 	#if 0
-		"-I/usr/local/include",
-		"-I/usr/local/gen++v3/class",
-		"-I" +       projectDirPath + "/functions",
-		"-isystem" + projectDirPath + "/suppliers/gen/base",
-		"-isystem" + projectDirPath + "/booked/gen/base",
-		"-isystem" + projectDirPath + "/syntexts/gen/base",
-		"-isystem" + projectDirPath + "/core/gen/base",
-		"-isystem" + projectDirPath + "/api/gen/base",
-		"-isystem" + projectDirPath + "/seo/gen/base"
-	#endif
-	};
+		std::vec_tstring_t dirPathes
+		{
+			"-I/usr/local/include",
+			"-I/usr/local/gen++v3/class",
+			"-I" +       projectDirPath + "/functions",
+			"-isystem" + projectDirPath + "/suppliers/gen/base",
+			"-isystem" + projectDirPath + "/booked/gen/base",
+			"-isystem" + projectDirPath + "/syntexts/gen/base",
+			"-isystem" + projectDirPath + "/core/gen/base",
+			"-isystem" + projectDirPath + "/api/gen/base",
+			"-isystem" + projectDirPath + "/seo/gen/base"
+		};
 
-	out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
+		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
+	#endif
+	}
 }
 //-------------------------------------------------------------------------------------------------
 void_t
