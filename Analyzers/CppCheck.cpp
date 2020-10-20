@@ -60,8 +60,11 @@ CppCheck::run(
 		std::tstring_t stdError;
 
 		Process::execute("/usr/bin/cppcheck", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+
+		Cout() << "::: --check-config :::";
 		Cout() << xTRACE_VAR(stdOut);
 		Cout() << xTRACE_VAR(stdError);
+		Cout() << "::::::::::::::::::::::";
 	#endif
 	}
 

@@ -43,7 +43,7 @@ AnalyzerDataIn::isValid() const /* override */
 	xCHECK_RET(!Dir(projectDirPath).isExists(), false);
 	xCHECK_RET(cppLanguage.empty(), false);
 	xCHECK_RET(cppStandart.empty(), false);
-	xCHECK_RET(includeDirs.empty(), false);
+	xTEST_NA(includeDirs);
 	xTEST_NA(modifiedFiles);
 	xTEST_NA(defines);
 	xCHECK_RET(osName == SystemInfo::OsType::Unknown, false);
