@@ -43,9 +43,9 @@ std::ctstring_t PROJECT_DIR = "/home/skynowa/Projects/xLib";
 /**
  * Check mode
  * 0 - check changed files and headers
- * 1 - check only changed files
+ * 1 - check changed files only
  */
-cbool_t QUICK_CHECK = false;
+cbool_t QUICK_CHECK = true;
 
 /**
  * C++ language / standart

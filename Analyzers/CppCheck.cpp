@@ -36,7 +36,8 @@ CppCheck::run(
 	std::ctstring_t     projectDirPath = _dataIn.projectDirPath;
 	std::ctstring_t     cppLanguage    = _dataIn.cppLanguage;
 	std::ctstring_t     cppStandart    = _dataIn.cppStandart;
-	std::ctstring_t     includeDirs    = String::join(_dataIn.includeDirs, " ");
+	std::ctstring_t     includeDirs    = _dataIn.isQuickCheck ?
+		"" : String::join(_dataIn.includeDirs, " ");
 	std::ctstring_t     modifiedFiles  = String::join(_dataIn.modifiedFiles, " ");
 	std::ctstring_t     defines        = _dataIn.defines;
 	::cCompilerId       compilerId     = _dataIn.compilerId;   xUNUSED(compilerId);
@@ -59,7 +60,7 @@ CppCheck::run(
 		std::tstring_t stdOut;
 		std::tstring_t stdError;
 
-		Process::execute("/usr/bin/cppcheck", params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
+		Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &stdOut, &stdError);
 
 		Cout() << "::: --check-config :::";
 		Cout() << xTRACE_VAR(stdOut);
