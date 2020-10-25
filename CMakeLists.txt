@@ -20,7 +20,7 @@ find_package(xLib     REQUIRED)
 find_package(LibXml2  REQUIRED)
 
 # yaml-cpp
-find_package(yaml-cpp REQUIRED)
+## find_package(yaml-cpp REQUIRED)
 # message(STATUS "yaml-cpp_CONFIG:      ${yaml-cpp_CONFIG}")
 # message(STATUS "YAML_CPP_INCLUDE_DIR: ${YAML_CPP_INCLUDE_DIR}")
 # message(STATUS "YAML_CPP_LIBRARIES:   ${YAML_CPP_LIBRARIES}")
