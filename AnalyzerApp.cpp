@@ -6,8 +6,6 @@
 
 #include "AnalyzerApp.h"
 
-#include "Analyzers/IAnalyzer.h"
-#include "Analyzers/ClangTidy.h"
 #include "AnalyzersFactory.h"
 
 

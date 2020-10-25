@@ -7,6 +7,8 @@
 #include <xLib/xLib.h>
 #include "Config.h"
 #include "Analyzers/IAnalyzer.h"
+#include "Analyzers/ClangTidy.h"
+#include "Analyzers/CppCheck.h"
 //-------------------------------------------------------------------------------------------------
 namespace xa
 {
