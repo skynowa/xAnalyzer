@@ -46,27 +46,13 @@ set(SOURCES
 add_executable(xAnalyzer ${SOURCES})
 #-------------------------------------------------------------------------------
 # flags
-if     (MSVC)
-    set(FLAGS "/W3")
-elseif (MINGW)
-    set(FLAGS "-Wall -pipe")
-elseif (CMAKE_COMPILER_IS_CLANGXX)
-    set(FLAGS "-pipe -Wall -Wno-deprecated -Wextra -Wconversion -Wshadow -Wno-unused-parameter "
-        "-Wno-unused-variable -Wno-unknown-pragmas -Wno-return-type-c-linkage -Werror "
-        "-fcolor-diagnostics -Qunused-arguments -U__STRICT_ANSI__ -D__STDC_FORMAT_MACROS")
-elseif (CMAKE_COMPILER_IS_GNUCXX)
-    set(FLAGS "-pipe -Wall -Wno-deprecated -Wextra -Wconversion -Wshadow -Wno-unused-parameter "
-        "-Wno-unused-variable -Wno-unknown-pragmas -Wno-return-type-c-linkage -Werror "
-        "-U__STRICT_ANSI__ -D__STDC_FORMAT_MACROS")
-else()
-    message("xLib: unknown compiler")
-endif()
+include(CxxFlags)
 
 set_target_properties(
     ${PROJECT_NAME}
     PROPERTIES
         # COMPILE_DEFINITIONS
-        COMPILE_FLAGS ${FLAGS})
+        COMPILE_FLAGS ${CMAKE_CXX_FLAGS})
 
 target_link_libraries(
     ${PROJECT_NAME}
