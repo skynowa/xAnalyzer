@@ -56,7 +56,8 @@ IAnalyzer::_binPath() const
 			#elif xENV_UNIX
 				// echo $PATH
 				xT("/usr/bin"),
-				xT("/usr/local/bin")
+				xT("/usr/local/bin"),
+				xT("/snap/bin")
 			#endif
 			}
 		},
@@ -69,7 +70,8 @@ IAnalyzer::_binPath() const
 			#elif xENV_UNIX
 				// echo $PATH
 				xT("/usr/bin"),
-				xT("/usr/local/bin")
+				xT("/usr/local/bin"),
+				xT("/snap/bin")
 			#endif
 			}
 		}
