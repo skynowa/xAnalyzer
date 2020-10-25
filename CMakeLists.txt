@@ -70,7 +70,7 @@ set_target_properties(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    ${XLIB_LIBRARIES}
+    ${cmXLIB_LIBRARIES}
     ${YAML_CPP_LIBRARIES})
 #--------------------------------------------------------------------------------------------------
 # config
