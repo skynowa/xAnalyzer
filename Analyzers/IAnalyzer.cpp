@@ -45,38 +45,6 @@ IAnalyzer::_binPath() const
 {
 	std::tstring_t sRv;
 
-	static const std::map<Type, std::vec_tstring_t> dirPaths
-	{
-		{
-			Type::CppCheck,
-			{
-			#if   xENV_WIN
-				// echo %Path%
-				xT("c:\\Program Files (x86)\\CppCheck\\bin")
-			#elif xENV_UNIX
-				// echo $PATH
-				xT("/usr/bin"),
-				xT("/usr/local/bin"),
-				xT("/snap/bin")
-			#endif
-			}
-		},
-		{
-			Type::ClangTidy,
-			{
-			#if   xENV_WIN
-				// echo %Path%
-				xT("c:\\Program Files (x86)\\clang-tidy\\bin")
-			#elif xENV_UNIX
-				// echo $PATH
-				xT("/usr/bin"),
-				xT("/usr/local/bin"),
-				xT("/snap/bin")
-			#endif
-			}
-		}
-	};
-
 	static const std::map<Type, std::tstring_t> binNames
 	{
 		{
@@ -99,7 +67,7 @@ IAnalyzer::_binPath() const
 
 	cbool_t isRecursively {false};
 
-	sRv = Finder::file(dirPaths.find(_type)->second, binNames.find(_type)->second, isRecursively);
+	sRv = Finder::fileInEnvPath(binNames.find(_type)->second, isRecursively);
 	xTEST(!sRv.empty());
 
 	return sRv;
