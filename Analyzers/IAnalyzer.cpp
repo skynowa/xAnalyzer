@@ -47,22 +47,8 @@ IAnalyzer::_binPath() const
 
 	static const std::map<Type, std::tstring_t> binNames
 	{
-		{
-			Type::CppCheck,
-		#if   xENV_WIN
-			xT("cppcheck.exe")
-		#elif xENV_UNIX
-			xT("cppcheck")
-		#endif
-		},
-		{
-			Type::ClangTidy,
-		#if   xENV_WIN
-			xT("clang-tidy.exe")
-		#elif xENV_UNIX
-			xT("clang-tidy")
-		#endif
-		}
+		{Type::CppCheck,  xT("cppcheck")   + Path::fileDotExt(Path::FileExt::Exe)},
+		{Type::ClangTidy, xT("clang-tidy") + Path::fileDotExt(Path::FileExt::Exe)}
 	};
 
 	cbool_t isRecursively {false};
