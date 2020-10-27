@@ -11,7 +11,7 @@ namespace xa
 
 //-------------------------------------------------------------------------------------------------
 IAnalyzer::IAnalyzer(
-	cType      a_type,
+	cType            a_type,
 	cAnalyzerDataIn &a_dataIn
 ) :
 	_type  {a_type},
