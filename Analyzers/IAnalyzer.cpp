@@ -69,6 +69,7 @@ IAnalyzer::_binPath() const
 
 	sRv = Finder::fileInEnvPath(binNames.find(_type)->second, isRecursively);
 	xTEST(!sRv.empty());
+	xTEST(FileInfo(sRv).isExists());
 
 	return sRv;
 }
