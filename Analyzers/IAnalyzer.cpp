@@ -43,8 +43,6 @@ IAnalyzer::IAnalyzer(
 std::tstring_t
 IAnalyzer::_binPath() const
 {
-	std::tstring_t sRv;
-
 	static const std::map<Type, std::tstring_t> binNames
 	{
 		{Type::CppCheck,  xT("cppcheck")   + Path::fileDotExt(Path::FileExt::Exe)},
@@ -53,7 +51,7 @@ IAnalyzer::_binPath() const
 
 	cbool_t isRecursively {false};
 
-	sRv = Finder::fileInEnvPath(binNames.find(_type)->second, isRecursively);
+	std::ctstring_t sRv = Finder::fileInEnvPath(binNames.find(_type)->second, isRecursively);
 	xTEST(!sRv.empty());
 	xTEST(FileInfo(sRv).isExists());
 
