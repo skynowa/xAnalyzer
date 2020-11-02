@@ -73,7 +73,7 @@ CppCheck::run(
 	{
 		includeDirs,
 		modifiedFiles,
-		"--library=std.cfg", "--library=posix.cfg",
+		"--library=std.cfg", "--library=posix.cfg", "--library=xLib.cfg",
 		defines,
 		"--enable=" + errorLevel, "--inconclusive",
 		"--language=" + cLanguage, "--language=" + cppLanguage, "--std=" + cppStandart,

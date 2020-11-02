@@ -209,9 +209,10 @@ AnalyzerDataIn::_includeDirs(
 
 	// Custom
 	{
-	#if 0
+	#if 1
 		std::vec_tstring_t dirPathes
 		{
+		#if 0
 			"-I/usr/local/include",
 			"-I/usr/local/gen++v3/class",
 			"-I" +       projectDirPath + "/functions",
@@ -221,6 +222,9 @@ AnalyzerDataIn::_includeDirs(
 			"-isystem" + projectDirPath + "/core/gen/base",
 			"-isystem" + projectDirPath + "/api/gen/base",
 			"-isystem" + projectDirPath + "/seo/gen/base"
+		#else
+			"-I/home/skynowa/Projects/xLib/Include"
+		#endif
 		};
 
 		out_dirPathes->insert(out_dirPathes->end(), dirPathes.cbegin(), dirPathes.cend());
