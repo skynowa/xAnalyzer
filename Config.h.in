@@ -38,7 +38,10 @@ cbool_t STOP_ON_FAIL = false;
 /**
  * Project root directory
  */
-std::ctstring_t PROJECT_DIR = "/home/skynowa/Projects/xLib";
+std::ctstring_t PROJECT_DIR =
+	// "/home/skynowa/Projects/xLib"
+	"/home/skynowa/Projects/xAnalyzer"
+	;
 
 /**
  * Check mode
@@ -57,7 +60,7 @@ std::ctstring_t CPP_STD  = "c++11";
 /**
  * Exclude files for checking
  */
-std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx"};
+std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx", "in"};
 
 /**
  * TODO: Number of jobs (Cppcheck support only)
