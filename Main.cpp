@@ -15,7 +15,7 @@ int_t main(int_t a_argNum, tchar_t *a_args[])
 	auto exitStatus {Application::ExitCode::Failure};
 
 	try {
-		xa::AnalyzerApp app(::appName, xT(""));
+		xa::AnalyzerApp app(xa::appName, xT(""));
 		exitStatus = app.run();
 	}
 	catch (const Exception &a_e) {

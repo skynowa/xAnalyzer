@@ -18,27 +18,27 @@ namespace xa
 AnalyzerDataIn::AnalyzerDataIn()
 {
 	// common
-	projectDirPath      = ::PROJECT_DIR;
-	cppLanguage         = ::CPP_LANG;
-	cppStandart         = ::CPP_STD;
+	projectDirPath      = xa::PROJECT_DIR;
+	cppLanguage         = xa::CPP_LANG;
+	cppStandart         = xa::CPP_STD;
 	_includeDirs(&includeDirs);
 #if xANALYZER_DEBUG
 	// modifiedFiles       = {"/home/skynowa/Projects/xAnalyzer/Tests/Test_1.cpp"};
 	modifiedFiles       = {"/home/skynowa/Projects/xLib/Include/xLib/Sync/Process.cpp"};
 #else
-	GitClient().modifiedFiles(::CPP_MASK, &modifiedFiles);
+	GitClient().modifiedFiles(xa::CPP_MASK, &modifiedFiles);
 #endif
 	defines             = "-UKERN_PROC_PATHNAME";
 	_complierInfo(&compilerId, &compilerName);	xUNUSED(compilerName);
 	osName              = SystemInfo().os();
-	isSkipCheck         = ::SKIP_CHECK;
-	isStopOnFail        = ::STOP_ON_FAIL;
-	isQuickCheck        = ::QUICK_CHECK;
+	isSkipCheck         = xa::SKIP_CHECK;
+	isStopOnFail        = xa::STOP_ON_FAIL;
+	isQuickCheck        = xa::QUICK_CHECK;
 
 	// partial - CppCheck
-	cppCheck_cLanguage  = ::C_LANG;
-	cppCheck_jobsNum    = ::JOBS_NUM;
-	cppCheck_errorLevel = ::CPPCHECK_ERROR_LEVEL;
+	cppCheck_cLanguage  = xa::C_LANG;
+	cppCheck_jobsNum    = xa::JOBS_NUM;
+	cppCheck_errorLevel = xa::CPPCHECK_ERROR_LEVEL;
 }
 //-------------------------------------------------------------------------------------------------
 bool_t
