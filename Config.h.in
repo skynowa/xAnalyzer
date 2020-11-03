@@ -10,7 +10,8 @@
 #include <xLib/xLib.h>
 
 using namespace xl;
-using namespace xa;
+
+namespace xa {}
 
 namespace xa
 {
