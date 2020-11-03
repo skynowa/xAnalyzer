@@ -15,6 +15,42 @@ using namespace xl;
 
 const std::ctstring_t appName = xT("@PROJECT_NAME@");
 //-------------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
+*   Constants
+*
+**************************************************************************************************/
+
+//-------------------------------------------------------------------------------------------------
+/**
+ * Project root directory
+ */
+std::ctstring_t PROJECT_DIR = Dir::current();
+
+/**
+ * C/C++ language
+ */
+std::ctstring_t C_LANG   = "c";
+std::ctstring_t CPP_LANG = "c++";
+
+/**
+ * Exclude files for checking
+ */
+std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx", "in"};
+
+/**
+ * TODO: Number of jobs (Cppcheck support only)
+ */
+std::csize_t JOBS_NUM = 1;
+//-------------------------------------------------------------------------------------------------
+
+
+/**************************************************************************************************
+*   Options
+*
+**************************************************************************************************/
+
 /**
  * Set OS environment variable to disable checks
  * From shell: export ANALYZER_SKIP_CHECK=1
@@ -38,15 +74,6 @@ cbool_t STOP_ON_FAIL = false;
  */
 
 /**
- * Project root directory
- */
-std::ctstring_t PROJECT_DIR =
-	// "/home/skynowa/Projects/xLib"
-	// "/home/skynowa/Projects/xAnalyzer"
-	Dir::current()
-	;
-
-/**
  * Check mode
  * 0 - check changed files and headers
  * 1 - check changed files only
@@ -54,21 +81,9 @@ std::ctstring_t PROJECT_DIR =
 cbool_t QUICK_CHECK = true;
 
 /**
- * C++ language / standart
+ * C++ standart
  */
-std::ctstring_t C_LANG   = "c";
-std::ctstring_t CPP_LANG = "c++";
 std::ctstring_t CPP_STD  = "c++14";
-
-/**
- * Exclude files for checking
- */
-std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx", "in"};
-
-/**
- * TODO: Number of jobs (Cppcheck support only)
- */
-std::csize_t JOBS_NUM = 1;
 
 /**
  * Cppcheck
