@@ -215,6 +215,9 @@ AnalyzerDataIn::_includeDirs(
 	// Custom
 	{
 	#if 1
+	   /**
+		* https://gcc.gnu.org/onlinedocs/cpp/Search-Path.html
+		*/
 		std::vec_tstring_t dirPathes
 		{
 		#if 0
