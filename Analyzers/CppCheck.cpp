@@ -49,7 +49,9 @@ CppCheck::run(
 	std::csize_t                jobsNum        = _dataIn.cppCheck_jobsNum;
 	std::ctstring_t             errorLevel     = _dataIn.cppCheck_errorLevel;
 
-	xTEST(!includeDirs.empty());
+	if (isQuickCheck) {
+		xTEST(includeDirs.empty());
+	}
 
 	{
 	#if 0
@@ -85,9 +87,11 @@ CppCheck::run(
 		"--relative-paths",
 		"--error-exitcode=1",
 
-		"--xml", "--xml-version=2",
+		"--xml", "--xml-version=2"
 
-		"--check-config"
+	#if 0
+		, "--check-config"
+	#endif
 	};
 
 	Process::execute(_binPath(), params, {}, xTIMEOUT_INFINITE, &out_dataOut->stdOut,

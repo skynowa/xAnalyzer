@@ -22,7 +22,11 @@ AnalyzerDataIn::AnalyzerDataIn()
 	cppLanguage         = ::CPP_LANG;
 	cppStandart         = ::CPP_STD;
 	_includeDirs(&includeDirs);
+#if xANALYZER_DEBUG
+	modifiedFiles       = {"/home/skynowa/Projects/xAnalyzer/Tests/Test_1.cpp"};
+#else
 	GitClient().modifiedFiles(::CPP_MASK, &modifiedFiles);
+#endif
 	defines             = "-UKERN_PROC_PATHNAME";
 	_complierInfo(&compilerId, &compilerName);	xUNUSED(compilerName);
 	osName              = SystemInfo().os();
@@ -223,7 +227,10 @@ AnalyzerDataIn::_includeDirs(
 			"-isystem" + projectDirPath + "/api/gen/base",
 			"-isystem" + projectDirPath + "/seo/gen/base"
 		#else
-			"-I/home/skynowa/Projects/xLib/Include"
+			#if 0
+				"-I /usr/include/c++/7",
+				"-I/home/skynowa/Projects/xLib/Include"
+			#endif
 		#endif
 		};
 

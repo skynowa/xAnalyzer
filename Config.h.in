@@ -11,6 +11,8 @@
 
 using namespace xl;
 //-------------------------------------------------------------------------------------------------
+#define xANALYZER_DEBUG 1
+
 const std::ctstring_t appName = xT("@PROJECT_NAME@");
 //-------------------------------------------------------------------------------------------------
 /**
@@ -48,7 +50,7 @@ std::ctstring_t PROJECT_DIR =
  * 0 - check changed files and headers
  * 1 - check changed files only
  */
-cbool_t QUICK_CHECK = false;
+cbool_t QUICK_CHECK = true;
 
 /**
  * C++ language / standart
@@ -69,6 +71,38 @@ std::csize_t JOBS_NUM = 1;
 
 /**
  * Cppcheck
+ *
+ * - all
+ *   Enable all checks. It is recommended to only
+ *   use --enable=all when the whole program is
+ *   scanned, because this enables unusedFunction.
+ *
+ * - warning
+ *   Enable warning messages
+ *
+ * - style
+ *   Enable all coding style checks. All messages
+ *   with the severities 'style', 'performance' and
+ *   'portability' are enabled.
+ *
+ * - performance
+ *   Enable performance messages
+ *
+ * - portability
+ *   Enable portability messages
+ *
+ * - information
+ *   Enable information messages
+ *
+ * - unusedFunction
+ *   Check for unused functions. It is recommend
+ *   to only enable this when the whole program is
+ *   scanned.
+ *
+ * - missingInclude
+ *   Warn if there are missing includes. For
+ *   detailed information, use '--check-config'.
  */
-std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,missingInclude";
+// TODO: information,missingInclude - "Cppcheck cannot find all the include files..."
+std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,style,performance,portability,unusedFunction";
 //-------------------------------------------------------------------------------------------------
