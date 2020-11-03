@@ -216,7 +216,10 @@ AnalyzerDataIn::_includeDirs(
 	{
 	#if 1
 	   /**
+	    * GCC:
+		*
 		* https://gcc.gnu.org/onlinedocs/cpp/Search-Path.html
+		* https://commandlinefanatic.com/cgi-bin/showarticle.cgi?article=art026
 		*/
 		std::vec_tstring_t dirPathes
 		{
