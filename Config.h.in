@@ -10,12 +10,9 @@
 #include <xLib/xLib.h>
 
 using namespace xl;
-//-------------------------------------------------------------------------------------------------
-#define xANALYZER_DEBUG 1
 
-const std::ctstring_t appName = xT("@PROJECT_NAME@");
-//-------------------------------------------------------------------------------------------------
-
+namespace xa
+{
 
 /**************************************************************************************************
 *   Constants
@@ -23,6 +20,10 @@ const std::ctstring_t appName = xT("@PROJECT_NAME@");
 **************************************************************************************************/
 
 //-------------------------------------------------------------------------------------------------
+#define xANALYZER_DEBUG 1
+
+const std::ctstring_t appName = xT("@PROJECT_NAME@");
+
 /**
  * Project root directory
  */
@@ -123,3 +124,5 @@ std::ctstring_t CPP_STD  = "c++14";
 // TOOD: style,performance,portability,unusedFunction - on for prod
 std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,performance,portability";
 //-------------------------------------------------------------------------------------------------
+
+} // namespace xa
