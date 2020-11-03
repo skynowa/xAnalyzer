@@ -57,7 +57,7 @@ cbool_t QUICK_CHECK = true;
  */
 std::ctstring_t C_LANG   = "c";
 std::ctstring_t CPP_LANG = "c++";
-std::ctstring_t CPP_STD  = "c++11";
+std::ctstring_t CPP_STD  = "c++14";
 
 /**
  * Exclude files for checking
