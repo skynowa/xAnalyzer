@@ -23,7 +23,8 @@ AnalyzerDataIn::AnalyzerDataIn()
 	cppStandart         = ::CPP_STD;
 	_includeDirs(&includeDirs);
 #if xANALYZER_DEBUG
-	modifiedFiles       = {"/home/skynowa/Projects/xAnalyzer/Tests/Test_1.cpp"};
+	// modifiedFiles       = {"/home/skynowa/Projects/xAnalyzer/Tests/Test_1.cpp"};
+	modifiedFiles       = {"/home/skynowa/Projects/xLib/Include/xLib/Sync/Process.cpp"};
 #else
 	GitClient().modifiedFiles(::CPP_MASK, &modifiedFiles);
 #endif

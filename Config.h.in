@@ -104,5 +104,6 @@ std::csize_t JOBS_NUM = 1;
  *   detailed information, use '--check-config'.
  */
 // TODO: information,missingInclude - "Cppcheck cannot find all the include files..."
-std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,style,performance,portability,unusedFunction";
+// TOOD: style,performance,portability,unusedFunction - on for prod
+std::ctstring_t CPPCHECK_ERROR_LEVEL = "warning,performance,portability";
 //-------------------------------------------------------------------------------------------------
