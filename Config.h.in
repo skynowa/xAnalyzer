@@ -42,7 +42,8 @@ cbool_t STOP_ON_FAIL = false;
  */
 std::ctstring_t PROJECT_DIR =
 	// "/home/skynowa/Projects/xLib"
-	"/home/skynowa/Projects/xAnalyzer"
+	// "/home/skynowa/Projects/xAnalyzer"
+	Dir::current()
 	;
 
 /**
