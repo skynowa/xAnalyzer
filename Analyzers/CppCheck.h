@@ -1,6 +1,8 @@
 /**
  * \file  CppCheck.h
  * \brief CppCheck
+ *
+ * http://cppcheck.sourceforge.net/manual.html
  */
 
 
