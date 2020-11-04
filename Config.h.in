@@ -40,7 +40,7 @@ std::ctstring_t CPP_LANG = "c++";
 /**
  * Exclude files for checking
  */
-std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "cc", "cpp", "cxx", "in"};
+std::cvec_tstring_t CPP_MASK = {"h", "hh", "hpp", "inl", "inc", "cc", "cpp", "cxx", "c", "in"};
 
 /**
  * TODO: Number of jobs (Cppcheck support only)
