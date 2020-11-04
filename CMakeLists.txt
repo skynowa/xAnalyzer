@@ -32,7 +32,6 @@ include_directories(
 #-------------------------------------------------------------------------------
 # sources
 set(SOURCES
-    Main.cpp
     AnalyzerApp.cpp
     AnalyzersFactory.cpp
     Log.cpp
