@@ -7,6 +7,7 @@
 - Custom rules
 - Addons
 - Full path to xLib.cfg, ... files
+- GCC analyzer
 
 https://git.trustedfirmware.org/ci%2Ftf-m-ci-scripts.git/tree/run-cppcheck.sh?h=8da148a387ca85899d17b4bdcb637957147b1656
 
