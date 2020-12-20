@@ -29,7 +29,9 @@ AnalyzersFactory::create(
 	cAnalyzerDataIn  &a_dataIn
 )
 {
-	if (auto it = _analyzers.find(a_type); it != _analyzers.cend()) {
+	if (auto it = _analyzers.find(a_type);
+		it != _analyzers.cend())
+	{
 		return it->second;
 	}
 
