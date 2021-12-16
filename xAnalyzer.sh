@@ -9,4 +9,4 @@
 
 # echo "PATH: $PATH"
 
-/home/skynowa/Projects/xAnalyzer_eclipse/xAnalyzer
+/home/skynowa/Projects/xAnalyzer_build/xAnalyzer
